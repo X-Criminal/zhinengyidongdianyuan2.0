@@ -32,4 +32,13 @@ Page({
       path: 'pages/index/index',
     };
   },
+  handleTap1(e){
+    console.log(e)
+  },
+  handleTap2(e){
+    console.log(e)
+  },
+  handleTap3(e){
+    console.log(e)
+  }
 });
