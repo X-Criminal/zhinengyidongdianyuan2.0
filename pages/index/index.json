@@ -1,1 +1,11 @@
-{}
+{
+  "pages": [
+    
+  ],
+  "window": {
+    "defaultTitle": "V电",
+    "pullRefresh":true,         
+    "allowsBounceVertical":"NO",
+    "titleBarColor":"#000"
+  }
+}

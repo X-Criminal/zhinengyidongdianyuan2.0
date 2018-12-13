@@ -1,0 +1,29 @@
+<view class="login">
+    <image src="../../img/logo.png" style="width:74px;height:74px;" class="login-logo"/>
+    <form onSubmit="fromData" class="fromData">
+        <view class="phoneBox">
+          <input type="number" name="phone" maxlength="11" controlled value="{{phone}}" placeholder="账号" onInput="getPhone"/>
+          <view  class="{{delePhoneStyle}}"  onTap="deleIcon">
+             <icon type="clear" size="20" color="#C8C8CD"/>
+          </view>
+        </view>
+        <view class="codeBox">
+          <input type="number" name="code" value="{{code}}" onInput="getCode"  placeholder="验证码" />
+          <view  class="{{codeTxtStyle}}"  onTap="sendOutCode">
+             {{codeText}}
+          </view>
+        </view>
+        <view class="{{btnStyle}}">
+          <button formType="submit" disabled="{{disabled}}">确定</button>
+        </view>
+    </form>
+    <view class="or">
+        or
+    </view>
+    <image src="../../img/login_pay.png" class="zfb"/>
+
+    <!--验证码发送成功-->
+    <view class="{{codeAlert}}">
+       验证码发送成功
+    </view>
+</view>

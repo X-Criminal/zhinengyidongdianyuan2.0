@@ -1,4 +1,0 @@
-<view>
-  {{title}}
-</view>
-<button type="default" onTap="defaultTap">Button</button>

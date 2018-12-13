@@ -1,27 +1,12 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/login/demo"
+    "pages/login/login"
   ],
   "window": {
-    "defaultTitle": "共享充电宝",
+    "defaultTitle": "V电",
     "pullRefresh":true,         
     "allowsBounceVertical":"NO",
-    "titleBarColor":"#fff"
-  },
-  "tabBar":{
-    "textColor": "#dddddd",
-    "selectedColor": "#49a9ee",
-    "backgroundColor": "#000",
-    "items": [
-      {
-        "pagePath": "pages/index/index",
-        "name": "首页"
-      },
-      {
-        "pagePath": "pages/login/demo",
-        "name": "第二页"
-      }
-    ]
+    "titleBarColor":"#000"
   }
 }

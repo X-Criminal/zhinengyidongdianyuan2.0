@@ -1,0 +1,120 @@
+.login{
+  width: 100%;
+}
+.login-logo{
+  display: block;
+  margin: 0 auto;
+  margin-top: 123px;
+}
+.fromData{
+  width: 320px;
+  margin: 0 auto;
+  margin-top: 45px;
+}
+
+.fromData .phoneBox,.fromData .codeBox,.fromData input{
+  width: 100%;
+  height: 46px;
+}
+.fromData .phoneBox,.fromData .codeBox{
+  margin-bottom: 15px;
+  position: relative;
+}
+.fromData .phoneBox .delePhone,.fromData .phoneBox .delePhones{
+  position: absolute;
+  right: 8px;
+  top: calc(50% - 10px);
+  display:none;
+}
+.fromData .phoneBox .delePhones{
+  display: block;
+}
+.fromData input{
+  padding-left: 8px;
+  background-color: rgba(0, 0, 0, 0);
+  border-bottom: 1px solid #E4E7F0;
+}
+.fromData .btnArea button{
+  background-color: #FFF44F;
+  transition: all .8s;
+  color: #0B0817;
+  font-size: 17px;
+  font-family: 'PingFangSC-Regular';
+  opacity: 0.26;
+  border-radius: 50px;
+}
+.fromData .btnAreas button{
+  background-color: #FFF44F;
+   border-radius: 50px;
+  opacity:1;
+}
+.codeTxt,.codeTxts{
+  position: absolute;
+  right: 8px;
+  font-size: 15px;
+  top: calc(50% - 7px);
+}
+.codeTxts{
+  opacity: 0.26;
+}
+.codeAlert,.codeAlerts{
+  position: fixed;
+  width: 110px;
+  height: 32px;
+  color: white;
+  background-color: rgba(0,0,0,.8);
+  top: 40%;
+  left:calc(50% - 55px);
+  line-height: 32px;
+  text-align: center;
+  font-family: PingFangSC-Regular;
+  font-size: 13px;
+  z-index: -1;
+  opacity: 0;
+  transition:all 1s;
+}
+.codeAlerts{
+  animation: alert 2s;
+}
+@keyframes alert{
+  from{
+    z-index: 11;
+    opacity: 1;
+  }
+  to{
+    z-index: -1;
+    opacity: 0;
+  }
+}
+.or{
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 auto;
+  margin-top: 30px;
+  font-size: 15px;
+  width: 320px;
+  position: relative;
+}
+.or::before,.or::after{
+  content:"";
+  position: absolute;
+  height: 1px;
+  width: 140px;
+  background-color: #EAEAEA;
+}
+.or::before{
+  left: 0;
+  top: 50%;
+}
+.or::after{
+  right: 0;
+  top: 50%;
+}
+.zfb{
+  width: 48px;
+  height: 48px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 25px;
+}

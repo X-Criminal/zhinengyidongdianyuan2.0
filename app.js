@@ -1,8 +1,12 @@
 App({
+  data:{
+    userName:"小红",
+    userImg:"",
+  },
   onLaunch(options) {
     // 第一次打开
     // options.query == {number:1}
-   
+    this.initGetuser( )
   },
   onShow(query,path) {
 
@@ -11,6 +15,18 @@ App({
   },
    onHide() {
     // 小程序隐藏
+  },
+  initGetuser(){
+    my.getAuthCode({
+      scopes: 'auth_user',
+      success: (res) => {
+        my.getAuthUserInfo({
+            success:(userInfo) => {
+                console.log(userInfo)
+            }
+        })
+      },
+    });
   },
    onError(msg) {
     console.log(msg)

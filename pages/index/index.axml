@@ -1,3 +1,21 @@
-<view id="outter" onLongTap="handleTap1">
-  view1
+<view id="home">
+  <cover-view id="search">
+    <image src="../../img/menu@2x.png" style="width:30px;height:30px;" class="img"/>
+  	<input type="text" placeholder="搜索位置查找附近街电" class="input-txt"/>
+    <image src="../../img/list.png" style="width:26px;height:26px;" class="img2"/>
+  </cover-view>
+   <map id="map" longitude="113.8829040527" latitude="22.5978466580" scale="{{scale}}" controls="{{controls}}"
+      markers="{{markers}}"
+      onControlTap="clickControlTap"
+      polyline="{{polyline}}" 
+      circles="{{circles}}"
+      show-location="true" style="width: 100%; height:calc(100% - 57px);"
+      onRegionChange="RegionChange"
+      >
+      </map>
+   <cover-view id="operation" >
+      <view class="operation" onTap="sweep">
+        <image src="../../img/qr_code1.png" class="operation-img"/> 扫码借 / 还
+      </view>
+   </cover-view>
 </view>
