@@ -1,11 +1,7 @@
 {
-  "pages": [
-    
-  ],
-  "window": {
-    "defaultTitle": "V电",
-    "pullRefresh":true,         
-    "allowsBounceVertical":"NO",
-    "titleBarColor":"#000"
+  "usingComponents": {
+    "card": "mini-antui/es/card/index",
+    "popup": "mini-antui/es/popup/index",
+     "grid": "mini-antui/es/grid/index"
   }
 }

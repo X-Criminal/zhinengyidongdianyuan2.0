@@ -1,12 +1,20 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/login/login"
+    "pages/center/center",
+    "pages/fault/fault",
+    "pages/service/service",
+    "pages/explain/explain",
+    "pages/detaIls/detaIls",
+    "pages/search/search",
+    "pages/login/login",
+    "pages/problem/problem"
   ],
   "window": {
     "defaultTitle": "V电",
-    "pullRefresh":true,         
+    "pullRefresh":true,
     "allowsBounceVertical":"NO",
     "titleBarColor":"#000"
   }
 }
+ 

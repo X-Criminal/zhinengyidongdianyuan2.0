@@ -1,0 +1,14 @@
+<view class="problem" style="width:100%;">
+  <list>
+       <block a:for="{{Lis}}">
+      <list-item
+          onClick="onItemClick"
+          arrow="{{true}}"
+          index="{{index}}"
+          last="{{index === (Lis.length - 1)}}"
+        >
+          <view class="am-list-brief" style="color:#0B0817;font-family: PingFangSC-Regular;">{{item.title}}</view>
+      </list-item>
+    </block>
+  </list>
+</view>

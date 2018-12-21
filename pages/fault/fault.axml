@@ -1,0 +1,63 @@
+<view class="fault">
+  <view>
+    请扫描故障机器二维码
+  </view>
+  <view>
+    <input type="text" disabled="{{true}}" value="{{code}}"/>
+    <view class="icon" style="text-indent: -9999px">
+        扫描
+    </view>
+  </view>
+  <view>
+    <checkbox-group onChange="onCheckBox">
+     <label >
+      <am-checkbox value="{{1}}"/>
+      <text>二维码脱落</text>
+    </label>
+    <label >
+      <am-checkbox value="{{2}}"/>
+      <text>二维码脱落</text>
+    </label>
+    <label >
+      <am-checkbox value="{{3}}"/>
+      <text>二维码脱落</text>
+    </label>
+    <label >
+      <am-checkbox value="{{4}}"/>
+      <text>二维码脱落</text>
+    </label>
+    <label >
+      <am-checkbox value="{{5}}"/>
+      <text>二维码脱落</text>
+    </label>
+    <label >
+      <am-checkbox value="{{6}}"/>
+      <text>二维码脱落</text>
+    </label>
+    <label >
+      <am-checkbox value="{{7}}"/>
+      <text>二维码脱落</text>
+    </label>
+      <label >
+      <am-checkbox value="{{8}}"/>
+      <text>其他</text>
+    </label>
+    </checkbox-group>
+  </view>
+  <view>
+      <view class="upImg" style="{{imgUrl.length>0?'background-image:url('+imgUrl+')':null}}">
+        上传图片
+      </view>
+  </view>
+  <view>
+    <view>问题反馈</view>
+    <view>
+      <textarea  type="text"/>
+    </view>
+  </view>
+  <view>
+    <button>
+      确定
+    </button>
+  </view>
+</view>

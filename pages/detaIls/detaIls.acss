@@ -1,0 +1,125 @@
+.detaIls{
+  width: 100%;
+}
+.imgaeLis{
+  width: 100%;
+}
+.swiperImg image{
+  width: 100%;
+  background-size: cover;
+  height: 550rpx;
+}
+.detaIlsBody{
+  background-color: white;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+.detaIlsBody .detaIlsTitle{
+  font: 32rpx PingFangSC-Regular;
+  color: #0B0817;
+}
+.detaIlsBody >view:nth-child(2),.detaIlsBody >view:nth-child(3),.detaIlsBody >view:nth-child(4){
+  font: 22rpx PingFangSC-Regular;
+  opacity: .5;
+  line-height: 75rpx;
+  padding-left: 40rpx;
+  position: relative;
+}
+.detaIlsBody >view:nth-child(2) .icon,.detaIlsBody >view:nth-child(3) .icon,.detaIlsBody >view:nth-child(4) .icon{
+  position: absolute;
+  text-indent: -9999px;
+  width: 28rpx;
+  height: 28rpx;
+  left: 0;
+  top: calc(50% - 14rpx);
+  background-size: cover;
+}
+.detaIlsBody >view:nth-child(2) .icon{
+  background-image: url(../../img/merchants_consumption.png);
+}
+.detaIlsBody >view:nth-child(3) .icon{
+  background-image: url(../../img/merchants_time.png);
+}
+.detaIlsBody >view:nth-child(4) .icon{
+  background-image: url(../../img/merchants_location.png);
+}
+.detaIlsBody >view:nth-child(5){
+  height: 32rpx;
+}
+.detaIlsBody >view:nth-child(5) >view{
+  float: left;
+  height: 32rpx;
+  font: 23rpx PingFangSC-Regular;
+  color: rgb(146,144,151);
+  position: relative;
+  padding-left: 40rpx;
+  line-height: 32rpx;
+  margin-left: 10rpx;
+}
+.detaIlsBody >view:nth-child(5) >view .icon{
+  position: absolute;
+  text-indent: -9999px;
+  width: 32rpx;
+  height: 32rpx;
+  left: 0;
+ 
+  background-size: cover;
+}
+.detaIlsBody >view:nth-child(5) >view:nth-child(1) .icon{
+  background-image: url(../../img/merchants_translation.png);
+  top: calc(50% - 18rpx);
+  width: 34rpx;
+}
+.detaIlsBody >view:nth-child(5) >view:nth-child(2) .icon{
+  background-image: url(../../img/merchants_return.png);
+   top: calc(50% - 18rpx);
+   width: 33rpx;
+}
+.detaIlsBody >view:nth-child(5) >view:nth-child(3) .icon{
+  background-image: url(../../img/vouchers.png);
+   top: calc(50% - 18rpx);
+}
+.detaIlsBottom{
+  width: 95%;
+  margin: 0 auto;
+  background-color: white;
+  border-top: 1px solid #e5e5ee;
+}
+.detaIlsBottom>view:nth-child(1){
+  height: 65rpx;
+  position: relative;
+}
+.detaIlsBottom>view:nth-child(1)>view:nth-child(1){
+  font-family: PingFangSC-Regular;
+  line-height: 65rpx;
+  height: 65rpx;
+  font-size: 28rpx;
+  float: left;
+}
+.detaIlsBottom>view:nth-child(1) button{
+  width: 120rpx;
+  height: 44rpx;
+  background-color: #ffcf00;
+  color: white;
+  font-size: 19rpx;
+  line-height: 44rpx;
+  position: absolute;
+  right: 10px;
+  top: calc(50% - 22rpx);
+  border-radius: 30rpx;
+}
+.detaIlsBottom{
+  padding-top: 20rpx;
+  position: relative;
+} 
+.detaIlsBottom .isGet{
+  position: absolute;
+  text-indent: -99999px;
+  right: 3rpx;
+  bottom: 24rpx;
+  width: 110rpx;
+  height: 78rpx;
+  background-color: white;
+  background-image: url(../../img/feedback_receive.png);
+  background-size: cover;
+} 

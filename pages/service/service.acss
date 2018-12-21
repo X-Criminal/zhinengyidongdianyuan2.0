@@ -1,0 +1,6 @@
+.service{
+  width: 100%;
+}
+.service .am-list-brief{
+  color: #0B0817;
+}
