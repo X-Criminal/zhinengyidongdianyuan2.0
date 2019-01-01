@@ -1,8 +1,8 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/nearby/nearby",
     "pages/center/center",
-    
     "pages/fault/fault",
     "pages/service/service",
     "pages/explain/explain",

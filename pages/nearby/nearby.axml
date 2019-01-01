@@ -1,0 +1,33 @@
+<view class="nearby">
+  <view class="Lis">
+    <image src="/img/feedback_default.png"  mode="logo"/>
+    <view>
+      <view>
+        海雅缤纷城
+        <view>3.1km</view>
+      </view>
+      <view>
+           <view class="time Icon">时间</view>
+        00:00
+      </view>
+      <view>
+          <view class="position Icon">地址</view>
+        深圳市水库路147号
+      </view>
+      <view class="info">
+        <view>
+          <view class="Icon">可借</view>
+          可借
+        </view>
+        <view>
+          <view class="Icon">可还</view>
+          可还
+        </view>
+        <view>
+          <view class="Icon">有优惠卷</view>
+          有优惠卷
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

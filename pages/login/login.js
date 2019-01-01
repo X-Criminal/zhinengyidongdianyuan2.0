@@ -1,3 +1,4 @@
+let app = getApp( );
 Page({
   data:{
     title:"xiaoming",
@@ -10,15 +11,36 @@ Page({
     codeText:"获取验证码",
     codeTxtStyle:"codeTxts",
     codeAlert:"codeAlert",
+    LOND:"load"
   },
   onLoad(query) {
     // 页面加载
     console.info(`Page onLoad with query: ${JSON.stringify(query)}`);
-  
   },
   fromData(e){
-    //提交数据
-    console.log(e)
+    let _this = this;
+    this.setData({
+      LOND:"load onLoad"
+    })
+    my.httpRequest({
+      url:app.url+"powerBank/app/user/doLogin",
+      method:"POST",
+      data:{phone:this.data.phone,code:this.data.code},
+      success( data ){
+        console.log(data);
+         _this.setData({
+            LOND:"load"
+          })
+      },
+      fail(err){
+        my.alert({
+          title: '网络连接错误，请稍后再试！' 
+        });
+        _this.setData({
+            LOND:"load"
+          })
+      }
+    })
   },
   getPhone(e){
     //获取手机号
@@ -62,6 +84,7 @@ Page({
   getCode(e){
     let _this = this;
     let value = e.detail.value;
+   
     _this.setData({
       code:value
     })
@@ -88,20 +111,32 @@ Page({
   },
   sendOutCode(){
     if(this.data.codeTxtStyle!=="codeTxt") return false;
-    let _this = this;
-    let time = 60;
-    _this.setData({
+     this.codeShow( )
+    my.httpRequest({
+      url:app.url+"/powerBank/other/sendCode",
+      method:"POST",
+      data:{phone:this.data.phone,type:"2"},
+       success( data ){ 
+        this.codeShow( )
+        console.log(data)
+      }
+    })
+  },
+
+  codeShow(){
+      let time = 60;
+    this.setData({
         codeTxtStyle:"codeTxts",
         codeText:time+"s",
         codeAlert:"codeAlerts"
     })
     let times = setInterval(()=>{
         time--
-        _this.setData({
+        this.setData({
           codeText:time+"s"
         })
       if(time===0){
-        _this.setData({
+        this.setData({
             codeTxtStyle:"codeTxt",
             codeText:"获取验证码",
             codeAlert:"codeAlert",
@@ -110,6 +145,46 @@ Page({
       }
     },1000)
   },
+  /**支付宝登陆 */
+  userLogin(){
+     this.setData({
+      LOND:"load onLoad"
+    })
+    app.initGetuser((res)=>{
+       let userInfo = res;
+           userInfo.isLogin=true,
+       this.setData({
+         userInfo:userInfo,
+         LOND:"load"
+       })
+       this.Nav(`../index/index?type=1&data=${JSON.stringify(userInfo)}`)
+     })
+  },
+
+
+  Nav(url,title="",color="#fff"){
+    my.reLaunch({
+      url:url,
+      success:()=>{
+        my.setNavigationBar({
+          title:title,
+          backgroundColor:color,
+          borderBottomColor:color,
+        })
+      }
+    })
+  },
+/**手机号登陆 */
+phoneLogin( res ){
+  res.isLogin = true,
+  this.setData({
+    userInfo:res
+  })
+  app.phoneLoad( res )
+  this.Nav( `../index/index?type=1&data=${JSON.stringify(res)}` )
+},
+/**页面跳转 */
+
   onReady() {
     // 页面加载完成
   },

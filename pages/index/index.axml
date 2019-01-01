@@ -1,40 +1,31 @@
 <view id="home">
-  <cover-view id="search">
+  <view id="search">
     <view onTap="center">
-      <image src="../../img/menu@2x.png" style="width:30px;height:30px;" class="img"/>
+      <image src="{{userInfo.avatar}}" style="width:30px;height:30px;" class="img"/>
     </view>
     <view onTap="onFOCUS">
       <input type="text" placeholder="搜索位置查找附近街电" class="input-txt" disabled="{{true}}" onInput="onInput" value="{{TxtSearch}}" controlled="{{true}}"  onBlur="onBLUS" style="{{inputStyle}}"/>
     </view>
-    <image src="../../img/list.png" style="width:26px;height:26px;" class="img2"/>
-  </cover-view>
-   <map id="map" longitude="{{initLongitude}}" latitude="{{initLatitude}}" scale="{{scale}}" controls="{{controls}}"
+    <view onTap="nearby">
+      <image src="../../img/list.png" style="width:26px;height:26px;" class="img2"/>
+    </view>
+  </view>
+    <map id="map" longitude="{{initLongitude}}" latitude="{{initLatitude}}"
+      scale="{{scale}}" 
+      controls="{{controls}}"
       markers="{{markers}}"
       onControlTap="clickControlTap"
       circles="{{circles}}"
       show-location 
-      style="width: 100%; height:calc(100% - 57px);"
+      style="{{mapStyle}}"
       onRegionChange="RegionChange"
       onMarkerTap="getMarKer"
       onTap="clickMap"
       >
-      </map>
-   <cover-view id="operation" >
-      <view class="operation" onTap="sweep">
-        <image src="../../img/qr_code1.png" class="operation-img"/> 扫码借 / 还
-      </view>
-   </cover-view>
+    </map>
 
-        
-
-  <!--优惠劵 Start-->
-  <popup show="{{showTop}}" position="left" className="Discount" zIndex="999" mask="{{mask}}">
-    <card thumb="{{card.thumb}}" title="{{card.subTitle}}" subTitle="{{card.title}}"/>
-  </popup>
-  <!--优惠劵 End -->
-   
   <!--服务中心 Start-->
-  <popup show="{{showTop2}}" position="bottom" className="popupBottom" zIndex="999" onClose="showTop_2">
+  <popup show="{{showTop2}}" position="bottom" className="popupBottom" zIndex="999" mask="{{false}}">
       <view class="header">
           客服中心
       </view>
@@ -42,74 +33,4 @@
   </popup>
   <!--服务中心 End -->
 
-  <!--标注点详情 Start-->
-  <popup show="{{showTop3}}" position="bottom" className="onMarKer" zIndex="999" mask="{{mask}}">
-      <view class="icon-img">
-        <image src="../../img/feedback_default.png" style="width:60px;height:60px;"/>
-      </view>
-      <view class="headerBody" onTap="onDetails">
-        <view class="header1">
-           <view>
-             海雅城
-            </view>
-            <view>
-              3.1km
-            </view>
-        </view>
-        <view class="header2">
-            <view class="hrederIcon">时间</view>
-            00:00-24:00
-        </view>
-        <view class="header3">
-          <view>
-            地址
-          </view>
-          <view>
-            深圳市宝安区西乡铁岗水库路148号
-          </view>
-        </view>
-      </view>
-      <view class="headerBottom">
-            <view>
-              <view class="icon">
-                可借
-              </view>
-              可借
-            </view>
-            <view>
-              <view class="icon">
-                可还
-              </view>
-              可还
-            </view>
-            <view>
-              <view class="icon">
-                有优惠劵
-              </view>
-              有优惠劵
-            </view>
-      </view>
-      <view class="onRoyte" onTap="getRoute">
-          路线
-      </view>
-  </popup>
-  <!--标注点详情 End-->
-
-  <!--附近商户 Start-->
-  <popup show="{{showTop4}}" position="bottom" className="boxSearch" zIndex="999" onClose="showTop_2" mask="{{mask}}">
-      <scroll-view class="scroll-view_H" scroll-y="{{true}}" style="width: 100%;height:100%">
-        <view class="scroll-view-item_H" a:for="{{position_z}}" onTap="positionLis" data-id="{{item.id}}" data-latitude="{{item.latitude}}" data-longitude="{{item.longitude}}">
-          <view>
-            {{item.name}}
-          </view>
-          <view>
-            {{item.login}}
-          </view>
-          <view hidden="{{_z===item.id?false:true}}">
-              <icon type="success_no_circle" size="17px" color="#2B2B2A" />
-          </view>
-        </view>
-      </scroll-view>
-  </popup>
-  <!--附近商户 End-->
 </view>

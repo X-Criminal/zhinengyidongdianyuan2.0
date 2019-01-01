@@ -2,6 +2,8 @@ let app = getApp( )
 Page({
   data:{
     isLogin:true,
+    userImg : "",
+    userName: "",
     Lis:[
       {name:"会员中心",   img:"../../img/center_members.png"},
       {name:"绑定手机号", img:"../../img/center_.png"},
@@ -14,5 +16,13 @@ Page({
   onLoad(query) {
     // 页面加载
     console.info(`Page onLoad with query: ${JSON.stringify(query)}`);
+    this.init( )
   },
+  init( ){
+    let userInfo = app.userInfo;
+    this.setData({
+      userImg : userInfo.avatar,
+      userName: userInfo.name,
+    })
+  }
 })

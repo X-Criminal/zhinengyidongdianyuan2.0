@@ -1,0 +1,85 @@
+.nearby{
+  width: 100%;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+.Lis{
+  padding: 28rpx 0;
+  border-bottom: 2rpx solid #e5e5ee;
+  height: 236rpx;
+  box-sizing: border-box;
+}
+.Lis .Icon{
+  text-indent: -9999px;
+  height: 0px;
+}
+.Lis >view,.Lis image{
+  float: left;
+}
+.Lis >view{
+  margin-left: 10rpx;
+  width: calc(100% - 190rpx);
+  font-family: "微软雅黑"；
+}
+.Lis image{
+  width: 180rpx;
+  height: 180rpx;
+  background-size: cover;
+}
+.Lis .info >view{
+  float: left;
+  margin-left: 15rpx;
+}
+.Lis >view >view:nth-child(1){
+  font-size: 28rpx;
+  font-weight: 500;
+  line-height: 60rpx;
+  margin: 0;
+  width: 100%;
+}
+.Lis >view >view{
+  margin: 10rpx 0;
+}
+.Lis >view >view:nth-child(2),.Lis >view >view:nth-child(3),.Lis >view >view:nth-child(4){
+  height: 30rpx;
+  font-size: 25rpx;
+  opacity: 0.5;
+  line-height: 35rpx;
+}
+.Lis >view >view:nth-child(2) .Icon,.Lis >view >view:nth-child(3) .Icon,.Lis >view >view:nth-child(4) .Icon{
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 8rpx;
+  background-image: url(../img/merchants_time.png);
+  background-size: cover;
+  float: left;
+  vertical-align: middle;
+}
+.Lis >view >view:nth-child(4) >view{
+  margin: 0;
+  margin-right: 10rpx;
+}
+.Lis >view >view:nth-child(4) .Icon{
+  margin-right: 10rpx;
+}
+  .Lis >view .info{
+    opacity: 1;
+    color: black;
+  }
+ .Icon,.Lis >view >view:nth-child(3) .Icon{
+   background-image: url(/img/merchants_location.png);
+ }
+  .Lis >view .info view:nth-child(1) .Icon{
+   background-image: url(/img/merchants_translation.png);
+ }
+  .Lis >view .info view:nth-child(2) .Icon{
+   background-image: url(/img/merchants_return.png);
+ }
+  .Lis >view .info view:nth-child(3) .Icon{
+   background-image: url(/img/vouchers.png);
+ }
+ .Lis > view > view:nth-child(1) >view{
+   float: right;
+   font-size: 22rpx;
+   opacity: 0.5;
+ }

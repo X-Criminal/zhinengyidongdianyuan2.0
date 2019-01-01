@@ -1,107 +1,94 @@
+let app = getApp( );
 Page({
   data:{
+    userInfo:{
+       avatar:"",
+      nickName:"",
+      isLogin:false,
+    },
     userName:"",
     initLatitude:0,
     initLongitude:0,
     TxtSearch:"",
-    scale:14,
-    showTop:false,
+    scale:16,
     showTop2:false,
     showTop3:false,
-    showTop4:false,
     mask:false,
-    position_z:[
-      {name:"123",login:"小路1",id:1,latitude: 22.599546,longitude: 113.888408},
-      {name:"123",login:"小路2",id:2,latitude: 22.422,longitude: 113.888408},
-      {name:"123",login:"小路3",id:3,latitude: 23.6,longitude: 115.888408},
-    ],
     _z:"",
-    card:{
-      thumb:"../../img/merchants_vouchers.png",
-      title:"**七折优惠劵",
-      subTitle:"有效期至2019-1-30"
-    },
+    mapStyle:"width: 100%; height:calc(100% - 57px);",
     markers: [{
-      iconPath: "../../img/map_garage1.png",
-      id: 10,
+      iconPath: "/img/map_garage1.png",
+      id: 11,
       latitude: 22.599546,
       longitude: 113.888408,
       width: 50,
-      height: 50
+      height: 50,
     },{
-      iconPath: "../../img/map_garage1.png",
-      id: 10,
-      latitude: 22.422,
-      longitude:113.888408,
+      iconPath: "/img/map_garage1.png",
+      id: 9,
+      latitude: 22.610322,
+      longitude:113.887555,
       width: 50,
-      height: 50
-    },{
-      iconPath: "../../img/map_garage1.png",
-      id: 10,
-      latitude: 23.6,
-      longitude: 115.888408,
-      width: 50,
-      height: 50
+      height: 50,
     }],
     List:[
       {
-        icon: '../../img/service_artificial.png',
+        icon: '/img/service_artificial.png',
         text: '客服中心',
       },
       {
-        icon: '../../img/service_instructions.png',
+        icon: '/img/service_instructions.png',
         text: '使用说明',
       },
       {
-        icon: '../../img/service_problem.png',
+        icon: '/img/service_problem.png',
         text: '常见问题',
       },
       {
-        icon: '../../img/service_fault.png',
+        icon: '/img/service_fault.png',
         text: '故障上报',
       }
     ],
     controls:[],
-    inputStyle:"",
     endLat:0,//报错标记点
     endLng:0,//报错标记点
   },
   onLoad(query) {
     // 页面加载
-    console.info(`Page onLoad with query: ${JSON.stringify(query)}`);
+    if(query.type){
+      switch(query.type){
+        case "1":
+          this.login_(JSON.parse(query.data))
+        break;
+      }
+    }
+    
+    //  app.initGetuser((res)=>{
+    //    let userInfo = res;000000000
+    //        userInfo.isLogin=true,
+    //    this.setData({
+    //      userInfo:userInfo
+    //    })
+    //    console.log(userInfo)
+    //  })
   },
   onReady() {
     this.getLocation( )
     this.getWindowSize( )
     // 页面加载完成
   },
+  /**登陆界面返回*/
+  login_( res ){
+    res.isLogin=true,
+    this.setData({
+        userInfo:res,
+    })
+  },
   /**绑定搜索框 Start*/
   onInput(e){
     this.setData({
       TxtSearch:e.detail.value
     })
-  },
-  /**绑定搜索框 End */
-  onShow() {
-    // 页面显示
-  },
-  onHide() {
-    // 页面隐藏
-  },
-  onUnload() {
-    // 页面被关闭
-  },
-  onTitleClick() {
-    // 标题被点击
-  },
-  onPullDownRefresh() {
-    // 页面被下拉
-  },
-  onReachBottom() {
-    // 页面被拉到底部
-  },
-  sweep(  ){
-   this.login( )
   },
   /**登陆 Start */
   login(){
@@ -119,10 +106,15 @@ Page({
   /**登陆 End */
   /**个人中心 Start*/
   center(){
-       this.Nav(
+      if(this.data.userInfo.isLogin){
+        this.Nav(
          "../center/center",
          "个人中心"
-       )
+        )
+      }else{
+         this.login( )
+      }
+       
   },
   /**个人中心 End */
   getclick(e) {
@@ -156,10 +148,10 @@ Page({
    .exec((res)=>{
      let windowWidth  = res[0].width;
      let windowHeight = res[0].height;
-     let arr=[]
+     let arr=[];
      let _initPosition={
         id:1,
-        iconPath: '../../img/map_current.png',
+        iconPath: '/img/map_current.png',
         clickable:true,
         position: {
           left:windowWidth-60,
@@ -170,7 +162,7 @@ Page({
     }
     let kefu={
         id:2,
-        iconPath: '../../img/map_fault.png',
+        iconPath: '/img/map_fault.png',
         clickable:true,
         position: {
           left:windowWidth-60,
@@ -179,8 +171,20 @@ Page({
           height: 40
         },
     }
+    let sm ={
+      id:3,
+      iconPath: '/img/sm.png',
+      clickable:true,
+      position: {
+          left:(windowWidth-344.7)/2,
+          top: windowHeight-150,
+          width: 344.7,
+          height: 46
+        },
+    }
     arr.push(_initPosition)
     arr.push(kefu)
+    arr.push(sm)
      _this.setData({
         controls:arr,
      })
@@ -194,8 +198,33 @@ Page({
           case 2:
           this.service( )
           break;
+          case 3:
+          this.sweepCode( )
+          break;
     }
   },
+
+  /**点击扫码二维码 Start*/
+  sweepCode(){
+    if(this.data.userInfo.isLogin){
+      this.scan((res)=>{
+        console.log(res)
+      })
+    }else{
+      this.login( )
+    }
+  },
+  //调起二维码扫描
+  scan(cb){
+    my.scan({
+        type: 'qr',
+        success: (res) => {
+          //my.alert({ title: res.code });
+          cb&&cb(res)
+        },
+    })
+  },
+  /**点击扫码二维码 End*/
   position(){
     //定位到当前位置
     this.mapCtx.moveToLocation( )
@@ -204,20 +233,12 @@ Page({
     //点击客服
     this.setData({
       showTop2:true,
-    })
-  },
-  showTop_2(){
-    //隐藏客服
-    this.setData({
-      showTop2: false,
+      showTop3:false,
+      mapStyle:"width: 100%; height:calc(100% - 265px);",
     })
   },
   RegionChange(e){
-    if (e.type === 'end') {
-      this.setData({
-        scale: e.scale
-      });
-    }
+    //移动地图
   },
   /**客服中心 Start */
   onItemClick(e){
@@ -253,15 +274,11 @@ Page({
    /**点击标记点 Start */
     getMarKer(e){
         if(!this.showTop3) this.setData({showTop3:false});
-        setTimeout(()=>{
-          this.setData({
-            endLat:e.latitude,
-            endLng:e.longitude,
-            showTop3:true,
-          })
-        },1000)
+        this.mapCtx.clearRoute()
+        this.Nav("../detaIls/detaIls")
     },
-    /**点击标记点 End */
+   
+
     //导航路线
     show_Route(endLat,endLng){
       this.mapCtx.showRoute({
@@ -269,18 +286,17 @@ Page({
       startLng: this.data.initLongitude,             // 起点经度
       endLat: endLat,
       endLng: endLng,              // 重点经度
-      routeColor: '#FFB90F',            // 路线颜色
-      iconPath: "/image/texture.png",  // 路线纹理  10.1.35
+     // routeColor:'#FFB90F',            // 路线颜色
+      iconPath: "/img/merchants_location.png",  // 路线纹理  10.1.35
       iconWidth: 10,                    // 纹理宽度  10.1.35
       routeWidth: 10,                   // 路线宽度  
-      zIndex: 4                         // 覆盖物 Z 轴坐标  10.1.35
-      })
+      zIndex: 998                         // 覆盖物 Z 轴坐标  10.1.35
+      })                     // 覆盖物 Z 轴坐标  10.1.35
     },
    /**点击标记点 End */
 
   /**点击搜索 Start */
     onFOCUS(e){
-      if(this.data.showTop4){
            my.navigateTo({
             url:'../search/search',
             success:()=>{
@@ -291,39 +307,37 @@ Page({
                 })
               }
             })
-      };
-      this.setData({
-        inputStyle:"left: 10px;right: 10px; height: 40px;top: calc(50% - 20px);background-color: #F5F6F6;z-index: 998; border-radius: 30px;",
-        showTop4:true,
-      })
-    },
-    onBLUS(e){
-       this.setData({
-        inputStyle:""
-      })
-     
     },
   /**点击搜索 End*/
   /**点击地图 Start */
   clickMap(){
+    this.mapCtx.clearRoute()
     this.setData({
-         showTop3:false,
-         inputStyle:"",
-         showTop4:false,
+         showTop2: false,
+         showTop3: false,
+         mapStyle:"width: 100%; height:calc(100% - 57px);",
     })
   },
   /**点击地图 End */
   /**选择地址 Start */
     positionLis(e){
       this.setData({
-        _z:e.target.dataset.id,
+        _z:e.markerId,
       })
       this.mapCtx.updateComponents({
-        longitude:e.target.dataset.longitude,
-        latitude:e.target.dataset.latitude,
+        longitude:e.longitude,
+        latitude:e.latitude,
       })
     },
   /**选择地址 End */
+  /**附近的商家 Start */
+    nearby(){
+      this.Nav(
+        '../nearby/nearby',
+        '附近V电'
+      )
+    },
+  /**附近的商家 End */
 
   /**查看详情 Start*/
   onDetails(e){
@@ -336,7 +350,7 @@ Page({
   getRoute( ){
     //路线导航
     console.log("路线导航");
-    this.position( );
+    this.show_Route(this.data.endLat,this.data.endLng );
   },
   /**查看详情 End */
   onShareAppMessage() {
@@ -344,10 +358,10 @@ Page({
     return {
       title: 'V电',
       desc: 'My App description',
-      path: 'pages/index/index',
+      path: '../index/index',
     };
   },
-  Nav(url,title="",color="#fff"){
+  Nav(url,title,color){
        my.navigateTo({
               url:url,
               success:()=>{
@@ -358,5 +372,13 @@ Page({
                   })
                 }
               })
-  }
+  },
+
+  //页面显示
+  onShow(  ){
+    
+  },
+  onError(msg) {
+    console.log(msg)
+  },
 });

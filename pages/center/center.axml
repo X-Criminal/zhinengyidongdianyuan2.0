@@ -1,6 +1,7 @@
 <view class="center">
   <view class="centerUserImg">
-    <image src="" />
+      <image src="{{userImg}}"/>
+      <view style="text-align:center;line-height:71rpx;size:28rpx;">{{userName}}</view>
       <view class="centerUserData" style="{{isLogin?'display:block':'display:none'}}">
         <view class="icon">
           vip类型
