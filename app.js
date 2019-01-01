@@ -1,6 +1,8 @@
 App({
-  userInfo:"小白.png",
-
+  userInfo:{},
+  token:"",
+  url:"https://172.16.10.68:8952/",
+  
   onLaunch(options) {
     // 第一次打开
     // options.query == {number:1}
@@ -14,18 +16,28 @@ App({
    onHide() {
     // 小程序隐藏
   },
-  initGetuser(){
+  /**获取用户信息 Start */
+  initGetuser(cb){
     my.getAuthCode({
       scopes: 'auth_user',
       success: (res) => {
         my.getAuthUserInfo({
             success:(userInfo) => {
-                console.log(userInfo)
+                  userInfo.isLogin=true;
+                  this.userInfo=userInfo;
+                  cb&&cb(userInfo);
             }
         })
       },
     });
   },
+  /**获取用户信息 End */
+
+  /**手机号登陆 Start */
+  phoneLoad( res  ){
+      this.userInfo=res;
+  },
+  /**手机号登陆 End */
    onError(msg) {
     console.log(msg)
   },

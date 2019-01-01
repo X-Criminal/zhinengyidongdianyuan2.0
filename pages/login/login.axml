@@ -20,12 +20,20 @@
     <view class="or">
         or
     </view>
-    <image src="../../img/login_pay.png" class="zfb"/>
+    <view onTap="userLogin">
+      <image src="../../img/login_pay.png" class="zfb"/>
+    </view>
+    
 
 
 
     <!--验证码发送成功-->
     <view class="{{codeAlert}}">
        验证码发送成功
+    </view>
+
+    <!--登陆家在狂-->
+    <view class="{{LOND}}">
+        <image src="/img/load.gif" mode="加载中" />
     </view>
 </view>

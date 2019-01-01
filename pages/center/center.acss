@@ -18,13 +18,13 @@
   background-size: cover;
   margin:0 auto;
   display: block;
+  border-radius: 100%;
 }
 .centerUserImg .centerUserData{
   text-align: center;
 
 }
 .centerUserData{
-  margin-top: 20rpx;
   height: 40rpx;
 }
 .centerUserData view{

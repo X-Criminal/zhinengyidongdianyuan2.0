@@ -8,7 +8,9 @@
     </view>
     <image src="../../img/list.png" style="width:26px;height:26px;" class="img2"/>
   </view>
-   <map id="map" longitude="{{initLongitude}}" latitude="{{initLatitude}}" scale="{{scale}}" controls="{{controls}}"
+    <map id="map" longitude="{{initLongitude}}" latitude="{{initLatitude}}"
+      scale="{{scale}}" 
+      controls="{{controls}}"
       markers="{{markers}}"
       onControlTap="clickControlTap"
       circles="{{circles}}"
@@ -18,12 +20,8 @@
       onMarkerTap="getMarKer"
       onTap="clickMap"
       >
-      </map>
-   <!-- <view  onTap="sweep">
-      <cover-view id="operation">
-         
-      </cover-view>
-   <view> -->
+    </map>
+  
 
         
 
@@ -37,12 +35,5 @@
   </popup>
   <!--服务中心 End -->
 
-  <!--商家详情 Start-->
-  <popup show="{{showTop3}}" position="bottom" className="popupBottom" zIndex="999" mask="{{false}}">
-      <view class="header">
-          客服中心
-      </view>
-  </popup>
-  <!--商家详情 End-->
 
 </view>

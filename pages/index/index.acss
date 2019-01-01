@@ -19,6 +19,10 @@ page{
   background-image: url(/img/menu2x.png);
   background-size: cover;
 }
+.mapBox{
+overflow: hidden;
+transition: all .8s;
+}
 #search .img2{
   position: absolute;
   right: 15px;
