@@ -1,0 +1,84 @@
+.fault{
+  border-top: 1px solid #b2b2b2;
+  box-sizing: border-box;
+  padding: 30rpx;
+  background-color: white;
+  font-family: PingFangSC-Regular;
+  width: 750rpx;
+}
+.upImg{
+  background-image: url(../../img/feedback_img.png);
+  background-size: cover;
+  margin: 46rpx 0;
+  text-indent:-99999px;width:128rpx;height:128rpx;
+}
+.fault>view:nth-child(1){
+  font-size: 25rpx;
+  opacity: .5;
+  line-height: 38rpx;
+  height: 38rpx;
+}
+.fault>view:nth-child(2){
+  margin-top: 8px;
+  position: relative;
+  width: 700rpx;
+  margin: 0 auto;
+}
+.fault>view:nth-child(2) input{
+  width:700rpx;
+  margin-top: 10rpx;
+  box-sizing: border-box;
+  height: 80rpx;
+  background-color: #f7f7f9;
+}
+.fault>view:nth-child(2) .icon{
+  position: absolute;
+  width: 44rpx;
+  height: 44rpx;
+  background-image: url(../../img/qr_code.png);
+  background-size: cover;
+  top: calc(50% - 22rpx);
+  left: calc(50% - 22rpx);
+}
+.fault>view:nth-child(3) label{
+  width: 50%;
+  height: 98rpx;
+  line-height: 98rpx;
+  opacity: 0.7;
+  font-family: PingFangSC-Regular;
+  color: #0B0817;
+  opacity: .7;
+}
+.fault>view:nth-child(3) label .am-checkbox{
+  vertical-align:middle;
+  margin-right: 10rpx;
+}
+.fault>view:nth-child(5) >view:nth-child(1){
+  font-size: 24rpx;
+  opacity: .5;
+}
+.fault>view:nth-child(5) >view:nth-child(2){
+  width: 700rpx;
+  height: 200rpx;
+  margin:10rpx 0;
+}
+.fault>view:nth-child(5) >view:nth-child(2) textarea{
+  width: 700rpx;
+  height: 200rpx;
+  background-color: #f0f0f0;
+  font-size: 28rpx;
+  color: #222328;
+  box-sizing: border-box;
+}
+.fault>view:nth-child(6){
+  margin-top: 76rpx;
+}
+.fault>view:nth-child(6) button{
+  margin: 0 auto;
+  width: 630rpx;
+  height: 96rpx;
+  background-color: #fff44f;
+  line-height: 96rpx;
+  font-size: 31rpx;
+  border-radius: 80rpx;
+}

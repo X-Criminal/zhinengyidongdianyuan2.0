@@ -1,0 +1,20 @@
+<view class="search">
+  <view class="{{isShow?'headerText':'headerText hiden'}}"  >
+      <input type="text" value="{{valueText}}" onInput="getText" controlled/>
+      <view onTap="onDele">
+        <icon type="cancel" size="18px" color="#DBDBDB"/>
+      </view>
+      <view class="onSearch" onTap="onData">搜索</view>
+      <view class="onCancel" onTap="onReturn">取消</view>
+  </view>
+  <view class="Lis">
+     <view class="lisIndex">
+       <view>
+         文汇中学
+       </view>
+       <view>
+         前进路288号
+       </view> 
+     </view>
+  </view>
+</view>

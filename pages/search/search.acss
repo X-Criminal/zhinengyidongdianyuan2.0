@@ -1,0 +1,61 @@
+.search{
+  width: 100%;
+  background-color: white;
+}
+.headerText{
+  box-sizing: border-box;
+  padding: 30rpx;
+  height: 150rpx;
+  width: 100%;
+  position: relative;
+}
+.headerText input{
+  width: 600rpx;
+  background-color: #f5f6f6;
+  height: 72rpx;
+  box-sizing: border-box;
+  padding-left: 32rpx;
+  border-radius: 25px;
+  position: absolute;
+  top: calc(50% - 36rpx);
+}
+.headerText icon{
+  position: absolute;
+  left: 500rpx;
+  top: calc(50% - 15rpx);
+}
+.headerText .onSearch{
+  position: absolute;
+  left: 560rpx;
+  top: calc(50% - 12rpx);
+  font-family: PingFangSC-Regular;
+  color: #0B0817;
+  font-size: 28rpx;
+}
+.headerText .onCancel{
+  position: absolute;
+  right: 30rpx;
+  font-family: PingFangSC-Regular;
+  top: calc(50% - 12rpx);
+  font-size: 28rpx;
+}
+.search .hiden icon{
+  display: none;
+}
+.search .hiden .onSearch{
+  opacity: 0.5;
+}
+.Lis{
+  padding: 0 32rpx;
+}
+.Lis .lisIndex{
+  border-bottom: 1px solid #e0e6ed;
+}
+.Lis .lisIndex >view{
+  line-height: 52rpx;
+  font-size: 29rpx;
+}
+.Lis .lisIndex >view:nth-child(2){
+  opacity: 0.5;
+  font-size: 25rpx;
+}

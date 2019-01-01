@@ -1,0 +1,36 @@
+<view class="center">
+  <view class="centerUserImg">
+    <image src="" />
+      <view class="centerUserData" style="{{isLogin?'display:block':'display:none'}}">
+        <view class="icon">
+          vip类型
+        </view>
+        <view>
+          VIP会员
+        </view>
+    </view>
+    <view class="centerUserData" style="{{isLogin?'display:none':'display:block'}}">
+        <view>
+          未登录
+        </view>
+    </view>
+  <view>
+  </view>
+    </view>
+  <view>
+    <list>
+       <block a:for="{{Lis}}">
+      <list-item
+          thumb="{{item.img}}"
+          onClick="onItemClick"
+          arrow="{{true}}"
+          index="{{index}}"
+          last="{{index === (Lis.length - 1)}}"
+        >
+          <view class="am-list-brief" style="color:#0B0817;font-family: PingFangSC-Regular;">{{item.name}}</view>
+      </list-item>
+    </block>
+   </list>
+  </view>
+  {{userInfo}}
+</view>

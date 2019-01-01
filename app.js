@@ -1,12 +1,10 @@
 App({
-  data:{
-    userName:"小红",
-    userImg:"",
-  },
+  userInfo:"小白.png",
+
   onLaunch(options) {
     // 第一次打开
     // options.query == {number:1}
-    this.initGetuser( )
+    //this.initGetuser( )
   },
   onShow(query,path) {
 

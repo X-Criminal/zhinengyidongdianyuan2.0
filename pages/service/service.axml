@@ -1,0 +1,16 @@
+<view class="service">
+  <list>
+       <block a:for="{{Lis}}">
+      <list-item
+          thumb="{{item.img}}"
+          index="{{index}}"
+          last="{{index === (Lis.length - 1)}}"
+        >
+          <view class="am-list-brief">{{item.title}}</view>
+          <view slot="extra">
+            {{item.body}}
+          </view>
+      </list-item>
+    </block>
+  </list>
+</view>

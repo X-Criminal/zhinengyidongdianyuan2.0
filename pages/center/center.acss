@@ -1,0 +1,41 @@
+.center{
+  width: 100%;
+}
+.center view{
+  font-family: PingFangSC-Regular;
+  color: #0B0817;
+}
+.centerUserImg{
+    background-color: white;
+    padding-top: 69rpx;
+    padding-bottom: 42rpx;
+    margin-bottom: 30rpx;
+}
+.centerUserImg image{
+  width: 128rpx;
+  height: 128rpx;
+  background-image: url(../../img/head_portrait2.png);
+  background-size: cover;
+  margin:0 auto;
+  display: block;
+}
+.centerUserImg .centerUserData{
+  text-align: center;
+
+}
+.centerUserData{
+  margin-top: 20rpx;
+  height: 40rpx;
+}
+.centerUserData view{
+  display: inline-block;
+  font-size: 21rpx;
+  line-height: 30rpx;
+}
+.centerUserImg .centerUserData .icon{
+  text-indent: -99999px;
+  width: 40rpx;
+  height: 30rpx;
+  background-image: url(../../img/members_ordinary.png);
+  background-size: cover;
+}
