@@ -41,7 +41,6 @@ Page({
     endLng:0,//报错标记点
   },
   onLoad(query) {
-    console.log(query )
     // 页面加载
     if(query.type){
       switch(query.type){
@@ -109,9 +108,6 @@ Page({
        
   },
   /**个人中心 End */
-  getclick(e) {
-    console.log('control tap', e);
-  },
   getLocation(){
     let that = this;
     my.getLocation({
@@ -224,7 +220,11 @@ Page({
   /**点击扫码二维码 End*/
   position(){
     //定位到当前位置
-    this.mapCtx.moveToLocation( )
+     this.mapCtx.updateComponents({
+        longitude:this.data.onLong,
+        latitude:this.data.onLat,
+      })
+  //  this.mapCtx.moveToLocation( )
   },
   service(){
     //点击客服
@@ -391,7 +391,11 @@ Page({
                           initLongitude:long,
                         })
                   }
-          },(err)=>{ console.log(err)})
+          },(err)=>{ 
+            my.alert({
+              title: JSON.stringify(err)
+            });
+          })
     },
    /**获取附近商家 End */
 

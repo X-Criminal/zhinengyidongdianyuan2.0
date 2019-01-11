@@ -2,9 +2,9 @@
   <view>
     请扫描故障机器二维码
   </view>
-  <view>
+  <view onTap="getCode">
     <input type="text" disabled="{{true}}" value="{{code}}"/>
-    <view class="icon" style="text-indent: -9999px">
+    <view class="icon" style="text-indent: -9999px;{{code.length>0?'left:90%':''}}">
         扫描
     </view>
   </view>
@@ -52,11 +52,11 @@
   <view>
     <view>问题反馈</view>
     <view>
-      <textarea  type="text"/>
+      <textarea onInput="change"  type="text"/>
     </view>
   </view>
   <view>
-    <button>
+    <button onTap="upData">
       确定
     </button>
   </view>

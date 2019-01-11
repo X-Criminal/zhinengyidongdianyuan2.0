@@ -36,6 +36,6 @@
 
     <!--登陆家在狂-->
     <view class="{{LOND}}">
-        <image src="/img/load.gif" mode="加载中" />
+        <image src="/img/load.png" mode="加载中" />
     </view>
 </view>

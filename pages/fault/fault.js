@@ -2,10 +2,14 @@ let app = getApp( )
 Page({
   data:{
     code:"",
-    Checkboxs:[],
+   
     imgUrl:"",
 
     picture:"",
+    code:"",
+    Checkboxs:"123",
+    faultDescription:"",
+    terminalType:"1"
   },
   /**多选框 Start */
   onCheckBox(e){
@@ -42,6 +46,37 @@ Page({
           })
       }
     })
-  }
+  },
   /**拍照 End */
+
+  /**二维码扫描 */
+  getCode(  ){
+    let _this = this;
+    my.scan({
+      type:"qr",
+      success( res ){
+          _this.setData({
+            code:res.code
+          })
+      }
+    })
+  },
+  /**描述 */
+  change(data){
+    this.setData({
+      faultDescription:data.detail.value
+    })
+  },
+  upData(){
+    let data={
+      cabinetMac:this.data.code,
+      faultDescription:this.data.faultDescription,
+      faultType:this.data.Checkboxs,
+      picture:this.data.picture,
+      terminalType:this.data.terminalType
+    }
+    app.ajax("/powerBank/app/user/insertRepair","post",data,(res)=>{
+      console.log(res)
+    })
+  }
 })

@@ -6,6 +6,9 @@ Page({
     arr:[[{}],[],[]],
     url:app.url
   },
+  onLoad(){
+    this.init( 0 )
+  },
   handleTabClick( e ){
     this.setData({
       activeTab:e.index
@@ -32,7 +35,6 @@ Page({
             arr:_data,
           })
       }
-        console.log(res)
     })
   }
 })
