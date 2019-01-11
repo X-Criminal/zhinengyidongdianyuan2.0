@@ -1,0 +1,71 @@
+let app = getApp( )
+Page({
+  data:{
+      userImg:"",
+      userName:"",
+      vipState:"",
+      vipTime:"",
+      depositState:"",
+      deposit:"",
+      balance:""
+  },
+  onLoad(){
+    this.init( )
+  },
+  init(){
+      app.ajax(
+      "/powerBank/app/user/getUser",
+      "post",
+      null,
+      (res)=>{
+        if(res.data.code===1000){
+         let _data = res.data.data
+          this.setData({
+            userImg:_data.headUrl,
+            userName:_data.userName,
+            vipState:_data.vipState,
+            vipTime:_data.vipTime,
+            depositState:_data.depositState,
+            deposit:_data.deposit,
+            balance:_data.balance
+          })
+          my.setStorage({
+            key:"userInfo",
+            data:{
+              userImg:_data.headUrl,
+              userName:_data.userName,
+              vipState:_data.vipState,
+              vipTime:_data.vipTime,
+              depositState:_data.depositState,
+              deposit:_data.deposit,
+              balance:_data.balance
+            },
+            success:(res)=>{
+              console.log(res)
+            }
+          })
+        }
+      },
+      (err)=>{
+
+      }
+      )
+  },
+  onShow(){
+  my.getStorage({
+    key:"isUp",
+    success:(data)=>{
+        if(data.data){
+          this.init( )
+          my.setStorage({
+            key:"isUp",
+            data:false,
+          })
+        }
+    }
+  })
+  },
+  opening(){
+    app.Nav("../opening/opening","开通/续费VIP会员")
+  },
+})

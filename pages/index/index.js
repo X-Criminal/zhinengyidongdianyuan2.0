@@ -4,11 +4,12 @@ Page({
     userInfo:{
        avatar:"",
       nickName:"",
-      isLogin:false,
     },
     userName:"",
     initLatitude:0,
     initLongitude:0,
+    onLat:0,
+    onLong:0,
     TxtSearch:"",
     scale:16,
     showTop2:false,
@@ -16,21 +17,7 @@ Page({
     mask:false,
     _z:"",
     mapStyle:"width: 100%; height:calc(100% - 57px);",
-    markers: [{
-      iconPath: "/img/map_garage1.png",
-      id: 11,
-      latitude: 22.599546,
-      longitude: 113.888408,
-      width: 50,
-      height: 50,
-    },{
-      iconPath: "/img/map_garage1.png",
-      id: 9,
-      latitude: 22.610322,
-      longitude:113.887555,
-      width: 50,
-      height: 50,
-    }],
+    markers: [],
     List:[
       {
         icon: '/img/service_artificial.png',
@@ -54,15 +41,16 @@ Page({
     endLng:0,//报错标记点
   },
   onLoad(query) {
+    console.log(query )
     // 页面加载
     if(query.type){
       switch(query.type){
         case "1":
-          this.login_(JSON.parse(query.data))
+          this.login_(query.data)
         break;
+        default:;
       }
     }
-    
     //  app.initGetuser((res)=>{
     //    let userInfo = res;000000000
     //        userInfo.isLogin=true,
@@ -73,15 +61,21 @@ Page({
     //  })
   },
   onReady() {
-    this.getLocation( )
-    this.getWindowSize( )
+    this.getWindowSize( ( )=>{
+      this.getLocation()
+    })
+    app.baseUserInfo((user)=>{
+      this.setData({
+        userInfo:user
+      })
+    })
     // 页面加载完成
   },
   /**登陆界面返回*/
   login_( res ){
-    res.isLogin=true,
+    console.log(res)
     this.setData({
-        userInfo:res,
+        userInfo:JSON.parse(res)
     })
   },
   /**绑定搜索框 Start*/
@@ -97,8 +91,6 @@ Page({
        success:()=>{
             my.setNavigationBar({
               title:"登陆",
-              backgroundColor:"#000",
-              borderBottomColor:"#000",
           })
         }
        })
@@ -106,7 +98,7 @@ Page({
   /**登陆 End */
   /**个人中心 Start*/
   center(){
-      if(this.data.userInfo.isLogin){
+      if(app.isLogin){
         this.Nav(
          "../center/center",
          "个人中心"
@@ -126,9 +118,12 @@ Page({
       success(res) {
         that.setData({
           initLatitude:+res.latitude,
-          initLongitude:+res.longitude
+          initLongitude:+res.longitude,
+          onLat:+res.latitude,
+          onLong:+res.longitude,
         })
         that.mapCtx = my.createMapContext('map');
+        that.getShopList(res.latitude,res.longitude )
       },
       fail() {
         my.hideLoading();
@@ -141,7 +136,7 @@ Page({
   // mapPosition(event){
   //     console.log(event)
   // },
-  getWindowSize(){
+  getWindowSize( cb ){
   let _this = this;
    my.createSelectorQuery( ).select( )
    .selectViewport().boundingClientRect()
@@ -155,7 +150,7 @@ Page({
         clickable:true,
         position: {
           left:windowWidth-60,
-          top: windowHeight-300,
+          top:windowHeight>=724?windowHeight-357:windowHeight-300,
           width: 40,
           height: 40
         },
@@ -166,7 +161,7 @@ Page({
         clickable:true,
         position: {
           left:windowWidth-60,
-          top: windowHeight-250,
+          top: windowHeight>=724?windowHeight-307:windowHeight-250,
           width: 40,
           height: 40
         },
@@ -177,7 +172,7 @@ Page({
       clickable:true,
       position: {
           left:(windowWidth-344.7)/2,
-          top: windowHeight-150,
+          top:windowHeight>=724?windowHeight-247:windowHeight-150,
           width: 344.7,
           height: 46
         },
@@ -188,6 +183,7 @@ Page({
      _this.setData({
         controls:arr,
      })
+     cb&&cb( )
   });
   },
   clickControlTap(e){
@@ -206,7 +202,7 @@ Page({
 
   /**点击扫码二维码 Start*/
   sweepCode(){
-    if(this.data.userInfo.isLogin){
+    if(app.isLogin){
       this.scan((res)=>{
         console.log(res)
       })
@@ -220,7 +216,8 @@ Page({
         type: 'qr',
         success: (res) => {
           //my.alert({ title: res.code });
-          cb&&cb(res)
+    
+          this.Nav("../borrow/borrow?data="+JSON.stringify(res),"租用确认")
         },
     })
   },
@@ -237,8 +234,22 @@ Page({
       mapStyle:"width: 100%; height:calc(100% - 265px);",
     })
   },
+  _Regionchange:true,
   RegionChange(e){
+    let _this = this;
     //移动地图
+     if (e.type === 'end') {
+       this.setData({
+         scale:e.scale,
+       })
+       if(_this._Regionchange){
+        _this._Regionchange=false;
+        _this.getShopList(e.latitude,e.longitude)
+            setTimeout(()=>{
+                _this._Regionchange = true;
+            },2000)
+       }
+      }
   },
   /**客服中心 Start */
   onItemClick(e){
@@ -274,8 +285,8 @@ Page({
    /**点击标记点 Start */
     getMarKer(e){
         if(!this.showTop3) this.setData({showTop3:false});
-        this.mapCtx.clearRoute()
-        this.Nav("../detaIls/detaIls")
+        //this.mapCtx.clearRoute()
+        this.Nav("../detaIls/detaIls?merchantsId="+e.markerId,"商家详情")
     },
    
 
@@ -353,6 +364,37 @@ Page({
     this.show_Route(this.data.endLat,this.data.endLng );
   },
   /**查看详情 End */
+
+   /**获取附近商家 Start */
+    getShopList(lat,long){
+      let _this = this;
+        app.ajax("/powerBank/app/user/getShopList",
+                  "post",
+                  {latitude:lat,longitude:long},
+                  (res)=>{
+                  if(res.data.code===1000){
+                        let data = res.data.data;
+                        let arr = [ ]
+                        for(let i = 0,idx = data.length;i<idx;i++){
+                          arr.push({
+                              iconPath: "/img/map_garage1.png",
+                              id:data[i].merchantsId,
+                              latitude: data[i].latitude,
+                              longitude:data[i].longitude,
+                              width: 50,
+                              height: 50,
+                            })
+                        }
+                        _this.setData({
+                          markers:arr,
+                          initLatitude:lat,
+                          initLongitude:long,
+                        })
+                  }
+          },(err)=>{ console.log(err)})
+    },
+   /**获取附近商家 End */
+
   onShareAppMessage() {
     // 返回自定义分享信息
     return {
@@ -361,19 +403,16 @@ Page({
       path: '../index/index',
     };
   },
-  Nav(url,title,color){
+  Nav(url,title){
        my.navigateTo({
               url:url,
               success:()=>{
                     my.setNavigationBar({
                       title:title,
-                      backgroundColor:color,
-                      borderBottomColor:color,
                   })
                 }
               })
   },
-
   //页面显示
   onShow(  ){
     

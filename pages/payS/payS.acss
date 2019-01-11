@@ -1,0 +1,31 @@
+.payS{
+  width: 100%;
+  font-family: PingFangSC-Medium;
+  color: #0B0817;
+  text-align: center;
+}
+.payS >icon{
+  margin-top: 270rpx;
+}
+.payS .Lis1{
+  font-size: 37rpx;
+  font-weight: 600;
+  margin-top: 20rpx;
+}
+.payS .Lis2{
+  font-size: 24rpx;
+  opacity: 0.5;
+  margin-top: 35rpx;
+}
+.payS .Lis3{
+  margin-top: 525rpx;
+}
+.payS .Lis3 button{
+  margin: 0 auto;
+  width: 630rpx;
+  height: 92rpx;
+  background-color: #FFF44F;
+  border-radius: 100rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+}

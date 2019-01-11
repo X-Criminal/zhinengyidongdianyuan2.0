@@ -1,0 +1,16 @@
+<view class="body vipCenter">
+  <view class="Lis1">
+    <view>
+      <image src="" mode="用户" />
+      <view>
+        <text>{{userName}}{{vipState ==='4'?'(普通会员)':'(VIP会员)'}}</text>
+        <text class="{{vipState ==='4'?'hidden':'zz'}}">到期时间{{vipTime}}</text>
+      </view>
+    </view>
+    <view class="{{vipState === '4'?'xufei hidden':'xufei'}}" onTap="opening">立即续费</view>
+  </view>
+  <view class="Lis2">权益说明</view>
+  <view class="{{vipState === '4'?'Lis3':'Lis3 hidden'}}">
+    <button class="yellowButton" onTap="opening">开通VIP会员</button>
+  </view>
+</view>

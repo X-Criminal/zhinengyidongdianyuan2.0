@@ -1,0 +1,12 @@
+<view class="payS">
+  <icon type="success" color="#40D47B"  size="55"/>
+  <view class="Lis1">
+    支付成功
+  </view>
+  <view class="Lis2">
+    您已完成本次支付，请及时取走电源。
+  </view>
+  <view class="Lis3">
+    <button >返回首页</button>
+  </view>
+</view>

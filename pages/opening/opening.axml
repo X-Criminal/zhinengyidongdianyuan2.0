@@ -1,0 +1,39 @@
+<view class="opening body">
+  <view class="Lis" data-type="1" onTap="vipType" style="background-color:{{index==='1'?'rgb(255,236,79)':'rgb(247,247,247)'}}">
+    <view>
+      <view>30天</view>
+      <view>权益说明</view>
+    </view>
+    <view>
+      <view>￥9.9</view>
+      <view>包月</view>
+    </view> 
+  </view>
+  <view class="Lis" data-type="2" onTap="vipType" style="background-color:{{index==='2'?'rgb(255,236,79)':'rgb(247,247,247)'}}">
+    <view>
+      <view>90天</view>
+      <view>权益说明</view>
+    </view>
+    <view>
+      <view>￥19.9</view>
+      <view>包季</view>
+    </view> 
+  </view>
+  <view class="Lis" data-type="3" onTap="vipType" style="background-color:{{index==='3'?'rgb(255,236,79)':'rgb(247,247,247)'}}">
+    <view>
+      <view>365天</view>
+      <view>权益说明</view>
+    </view>
+    <view>
+      <view>￥59.9</view>
+      <view>包年</view>
+    </view> 
+  </view>
+  <view class="Lis2">
+    <view>须知</view>
+    <view>须知1</view>
+  </view>
+  <view class="Lis3" onTap="userRecharge">
+    <button class="yellowButton">支付</button>    
+  </view>
+</view> 

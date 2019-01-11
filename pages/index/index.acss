@@ -278,3 +278,12 @@ transition: all .8s;
   right: 10px;
   top:calc(50% - 8px);
 }
+.cover{
+  height: 92rpx;
+  position: fixed;
+  bottom: 50rpx;
+  width: 670rpx;
+  background-image: url(../../img/sm.png);
+  background-size: cover;
+  left: calc(50% - 335rpx);
+}

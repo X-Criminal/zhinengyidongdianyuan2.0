@@ -3,72 +3,88 @@
       <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{4000}}" duration="{{800}}" class="swiperImg">
         <block a:for="{{imgUrls}}">
           <swiper-item>
-            <image src="https://gw.alipayobjects.com/zos/skylark/b6227660-a40d-45a1-8b91-d76e5699d195/2018/jpeg/2b2fd77c-1145-4983-8f21-dd6a23e7d4ff.jpeg" class="slide-image" />
+            <image src="{{url+item.url}}" class="slide-image" />
           </swiper-item>
         </block>
     </swiper>
   </view>
   <view class="detaIlsBody">
       <view class="detaIlsTitle">
-        港式茶餐厅
+        {{name}}
       </view>
       <view>
-        人均消费
+       {{avgConsumption}}元
           <view class="icon">
             消费
         </view>
       </view>
       <view>
-        24:00-24:00
+        {{businessHours}}
          <view class="icon">
             时间
         </view>
       </view>
       <view>
-        广东省深圳市西乡铁岗水库路147号
+        {{merchantsAdderss}}
           <view class="icon">
             地址
           </view>
       </view>
       <view>
-        <view>
+        <view style="{{borrow>0?'display:block':'display:none'}}">
           可借
           <view class="icon">
             可借
           </view>
         </view>
-        <view>
+        <view style="{{also>0?'display:block':'display:none'}}">
           可还
           <view class="icon">
             可还
           </view>
         </view>
-        <view>
+        <view style="{{couponsState==='1'?'display:block':'display:none'}}">
           有优惠劵
           <view class="icon">
             有优惠劵
           </view>
         </view>
       </view>
+      <view class="navPosition" onTap="onNav">
+        <image src="/img/navigation.png" mode="到这里去" />
+        <view>
+          3.1km
+        </view>
+      </view>
   </view>
-  <view class="detaIlsBottom">
+  <view class="detaIlsBottom" style="{{couponsState==='1'?'display:block':'display:none'}}">
       <view>
         <view>
           商家优惠劵
         </view>
-        <button type="default">一键领取</button>
+        <button type="default" onTap="onGetCoupon" class=" " style="{{isget==='已领取'?'background-color:#fff':''}}" >{{isget}}</button>
       </view>
       <view class="detaIlsCard">
         <view class="cardLis">
-            <card
-              thumb="../../img/merchants_vouchers.png"
-              title="卡片标题"
-              subTitle="副标题非必填"
-            />
-            <view class="isGet">
+            <view a:for="{{couponsList}}">
+              <card
+                thumb="{{item.picture}}"
+                subTitle="{{item.couponsName}}"
+                title="{{item.endDate}}"
+              />
+               <view class="isGet" style="{{item.receiveState==='0'?'display:none':'display:block'}}">
                 已领取
+               </view>
             </view>
         </view>
       </view>
   </view>
+  <!--优惠劵弹出窗口 -->
+  <popup show="{{showCoupon}}" position="top" mask="{{false}}" className="Coupon">
+      <card
+      thumb="{{couponsList[0].picture}}"
+      title="{{couponsList[0].endDate}}"
+      subTitle="{{couponsList[0].couponsName}}"
+    />
+  </popup>
 </view>

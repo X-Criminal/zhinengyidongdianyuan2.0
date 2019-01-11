@@ -1,0 +1,23 @@
+<view class="nav">
+  <map 
+    id="map2"
+    class="map2"
+    longitude="{{initLongitude}}" 
+    latitude="{{initLatitude}}"
+    style="{{mapStyle}}"
+    controls="{{controls}}"
+    onControlTap="clickControlTap"
+    markers="{{markers}}"
+    show-location
+    >
+  </map>
+  <view class="meta">
+    <view class="title">{{merchantsName}}</view>
+    <view class="title_body">
+      {{merchantsAdderss}}
+    </view>
+    <view class="icon" onTap="onMarkerTap">
+      <image src="/img/nav.png" mode="到这里去"/>
+    </view>
+  </view>
+</view>

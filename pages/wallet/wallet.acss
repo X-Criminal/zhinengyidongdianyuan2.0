@@ -1,0 +1,34 @@
+.wallet{
+  background-color: white;
+}
+.Lis1{
+  width: 690rpx;
+  height: 340rpx;
+  background-image: url(../img/bg3.png);
+  background-size: cover;
+  margin: 30rpx auto;
+  text-align: center;
+  padding-top: 118rpx;
+  box-sizing: border-box;
+  margin-bottom:70rpx;
+}
+.Lis1>view >view:nth-child(1){
+    font-size: 72rpx;
+}
+.Lis1>view view:nth-child(1)>text:nth-child(1){
+  font-size: 35rpx;
+}
+.Lis1> view > view:nth-child(2){
+  font-size: 28rpx;
+  margin-top:28rpx;
+}
+.Lis2{
+   font-size: 28rpx;
+}
+.Lis2 >view >view:nth-child(1) >view:nth-child(1){
+  float: left;
+}
+.Lis2 >view >view:nth-child(1) >view:nth-child(2){
+  float: right;
+  color: #87888b;
+}

@@ -1,0 +1,56 @@
+.loan{
+  text-align: center;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+.Lis1{
+  display: inline-block;
+  width: 170rpx;
+  height: 170rpx;
+  border-radius: 100%;
+  color: white;
+  font-size: 36rpx;
+  line-height: 170rpx;
+  text-align: center;
+  background-color: #40D47B;
+  margin-top: 150rpx;
+}
+.Lis2{
+  font-size: 29rpx;
+  margin-top: 35rpx;
+}
+.Lis3{
+  margin-top: 75rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  font-size: 23rpx;
+  position: relative;
+}
+.Lis3>view{
+  position: absolute;
+  height: 1px;
+  width: 254rpx;
+  top: 50%;
+  background-color:  rgb(134, 141, 150);
+}
+.Lis3>view:nth-of-type(1){
+  left: 0;
+}
+.Lis3>view:nth-of-type(2){
+  right: 0;
+}
+.Lis4{
+  font-size: 23rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  color: #868d96;
+}
+.Lis4>text:nth-child(1){
+  float: left;
+}
+.Lis4>text:nth-child(2){
+  float: right;
+}
+.Lis4:nth-child(1){
+  margin-top: 40rpx;
+}

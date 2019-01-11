@@ -1,0 +1,20 @@
+<view class="deposit">
+   <view class="title">
+      <view ><text>￥</text><text>99.00</text></view>
+      <view >押金</view>
+   </view>
+   <view class="Lis2">
+     如何退押金
+   </view>
+   <view class="Lis3">
+      <view>
+        <label style="display: flex; line-height: 24px;">
+          <am-checkbox />
+          <text >我同意商户查询我的芝麻分或评估结果</text>
+        </label>
+      </view>
+    </view>
+    <view class="Lis4">
+        <button>支付</button>
+    </view>
+</view>

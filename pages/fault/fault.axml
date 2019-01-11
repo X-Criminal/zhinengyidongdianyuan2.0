@@ -45,7 +45,7 @@
     </checkbox-group>
   </view>
   <view>
-      <view class="upImg" style="{{imgUrl.length>0?'background-image:url('+imgUrl+')':null}}">
+      <view onTap="chooseImage" class="upImg" style="{{imgUrl.length>0?'background-image:url('+imgUrl+')':null}}">
         上传图片
       </view>
   </view>

@@ -1,0 +1,40 @@
+<view class="amBorrow">
+   <view class="header">
+     <view>
+      您的芝麻信用良好
+    </view>
+    <view>
+      可以体验免押金租借啦！
+    </view>
+   </view>
+
+   <view class="Lis1">
+     <view>押金</view>
+     <view>99元</view>
+   </view>
+
+    <view class="Lis2">
+      <view>
+        <view>租金</view>
+        <view>2/小时</view>
+      </view>
+      <view>
+        5分钟内免费每天封顶20元
+      </view>
+    </view>
+
+    <view class="Lis3">
+      <view style="margin-top: 10px;">
+        <label style="display: flex; line-height: 24px;">
+          <am-checkbox />
+          <text >我同意商户查询我的芝麻分或评估结果</text>
+        </label>
+      </view>
+    </view>
+    <view class="Lis4">
+      注:请及时归还物品，否则将对你的信用产生影响
+    </view>
+    <view class="Lis5">
+      <button type="primary">立即租借</button>
+    </view>
+</view>

@@ -39,3 +39,6 @@
   background-image: url(../../img/members_ordinary.png);
   background-size: cover;
 }
+.centerUserImg .centerUserData .icon1{
+  background-image: url(../../img/members_vip.png);
+}

@@ -1,7 +1,7 @@
 <view id="home">
   <view id="search">
     <view onTap="center">
-      <image src="{{userInfo.avatar}}" style="width:30px;height:30px;" class="img"/>
+      <image src="{{userInfo.avatar}}" style="width:30px;height:30px;border-radius:100rpx;" class="img"/>
     </view>
     <view onTap="onFOCUS">
       <input type="text" placeholder="搜索位置查找附近街电" class="input-txt" disabled="{{true}}" onInput="onInput" value="{{TxtSearch}}" controlled="{{true}}"  onBlur="onBLUS" style="{{inputStyle}}"/>
@@ -11,12 +11,12 @@
     </view>
   </view>
     <map id="map" longitude="{{initLongitude}}" latitude="{{initLatitude}}"
-      scale="{{scale}}" 
       controls="{{controls}}"
       markers="{{markers}}"
       onControlTap="clickControlTap"
       circles="{{circles}}"
-      show-location 
+      show-location
+      scale="{{scale}}"
       style="{{mapStyle}}"
       onRegionChange="RegionChange"
       onMarkerTap="getMarKer"

@@ -1,0 +1,26 @@
+.title{
+  height: 74rpx;
+  line-height: 74rpx;
+  font-size: 23rpx;
+  color: #878e97;
+  padding:0 30rpx;
+  font-weight: 400;
+}
+.Lis{
+  background-color: white;
+  border-bottom: 1px solid #ccc;
+  padding: 10rpx 0;
+}
+.Lis view{
+  height: 54rpx;
+  line-height: 54rpx;
+  color:  #878e97;
+  font-size: 23rpx;
+  padding: 0 30rpx;
+}
+.Lis view:nth-child(1){
+  color: #0b0817;
+}
+.Lis view:nth-last-child(1){
+  color:  #0b0817;
+}

@@ -1,0 +1,14 @@
+<view class="wallt1 body">
+  <view class="Lis1">
+    <view>
+      <view> <text>￥</text><text>{{balance}}</text></view>
+      <view>我的余额</view>
+    </view>
+  </view>
+  <view class="Lis3" onTap="Recharge">
+       <button class="yellowButton">充值</button>
+  </view>
+  <view class="Lis4">
+    <button >提现</button>
+  </view>
+</view>

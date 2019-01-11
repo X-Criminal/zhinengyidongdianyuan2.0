@@ -1,0 +1,76 @@
+.amBorrow{
+  width: 100%;
+  font-family: PingFangSC-Semibold;
+  color: #0B0817 ;
+}
+.amBorrow .header{
+  width: 100%;
+  height: 440rpx;
+  text-align: center;
+  font-weight: 600;
+  box-sizing: border-box;
+  font-size: 32rpx;
+}
+.amBorrow .header >view{
+  line-height: 48rpx;
+}
+.amBorrow .header{
+  padding-top: 140rpx;
+}
+.Lis1{
+  height: 80rpx;
+  line-height: 80rpx;
+  border-bottom: 1px solid #E4E7F0;
+  padding: 0 30rpx;
+}
+.Lis1 >view:nth-child(1){
+  float: left;
+}
+.Lis1 >view:nth-child(2){
+  float: right;
+  opacity: 0.26;
+  text-decoration:line-through;
+}
+.Lis2{
+  padding: 0 30rpx;
+  height: 128rpx;
+  border-bottom: 1px solid #E4E7F0;
+}
+.Lis2>view:nth-child(1){
+  height:80rpx;
+  line-height: 80rpx;
+}
+.Lis2>view:nth-child(1)>view:nth-child(1){
+  float: left;
+}
+.Lis2>view:nth-child(1)>view:nth-child(2){
+  float: right;
+  line-height: 80rpx;
+  opacity: 0.26;
+  font-size: 28rpx;
+}
+.Lis2>view:nth-child(2){
+  text-align: right;
+  font-size: 24rpx;
+  opacity: 0.26;
+}
+.Lis3{
+  padding: 0 30rpx;
+  font-size: 25rpx;
+}
+.Lis4{
+  margin-top: 280rpx;
+  text-align: center;
+  font-size: 25rpx;
+  opacity: 0.5;
+}
+.Lis5 button{
+  width: 630rpx;
+  height: 92rpx;
+  border-radius: 100rpx;
+  margin: 0 auto;
+  background-color: #fff44f;
+  margin-top: 35rpx;
+  color: #0B0817;
+  border: none;
+}

@@ -23,13 +23,17 @@ Page({
       LOND:"load onLoad"
     })
     my.httpRequest({
-      url:app.url+"powerBank/app/user/doLogin",
+      url:app.url+"/powerBank/app/user/doLogin",
       method:"POST",
-      data:{phone:this.data.phone,code:this.data.code},
+      data:JSON.stringify({phone:this.data.phone,code:this.data.code}),
+      headers:{
+          'content-type': 'application/json'
+        },
       success( data ){
-        console.log(data);
-         _this.setData({
-            LOND:"load"
+          app.phoneLoad(data,(userInfo)=>{
+          my.reLaunch({
+              url:`../index/index?type=1&data=${JSON.stringify(userInfo)}`,
+            })
           })
       },
       fail(err){
@@ -110,14 +114,18 @@ Page({
     })
   },
   sendOutCode(){
+    let _this = this;
     if(this.data.codeTxtStyle!=="codeTxt") return false;
      this.codeShow( )
     my.httpRequest({
       url:app.url+"/powerBank/other/sendCode",
-      method:"POST",
-      data:{phone:this.data.phone,type:"2"},
-       success( data ){ 
-        this.codeShow( )
+      method:"post",
+      headers:{
+          'content-type': 'application/json'
+        },
+      data:JSON.stringify({phone:this.data.phone,types:"2"}),
+       success( data ){
+        _this.codeShow( )
         console.log(data)
       }
     })
@@ -150,39 +158,23 @@ Page({
      this.setData({
       LOND:"load onLoad"
     })
-    app.initGetuser((res)=>{
-       let userInfo = res;
-           userInfo.isLogin=true,
-       this.setData({
-         userInfo:userInfo,
-         LOND:"load"
-       })
-       this.Nav(`../index/index?type=1&data=${JSON.stringify(userInfo)}`)
-     })
+    app.initGetuser((userInfo)=>{
+         my.reLaunch({
+            url:`../index/index?type=1&data=${JSON.stringify(userInfo)}`,
+            fail:(re)=>{
+              console.log(2)
+            },
+          })
+    } )
   },
 
-
-  Nav(url,title="",color="#fff"){
-    my.reLaunch({
-      url:url,
-      success:()=>{
-        my.setNavigationBar({
-          title:title,
-          backgroundColor:color,
-          borderBottomColor:color,
-        })
-      }
-    })
-  },
 /**手机号登陆 */
 phoneLogin( res ){
-  res.isLogin = true,
-  this.setData({
-    userInfo:res
-  })
-  app.phoneLoad( res )
-  this.Nav( `../index/index?type=1&data=${JSON.stringify(res)}` )
+  console.log(res)
+   app.phoneLoad( res )
+  //this.Nav( `../index/index?type=1&data=${JSON.stringify(res)}`)
 },
+
 /**页面跳转 */
 
   onReady() {

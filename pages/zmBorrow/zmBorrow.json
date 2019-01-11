@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "am-checkbox": "mini-antui/es/am-checkbox/index"
+  } 
+}

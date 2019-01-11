@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "card": "mini-antui/es/card/index",
+    "am-checkbox": "mini-antui/es/am-checkbox/index"
+  }
+}

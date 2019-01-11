@@ -1,0 +1,27 @@
+<view class="body wallet">
+  <view class="Lis1" onTap="queryBalance">
+    <view>
+      <view><text>￥</text><text>{{balance}}</text></view>
+      <view>我的余额</view>
+    </view>
+  </view>
+  <list>
+      <list-item
+        arrow="{{true}}"
+        className="Lis2"
+        onClick="yajin"
+      >
+       <view>押金</view>
+       <view >{{deposit===0?'未缴纳':''}}</view>
+      </list-item>
+  </list>
+  <list-item
+        arrow="{{true}}"
+        last="{{true}}"
+        className="Lis2"
+        onClick="mingxi"
+      >
+       <view>交易明细</view>
+      </list-item>
+  </list>
+</view>

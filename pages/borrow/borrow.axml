@@ -1,0 +1,35 @@
+<view class="borrow">
+  <image class="headerImg" src="/img/load.gif" mode="图片" />
+  <view class="body">
+    <card
+      title="XX茶餐厅"
+    />
+    <view class="lis1">
+      2元/时
+    </view>
+    <view class="lis2">
+      5分钟内免费每天封顶20元，计费满99元自动扣取押金
+    </view>
+    <view class="lis3">
+      <view class="Icon"></view>
+      三线设计，适配所有手机
+    </view>
+    <view class="lis4">
+      <view class="Icon"></view>
+      全国通借通还，附近有100余家门店
+    </view>
+    <view class="lis5">
+      <view class="Icon"></view>
+      时尚多彩，因你而变
+    </view>
+    <view class="lis6">
+        <am-checkbox />点击同意用户 <view class="txt" onTap="agreement">《用户协议》</view>
+    </view>
+    <view class="lis7" onTap="tradePay">
+        <image src="/img/borrow.png" mode="免押金" />
+    </view>
+    <view class="lis8">
+      <button type="default">充押金租借</button>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,59 @@
+.opening{
+  background-color: white;
+}
+.Lis{
+  width: 690rpx;
+  height: 160rpx;
+  border-radius: 20rpx;
+  margin: 40rpx auto;
+  background-color: #f7f7f9;
+}
+.Lis>view{
+  height: 100%;
+}
+.Lis>view:nth-child(1){
+  float: left;
+  margin-left: 40rpx;
+}
+.Lis>view:nth-child(1) view:nth-child(1){
+  margin-top: 49rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+.Lis>view:nth-child(1) view:nth-child(2){
+  margin-top: 15rpx;
+  font-size: 25rpx;
+  color: #8c8b92;
+}
+.Lis>view:nth-child(2){
+  float: right;
+  margin-right: 40rpx;
+}
+.Lis>view:nth-child(2) view:nth-child(1){
+  margin-top: 49rpx;
+  font-size: 36rpx;
+  font-weight: 600;
+}
+.Lis>view:nth-child(2) view:nth-child(2){
+  margin-top: 15rpx;
+  font-size: 25rpx;
+  color: #8c8b92;
+  text-align: right;
+}
+.Lis2{
+  width: 690rpx;
+  margin: 0 auto;
+}
+.Lis2>view{
+  margin-top:15rpx;
+}
+.Lis2 >view:nth-child(1){
+  font-size: 23rpx;
+}
+.Lis2 >view:nth-child(2){
+  font-size: 20rpx;
+  color: #8c8b92;
+}
+.Lis3{
+  margin-top: 310rpx;
+}

@@ -1,5 +1,6 @@
 {
   "usingComponents":{
-    "card": "mini-antui/es/card/index"
+    "card": "mini-antui/es/card/index",
+    "popup": "mini-antui/es/popup/index"
   }
 }

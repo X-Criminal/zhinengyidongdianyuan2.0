@@ -1,0 +1,43 @@
+<view class="zhongzhi body">
+  <view class="Lis1">
+    <view data-type="50" onTap="getType"  style="background-color:{{cType=='50'?'rgb(255,244,79)':'rgb(247, 247, 249)'}}">50元</view>
+    <view data-type="100" onTap="getType" style="background-color:{{cType=='100'?'rgb(255,244,79)':'rgb(247, 247, 249)'}}">100元</view>
+    <view data-type="150"onTap="getType"  style="background-color:{{cType=='150'?'rgb(255,244,79)':'rgb(247, 247, 249)'}}">150元</view>
+    <view data-type="200" onTap="getType" style="background-color:{{cType=='200'?'rgb(255,244,79)':'rgb(247, 247, 249)'}}">200元</view>
+    <view data-type="250" onTap="getType" style="background-color:{{cType=='250'?'rgb(255,244,79)':'rgb(247, 247, 249)'}}">250元</view>
+    <view data-type="300" onTap="getType" style="background-color:{{cType=='300'?'rgb(255,244,79)':'rgb(247, 247, 249)'}}">300元</view>
+  </view>
+  <view class="Lis2">
+    <list>
+       <list-item
+        arrow="{{true}}"
+        last="{{true}}"
+        onClick="showLis2"
+       >
+        <text style="font-size:28rpx;float:left;color:#55535d;">已使用优惠券</text>
+        <text style="font-size:28rpx;float:right;color:#55535d;">-10</text>
+      </list-item>
+    </list>
+  </view>
+  <view class="Lis3">
+    你已阅读并同意《充值规则》
+  </view>
+  <view class="Lis4">
+      <button class="yellowButton" onTap="cz">充值</button>
+  </view>
+  <scroll-view class="scroll-view_H p2" scroll-y="{{true}}" scroll-left="0" style="width: 100%;display:{{showLis2?'block':'none'}}">
+         <view>
+            <text style="font-size:28rpx;float:left;color:#55535d;">已使用优惠券</text>
+            <text style="font-size:28rpx;float:right;color:#55535d;" class=""></text>
+         </view>
+      </scroll-view>
+  <!--优惠劵-->
+  <popup show="{{showLis2}}" position="bottom" onClose="showLis2" class="popup" mask="{{true}}">
+    <view style="height:511rpx;width:100%; background: #fff;justify-content: center; align-items: center;position:relative">
+      <view class="p1">优惠劵</view>
+      <view class="p3" onTap="showLis2">
+        关闭
+      </view>
+    </view>
+  </popup>
+</view>

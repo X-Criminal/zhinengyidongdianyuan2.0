@@ -1,0 +1,67 @@
+.Lis1{
+  background-image: url(../img/vipCenter.png);
+  background-size: cover;
+  width: 630rpx;
+  height: 300rpx;
+  margin: 0 auto;
+  margin-top: 58rpx;
+  padding-top: 30rpx;
+  position: relative;
+}
+.Lis1>view{
+  height: 72rpx;
+  margin:0 30rpx;
+  position: relative;
+}
+.Lis1>view image{
+  height: 72rpx;
+  width: 72rpx;
+  background-size: cover;
+  background-image: url(../img/head_portrait2.png);
+  float: left;
+}
+.Lis1>view view{
+  float: left;
+  position: absolute;
+  left: 85rpx;
+  right: 0;
+}
+.Lis1>view view text{
+  display: block;
+}
+.Lis1>view view text:nth-child(1){
+  font-size: 27rpx;
+  margin-top: 7rpx;
+}
+.Lis1>view view text:nth-child(2){
+  font-size: 19rpx;
+  color: #514a26;
+  margin-top: 13rpx;
+}
+.Lis2{
+  width: 630rpx;
+  margin: 0 auto;
+  font-size: 25rpx;
+  color: #919076;
+  margin-top: 45rpx;
+}
+.Lis3{
+  margin-top: 580rpx;
+}
+.Lis1  .xufei{
+  position: absolute;
+  width: 200rpx;
+  height: 60rpx;
+  border:1px solid white;
+  color: white;
+  font-size: 24rpx;
+  line-height: 60rpx;
+  text-align: center;
+  margin: 0;
+  border-radius: 100rpx;
+  bottom: 30rpx;
+  right: 30rpx;
+}
+.vipCenter .hidden{
+  display: none;
+}

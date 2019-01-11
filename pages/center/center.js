@@ -4,6 +4,11 @@ Page({
     isLogin:true,
     userImg : "",
     userName: "",
+    vipState:0,
+    deposit:0,
+    balance:0,
+    depositState:0,
+    vipTime:"",
     Lis:[
       {name:"会员中心",   img:"../../img/center_members.png"},
       {name:"绑定手机号", img:"../../img/center_.png"},
@@ -15,14 +20,71 @@ Page({
   },
   onLoad(query) {
     // 页面加载
-    console.info(`Page onLoad with query: ${JSON.stringify(query)}`);
     this.init( )
   },
+  
   init( ){
-    let userInfo = app.userInfo;
-    this.setData({
-      userImg : userInfo.avatar,
-      userName: userInfo.name,
-    })
+    let token = app.token;
+    app.ajax(
+      "/powerBank/app/user/getUser",
+      "post",
+      null,
+      (res)=>{
+        if(res.data.code===1000){
+          let _data = res.data.data
+          this.setData({
+            userImg:_data.headUrl,
+            userName:_data.userName,
+            vipState:_data.vipState,
+            vipTime:_data.vipTime,
+            depositState:_data.depositState,
+            deposit:_data.deposit,
+            balance:_data.balance
+          })
+          my.setStorage({
+            key:"userInfo",
+            data:{
+              userImg:_data.headUrl,
+              userName:_data.userName,
+              vipState:_data.vipState,
+              vipTime:_data.vipTime,
+              depositState:_data.depositState,
+              deposit:_data.deposit,
+              balance:_data.balance
+            },
+            success:(res)=>{
+             
+            }
+          })
+        }
+      },
+      (err)=>{
+
+      }
+      )
+  },
+  /**点击列表 */
+  onItemClick( e ){
+    switch(e.index){
+      case 0:
+        app.Nav('../vipCenter/vipCenter',"会员中心")
+      break;
+      case 1:
+
+      break;
+      case 2:
+        app.Nav('../wallet/wallet','我的钱包')
+      break;
+      case 3:
+        app.Nav('../Order/Order','订单')
+      break;
+      case 4:
+        app.Nav('../Discount/Discount',"查看优惠劵")
+      break;
+      case 5:
+        
+      break;
+    }
   }
+
 })

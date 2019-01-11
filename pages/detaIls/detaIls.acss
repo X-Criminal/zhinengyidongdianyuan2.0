@@ -13,6 +13,22 @@
   background-color: white;
   padding: 30rpx;
   box-sizing: border-box;
+  position: relative;
+}
+.detaIlsBody .navPosition{
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+  text-align: center;
+}
+.detaIlsBody .navPosition view{
+  font-size: 18rpx;
+  opacity: 0.5;
+}
+.detaIlsBody .navPosition image{
+  background-size: cover;
+  width: 52rpx;
+  height: 52rpx;
 }
 .detaIlsBody .detaIlsTitle{
   font: 32rpx PingFangSC-Regular;
@@ -55,6 +71,7 @@
   padding-left: 40rpx;
   line-height: 32rpx;
   margin-left: 10rpx;
+  margin-right: 12rpx;
 }
 .detaIlsBody >view:nth-child(5) >view .icon{
   position: absolute;
@@ -111,7 +128,7 @@
 .detaIlsBottom{
   padding-top: 20rpx;
   position: relative;
-} 
+}
 .detaIlsBottom .isGet{
   position: absolute;
   text-indent: -99999px;
@@ -122,4 +139,18 @@
   background-color: white;
   background-image: url(../../img/feedback_receive.png);
   background-size: cover;
-} 
+}
+.detaIls .am-card-arrow{
+  display: none;
+}
+.detaIlsBottom .am-card-subtitle{
+  font-size: 18px;
+  color: black;
+}
+.detaIlsBottom .am-card-title{
+  font-size: 14px;
+  color: rgb(153, 153, 153);
+}
+.detaIlsBottom .am-card{
+  box-shadow: 0px 0px 4px #ccc;
+}

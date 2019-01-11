@@ -1,0 +1,55 @@
+.deposit{
+  width: 100%;
+  color: #0B0817;
+  font-family: PingFangSC-Regular;
+}
+.deposit .title{
+  height: 339rpx;
+  width: 690rpx;
+  margin: 15rpx auto;
+  background-image: url(../img/bg3.png);
+  background-size: cover;
+  text-align: center;
+  padding-top: 100rpx;
+  box-sizing: border-box;
+}
+.deposit .title>view:nth-child(1)>text:nth-child(1){
+  font-size: 35rpx;
+}
+.deposit .title>view:nth-child(1)>text:nth-child(2){
+  font-size: 72rpx;
+}
+.deposit .title>view:nth-child(2){
+  font-size: 28rpx;
+}
+.Lis2{
+   margin-top: 15rpx;
+   width: 690rpx;
+   margin: 0 auto;
+   text-align: right;
+   font-size: 28rpx;
+   opacity: 0.5;
+}
+.Lis3{
+  width: 690rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #646568;
+  margin-top: 525rpx;
+}
+.Lis3>view{
+  width: auto;
+  display: inline-block;
+}
+.Lis4{
+  margin-top:30rpx;
+}
+.Lis4 button{
+  width: 630rpx;
+  height: 92rpx;
+  margin: 0 auto;
+  border-radius: 100rpx;
+  background-color: #FFF44F;
+  font-size: 32rpx;
+  font-weight: 600;
+}

@@ -1,0 +1,39 @@
+.tradeDetails{
+  background-color:white;
+}
+.tradeDetails .Lis{
+  height: 160rpx;
+  border-bottom: 1px solid #e5e5ee;
+}
+.tradeDetails .Lis >view:nth-child(1){
+  float: left;
+  margin-left: 42rpx;
+}
+.tradeDetails .Lis >view:nth-child(1) >view:nth-child(1){
+  font-size: 20rpx;
+  margin-top: 45rpx;
+  color: #85838b;
+}
+.tradeDetails .Lis >view:nth-child(1) >view:nth-child(2){
+  font-size: 28rpx;
+  font-weight: 600;
+  margin-top: 24rpx;
+}
+.tradeDetails .Lis >view:nth-child(2){
+  float: right;
+  margin-right: 42rpx;
+}
+.tradeDetails .Lis >view:nth-child(2) >view:nth-child(1){
+  font-size: 29rpx;
+  margin-top: 36rpx;
+   font-weight: 600;
+}
+.tradeDetails .Lis >view:nth-child(2) >view:nth-child(2){
+  font-size:25rpx;
+  margin-top: 31rpx;
+  color: #85838b;
+}
+.tradeDetails .Lis >view:nth-child(2) >view:nth-child(3){
+  font-size:25rpx;
+  color: #85838b;
+}

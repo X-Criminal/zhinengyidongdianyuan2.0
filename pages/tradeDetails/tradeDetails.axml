@@ -1,0 +1,13 @@
+<view class="body tradeDetails">
+  <view class="Lis">
+    <view>
+      <view>2018-08-08 15:34:34</view>
+      <view>充值 付款成功</view>
+    </view>
+    <view>
+      <view>+100元</view>
+      <view>支付宝支付</view>
+      <view>优惠劵-10</view>
+    </view>
+  </view>
+</view>

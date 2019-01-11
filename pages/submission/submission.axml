@@ -1,0 +1,52 @@
+<view class="submission">
+  <image src="/img/load.gif" mode="商家信息" />
+  <view class="Lis1">
+    港式茶餐厅
+  </view>
+  <view class="Lis2">
+    2元/小时
+  </view>
+  <view class="Lis3">
+    5分钟内免费每天封顶20元，计费满99元自动扣取押金
+  </view>
+  <view class="Lis4">
+    <button onTap="sub">租借</button>
+  </view>
+
+  <!--解锁中弹窗 -->
+  <view class="poup" style="{{'display:'+(poup?'block':'none') }}">
+    <view class="poupBODY">
+      <view class="lis1">
+        <view a:for="{{unlocks}}"  class="{{item==1?'show'+index:''}}" ></view>
+      </view>
+      <view class="lis2">
+        <view style="{{'width:'+unlocksIng+'%'}}"></view>
+      </view>
+      <view class="lis3">
+        解锁中 {{unlocksIng}}%
+      </view>
+    </view>
+  </view>
+    <!--租借成功-->
+  <popup show="{{showTop}}" position="left" zIndex="100">
+      <view class="onLeft">
+          <image src="/img/loading9.png" mode="租借成功"/>
+          <view>充电宝已经解锁，请按指示灯提示取走</view>
+          <view>请及时取走，180秒后自动锁定</view>
+      </view>
+  </popup>
+
+  <!--借用成功-->
+  <popup show="{{true}}" class="poup3" position="left" zIndex="101">
+      <view class="onLeft">
+           <icon type="success"  size="45" color="#40D47B"/>
+           <view class="pLis0">租借电源成功</view>
+           <view class="pLis1"><view></view>租借详情<view></view> </view>
+           <view class="pLis2"><text>租借成功</text><text>2016年6月6日 10:10:10</text></view>
+           <view class="pLis3"><text>租借地点</text><text>深圳市宝安区西乡铁岗村水库路...</text></view>
+           <view class="pLis4"><text>订单号</text><text>123456786514</text></view>
+           <view class="pLis5"><text>收费标准</text><text>1小时内免费，逾期2元/天</text></view>
+           <view class="pLis6"><button>确定</button></view>
+      </view>
+  </popup>
+</view>

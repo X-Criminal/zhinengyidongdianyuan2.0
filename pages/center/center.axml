@@ -2,17 +2,12 @@
   <view class="centerUserImg">
       <image src="{{userImg}}"/>
       <view style="text-align:center;line-height:71rpx;size:28rpx;">{{userName}}</view>
-      <view class="centerUserData" style="{{isLogin?'display:block':'display:none'}}">
-        <view class="icon">
+      <view class="centerUserData">
+        <view class="{{vipState!=='4'?'icon icon1':'icon'}}">
           vip类型
         </view>
         <view>
-          VIP会员
-        </view>
-    </view>
-    <view class="centerUserData" style="{{isLogin?'display:none':'display:block'}}">
-        <view>
-          未登录
+          {{vipState==='4'?'普通会员':'VIP会员'}}
         </view>
     </view>
   <view>

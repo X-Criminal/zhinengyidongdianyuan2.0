@@ -1,0 +1,29 @@
+<view class="loan body">
+  <view class="Lis1">
+      00:00
+  </view>
+  <view class="Lis2">
+      租用中
+  </view>
+  <view class="Lis3">
+    <view></view>
+      租借详情
+      <view></view>
+  </view>
+  <view class="Lis4">
+    <text>租借时间</text>
+    <text>2016年10月10日  10:40:47</text>
+  </view>
+  <view class="Lis4">
+    <text>租借地点</text>
+    <text>深圳市宝安区西乡铁岗村水库路...</text>
+  </view>
+   <view class="Lis4">
+    <text>订单号</text>
+    <text>123456786514</text>
+  </view>
+   <view class="Lis4">
+    <text>收费标准</text>
+    <text>1小时内免费，逾期2元/天</text>
+  </view>
+</view>
