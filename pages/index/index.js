@@ -5,6 +5,8 @@ Page({
        avatar:"",
       nickName:"",
     },
+    queryIfLoan:"",
+    queryIfLoanId:"",
     userName:"",
     initLatitude:0,
     initLongitude:0,
@@ -61,22 +63,25 @@ Page({
   },
   onReady() {
     this.getWindowSize( ( )=>{
-      this.getLocation()
-    })
-    app.baseUserInfo((user)=>{
-      this.setData({
-        userInfo:user
+      this.getLocation( ()=>{
+           app.baseUserInfo((user)=>{
+                this.setData({
+                  userInfo:user
+                })
+                 this.queryIfLoan( )
+              })
       })
     })
-    this.queryIfLoan( )
+   
+   
     // 页面加载完成
   },
   /**登陆界面返回*/
   login_( res ){
-    console.log(res)
     this.setData({
         userInfo:JSON.parse(res)
     })
+    this.queryIfLoan( )
   },
   /**绑定搜索框 Start*/
   onInput(e){
@@ -109,7 +114,7 @@ Page({
        
   },
   /**个人中心 End */
-  getLocation(){
+  getLocation(cb){
     let that = this;
     my.getLocation({
       success(res) {
@@ -120,7 +125,8 @@ Page({
           onLong:+res.longitude,
         })
         that.mapCtx = my.createMapContext('map');
-        that.getShopList(res.latitude,res.longitude )
+        that.getShopList(res.latitude,res.longitude );
+        cb&&cb( )
       },
       fail() {
         my.hideLoading();
@@ -176,7 +182,7 @@ Page({
     }
     arr.push(_initPosition)
     arr.push(kefu)
-    arr.push(sm)
+    // arr.push(sm)
      _this.setData({
         controls:arr,
      })
@@ -288,7 +294,7 @@ Page({
         if(!this.showTop3) this.setData({showTop3:false});
         let data = this.data.markers;
         for(let i = 0 ,idx = data.length;i<idx;i++){
-          if(data[i].id===e.markerId){
+          if((data[i].id)===(+e.markerId)){
             this.Nav("../detaIls/detaIls?merchantsId="+e.markerId+"&distance="+data[i].distance,"商家详情");
             return ;
           }
@@ -409,8 +415,14 @@ Page({
   /**查询是否租用  */
   queryIfLoan(){
     app.ajax("/powerBank/app/user/queryIfLoan","post",null,(res)=>{
-      console.log(res)
+        this.setData({
+          queryIfLoan:res.data.code
+        })
+        if(res.data.code===1000){this.setData({queryIfLoanId:res.data.data.orderId})}
     })
+  },
+  fLoan(){
+    console.log( this.data.queryIfLoanId)
   },
   onShareAppMessage() {
     // 返回自定义分享信息

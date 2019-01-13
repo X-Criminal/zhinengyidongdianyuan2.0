@@ -1,11 +1,11 @@
 <view class="Order body">
-  <view class="title">累计租借1次 归还1次</view>
-  <view class="Lis">
-    <view>订单编号：<text>444444444444</text></view>
-    <view>支付时间：<text>444444444444</text></view>
-    <view>归还时间：<text>444444444444</text></view>
-    <view>租借时长：<text>444444444444</text></view>
-    <view>实付金额：<text>444444444444</text></view>
-    <view>交易状态：<text>444444444444</text></view>
+  <view class="title">累计租借{{totalLoan}}次,归还{{totalReturn}}次</view>
+  <view class="Lis" a:for="{{Lis}}">
+    <view>订单编号：<text>{{item.orderNumber}}</text></view>
+    <view>支付时间：<text>{{item.orderNumber}}</text></view>
+    <view>归还时间：<text>{{item.alsoDate}}</text></view>
+    <view>租借时长：<text>{{item.loanDate}}</text></view>
+    <view>实付金额：<text>{{item.realPayPrice}}</text></view>
+    <view>交易状态：<text>{{item.state==='3'?'租界中':item.state==='4'?'已归还':'-'}}</text></view>
   </view>
 </view>

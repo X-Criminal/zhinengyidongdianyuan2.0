@@ -10,7 +10,7 @@
       <image src="../../img/list.png" style="width:26px;height:26px;" class="img2"/>
     </view>
   </view>
-  <cover-image src="/img/ZZZ.png" class="z"></cover-image>
+  <cover-image src="/img/ZZZ.png" class="z" style="{{queryIfLoan===1000?'display:block':'display:none'}}" onTap="fLoan"></cover-image>
 
     <map id="map" longitude="{{initLongitude}}" latitude="{{initLatitude}}"
       controls="{{controls}}"
@@ -25,7 +25,7 @@
       onTap="clickMap"
       >
   </map>
-
+  <cover-image src="/img/sm.png" class="cover" onTap="sweepCode" style="{{showTop2?'display:none':'display:block'}}"></cover-image>
   <!--服务中心 Start-->
   <popup show="{{showTop2}}" position="bottom" className="popupBottom" zIndex="999" mask="{{false}}">
       <view class="header">

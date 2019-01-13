@@ -1,33 +1,36 @@
 <view class="nearby">
-  <view class="Lis">
+  <view class="Lis" a:for="{{Lis}}">
     <image src="/img/feedback_default.png"  mode="logo"/>
     <view>
       <view>
-        海雅缤纷城
-        <view>3.1km</view>
+        {{item.merchantsName}}
+        <view>{{item.distance}}m</view>
       </view>
       <view>
            <view class="time Icon">时间</view>
-        00:00
+        {{item.businessHours}}
       </view>
       <view>
           <view class="position Icon">地址</view>
-        深圳市水库路147号
+        {{item.merchantsAdderss}}
       </view>
       <view class="info">
-        <view>
+        <view style="{{item.borrow>0?'display:block':'display:none'}}">
           <view class="Icon">可借</view>
           可借
         </view>
-        <view>
+        <view style="{{item.also>0?'display:block':'display:none'}}">
           <view class="Icon">可还</view>
           可还
         </view>
-        <view>
+        <view style="{{item.couponsState>0?'display:block':'display:none'}}">
           <view class="Icon">有优惠卷</view>
           有优惠卷
         </view>
       </view>
     </view>
+  </view>
+  <view style="{{Lis.length>0?'display:none':'display:block'}}">
+    附近暂无V电。。。。
   </view>
 </view>

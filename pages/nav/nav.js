@@ -70,7 +70,7 @@ Page({
       endLat: endLat,
       endLng: endLng,              // 重点经度
      // routeColor:'#FFB90F',            // 路线颜色
-      iconPath: "/img/merchants_location.png",  // 路线纹理  10.1.35
+      iconPath: "/img/loading9.png",  // 路线纹理  10.1.35
       iconWidth: 10,                    // 纹理宽度  10.1.35
       routeWidth: 10,                   // 路线宽度  
       zIndex: 998                         // 覆盖物 Z 轴坐标  10.1.35

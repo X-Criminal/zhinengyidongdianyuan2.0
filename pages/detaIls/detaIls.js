@@ -27,6 +27,10 @@ Page({
     app.ajax("/powerBank/app/user/getMerchantByid","post",{merchantsId:res},(data)=>{
         if(data.data.code===1000){
           let Info = data.data.data;
+          let date = Info.couponsList;
+          for(let i = 0 ; i <date.length;i++){
+              date[i].endDate = app.formattingTime( date[i].endDate )
+          }
           this.setData({
               url:app.url,
               name:Info.merchantsName,

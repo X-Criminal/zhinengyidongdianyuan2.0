@@ -3,7 +3,7 @@ Page({
   data:{
     activeTab:0,
     tabs:[{title:"优惠劵"},{title:"商家卷"},{title:"失效优惠劵"}],
-    arr:[[{}],[],[]],
+    arr:[[],[],[]],
     url:app.url
   },
   onLoad(){

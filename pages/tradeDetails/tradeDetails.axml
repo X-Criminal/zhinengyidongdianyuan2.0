@@ -1,13 +1,13 @@
 <view class="body tradeDetails">
-  <view class="Lis">
+  <view class="Lis" a:for="{{ Lis }}">
     <view>
-      <view>2018-08-08 15:34:34</view>
-      <view>充值 付款成功</view>
+      <view>{{item.createDate}}</view>
+      <view>{{item.type==='2'?'充值':item.type==='4'?'提现':'-'}} {{item.state==='1'?'待付款':item.state==='2'?'付款成功':item.state==='6'?'提现中':item.state==='7'?'提现成功':item.state==='7'?'提现不通过':'-'}}</view>
     </view>
     <view>
-      <view>+100元</view>
+      <view>{{item.type==='2'?'+':item.type==='4'?'-':''}}{{item.realPayPrice}}元</view>
       <view>支付宝支付</view>
-      <view>优惠劵-10</view>
+      <view style="{{item.type==='2'?'display:block':item.type==='4'?'display:none':'-'}}">优惠劵-{{item.amount}}</view>
     </view>
   </view>
 </view>
