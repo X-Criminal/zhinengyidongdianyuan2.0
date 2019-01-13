@@ -68,6 +68,7 @@ Page({
         userInfo:user
       })
     })
+    this.queryIfLoan( )
     // 页面加载完成
   },
   /**登陆界面返回*/
@@ -285,8 +286,15 @@ Page({
    /**点击标记点 Start */
     getMarKer(e){
         if(!this.showTop3) this.setData({showTop3:false});
+        let data = this.data.markers;
+        for(let i = 0 ,idx = data.length;i<idx;i++){
+          if(data[i].id===e.markerId){
+            this.Nav("../detaIls/detaIls?merchantsId="+e.markerId+"&distance="+data[i].distance,"商家详情");
+            return ;
+          }
+        }
         //this.mapCtx.clearRoute()
-        this.Nav("../detaIls/detaIls?merchantsId="+e.markerId,"商家详情")
+       // 
     },
    
 
@@ -358,11 +366,10 @@ Page({
       '商家详情'
       )
   },
-  getRoute( ){
-    //路线导航
-    console.log("路线导航");
-    this.show_Route(this.data.endLat,this.data.endLng );
-  },
+  // getRoute( ){
+  //   //路线导航
+  //   this.show_Route(this.data.endLat,this.data.endLng );
+  // },
   /**查看详情 End */
 
    /**获取附近商家 Start */
@@ -383,6 +390,7 @@ Page({
                               longitude:data[i].longitude,
                               width: 50,
                               height: 50,
+                              distance:data[i].distance
                             })
                         }
                         _this.setData({
@@ -398,7 +406,12 @@ Page({
           })
     },
    /**获取附近商家 End */
-
+  /**查询是否租用  */
+  queryIfLoan(){
+    app.ajax("/powerBank/app/user/queryIfLoan","post",null,(res)=>{
+      console.log(res)
+    })
+  },
   onShareAppMessage() {
     // 返回自定义分享信息
     return {

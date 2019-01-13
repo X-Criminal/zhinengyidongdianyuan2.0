@@ -53,7 +53,7 @@
       <view class="navPosition" onTap="onNav">
         <image src="/img/navigation.png" mode="到这里去" />
         <view>
-          3.1km
+          {{distance}}m
         </view>
       </view>
   </view>
@@ -62,7 +62,7 @@
         <view>
           商家优惠劵
         </view>
-        <button type="default" onTap="onGetCoupon" class=" " style="{{isget==='已领取'?'background-color:#fff':''}}" >{{isget}}</button>
+        <button type="default" onTap="onGetCoupon" class=" " style="{{isget==='已领取'?'background-color:#fff;color:#000;':''}}" >{{isget}}</button>
       </view>
       <view class="detaIlsCard">
         <view class="cardLis">

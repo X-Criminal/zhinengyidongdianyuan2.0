@@ -6,6 +6,7 @@
     <view data-type="200" onTap="getType" style="background-color:{{cType=='200'?'rgb(255,244,79)':'rgb(247, 247, 249)'}}">200元</view>
     <view data-type="250" onTap="getType" style="background-color:{{cType=='250'?'rgb(255,244,79)':'rgb(247, 247, 249)'}}">250元</view>
     <view data-type="300" onTap="getType" style="background-color:{{cType=='300'?'rgb(255,244,79)':'rgb(247, 247, 249)'}}">300元</view>
+    <view data-type="0.01" onTap="getType" style="background-color:{{cType=='300'?'rgb(255,244,79)':'rgb(247, 247, 249)'}}">测试勿点</view>
   </view>
   <view class="Lis2">
     <list>
@@ -15,7 +16,7 @@
         onClick="showLis2"
        >
         <text style="font-size:28rpx;float:left;color:#55535d;">已使用优惠券</text>
-        <text style="font-size:28rpx;float:right;color:#55535d;">-10</text>
+        <text style="font-size:28rpx;float:right;color:#55535d;">{{gb.length>0?'-'+gb[0].amount+'元':'暂无优惠劵'}}</text>
       </list-item>
     </list>
   </view>
@@ -26,9 +27,9 @@
       <button class="yellowButton" onTap="cz">充值</button>
   </view>
   <scroll-view class="scroll-view_H p2" scroll-y="{{true}}" scroll-left="0" style="width: 100%;display:{{showLis2?'block':'none'}}">
-         <view>
-            <text style="font-size:28rpx;float:left;color:#55535d;">已使用优惠券</text>
-            <text style="font-size:28rpx;float:right;color:#55535d;" class=""></text>
+         <view a:for="{{CouponsByuserId}}" data-key="{{index}}" onTap="setCB">
+            <text style="font-size:28rpx;float:left;color:#55535d;">{{item.couponsName}}</text>
+            <text style="font-size:28rpx;float:right;color:#55535d;" class="{{index===key?'to':''}}"></text>
          </view>
       </scroll-view>
   <!--优惠劵-->

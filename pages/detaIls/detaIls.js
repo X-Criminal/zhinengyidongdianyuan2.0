@@ -8,12 +8,16 @@ Page({
     name:"",
     couponsState:"2",
     couponsList:[],
-    isget:"一键领取"
+    isget:"一键领取",
+    distance:"",
   }, 
    onLoad(query) {
     // 页面加载
   
    this.init(query.merchantsId)
+   this.setData({
+     distance:query.distance
+   })
   },
 
   init(res){
@@ -43,16 +47,17 @@ Page({
   },
 
   onGetCoupon(){
+    let _this = this;
     if(this.showCoupon||this.data.isget==="已领取") return false;
     app.ajax('/powerBank/app/user/updateCouponsAll','post',{merchantsId:+(this.data.merchantsId)},(res)=>{
       if( res.data.code===1000){
-        this.setData({
+        _this.setData({
           isget:"已领取",
           showCoupon:true,
         })
-        this.init( )
+        _this.init( )
          setTimeout(()=>{
-            this.setData({
+            _this.setData({
               showCoupon:false,
             })
         },3000)
@@ -65,7 +70,7 @@ Page({
   },
   onNav(){
     let _this = this;
-    my.reLaunch({
+    my.navigateTo({
       url:'/pages/nav/nav?merchantsId='+this.data.merchantsId,
       success:()=>{
         my.setNavigationBar({

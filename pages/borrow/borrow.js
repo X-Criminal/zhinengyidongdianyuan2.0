@@ -15,7 +15,7 @@ Page({
       console.log(res)
       if(res.data.code===1000){
         my.tradePay({
-          tradeNO:res.data.data.authOrder,
+          orderStr:res.data.data.authOrder,
           success:(res)=>{
             if(res.resultCode==="9000"){
               

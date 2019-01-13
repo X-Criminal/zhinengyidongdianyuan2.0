@@ -10,6 +10,8 @@
       <image src="../../img/list.png" style="width:26px;height:26px;" class="img2"/>
     </view>
   </view>
+  <cover-image src="/img/ZZZ.png" class="z"></cover-image>
+
     <map id="map" longitude="{{initLongitude}}" latitude="{{initLatitude}}"
       controls="{{controls}}"
       markers="{{markers}}"
@@ -22,7 +24,7 @@
       onMarkerTap="getMarKer"
       onTap="clickMap"
       >
-    </map>
+  </map>
 
   <!--服务中心 Start-->
   <popup show="{{showTop2}}" position="bottom" className="popupBottom" zIndex="999" mask="{{false}}">
