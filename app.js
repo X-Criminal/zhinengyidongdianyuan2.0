@@ -1,4 +1,4 @@
-import {itme} from "./pages/_index"
+import {itme} from "./pages/time"
 App({
   userInfo:{},
   url:"https://www.vdiankeji.com",
