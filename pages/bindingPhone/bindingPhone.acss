@@ -49,6 +49,6 @@
 .yellowButton{
   font-size: 31rpx;
 }
-.button {
+.bindingPhone > .button {
   background-color: rgba(0,0,0,0);
 }

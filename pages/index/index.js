@@ -42,6 +42,7 @@ Page({
     endLat:0,//报错标记点
     endLng:0,//报错标记点
   },
+  mapCtx:{},
   onLoad(query) {
     // 页面加载
     if(query.type){
@@ -254,7 +255,6 @@ Page({
         longitude:this.data.onLong,
         latitude:this.data.onLat,
       })
-  //  this.mapCtx.moveToLocation( )
   },
   service(){
     //点击客服
@@ -271,14 +271,6 @@ Page({
          scale:e.scale,
        })
         _this.getShopList(e.latitude,e.longitude)
-        // this.mapCtx.updateComponents({
-        //   longitude:e.longitude,
-        //   latitude:e.latitude,
-        // })
-        // _this.setData({
-        //   initLongitude:e.longitude,
-        //   initLatitude:e.latitude
-        // })
       }
   },
   /**客服中心 Start */
@@ -322,8 +314,6 @@ Page({
             return ;
           }
         }
-        //this.mapCtx.clearRoute()
-       // 
     },
    /**点击标记点 End */
 
@@ -332,10 +322,6 @@ Page({
       let _this = this;
           my.chooseLocation({
             success(e){
-              //  _this.mapCtx.updateComponents({
-              //       longitude:e.longitude,
-              //       latitude:e.latitude,
-              //   })
                 _this.getShopList(e.latitude,e.longitude)
             }
           })
@@ -346,19 +332,7 @@ Page({
     this.mapCtx.clearRoute()
   },
   /**点击地图 End */
-  // /**选择地址 Start */
-  //   positionLis(e){
-  //     this.setData({
-  //       _z:e.markerId,
-  //     })
-  //     this.mapCtx.updateComponents({
-  //       longitude:e.longitude,
-  //       latitude:e.latitude,
-  //     })
-  //     this.getShopList(e.latitude,e.longitude)
-  //   },
-  // /**选择地址 End */
-  /**附近的商家 Start */
+  /**附近的商家 Start*/
     nearby(){
       this.Nav(
         '../nearby/nearby',
@@ -378,7 +352,7 @@ Page({
         _this._getShopList= true
      },800)
      my.showLoading( )
-    this.mapCtx.updateComponents({
+    _this.mapCtx.updateComponents({
           longitude:b,
           latitude:a,
     })
@@ -412,7 +386,7 @@ Page({
                         })
                   }
                    my.hideLoading({
-                      page: _this,  // 防止执行时已经切换到其它页面，page指向不准确
+                      page: _this,  //防止执行时已经切换到其它页面，page指向不准确
                   });
           },(err)=>{
             console.log(err)
@@ -444,7 +418,7 @@ Page({
   onShareAppMessage() {
     // 返回自定义分享信息
     return {
-      title: 'V电',
+      title: 'V电',   
       desc: 'My App description',
       path: '../index/index',
     };

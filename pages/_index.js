@@ -75,7 +75,7 @@ let billingTime = (startTime,endTime)=>{
             }else{
                 console.log('次月次日');
                 FA = _endTime - _startTime;
-                type3(FA)
+                type2(FA)
             }
         }
         // if()||(StartM!==endM&&(ML-StartD===0&&endD!==1))){
@@ -86,7 +86,7 @@ let billingTime = (startTime,endTime)=>{
         //隔天归还 
     }else{
       console.log("当天归还")
-      console.log(_endTime - _startTime)
+      type3(_endTime - _startTime)
     }
   }
 
@@ -95,7 +95,7 @@ let billingTime = (startTime,endTime)=>{
       console.log( time2)
       console.log( num)
   }
-  let type2 = (time1,time2)=>{
+  let type2 = (time1)=>{
       console.log(time1 ) 
     }
   let type3 = ( time ) =>{
