@@ -38,3 +38,6 @@
 .Lis4{
   margin-top: 28rpx;
 }
+.Lis3 .yellowButton{
+	width: 630rpx;
+}

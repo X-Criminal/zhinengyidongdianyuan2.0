@@ -23,23 +23,20 @@ Page({
   },
   enDunlock:null,
   DunlockIng:null,
-  onLoad(data){
-    this.setData({
-      mac:JSON.parse(data.data).code
-    })
+  onLoad(options){                                                    
+	 if(!app.qrCode){
+		this.setData({
+      	mac:JSON.parse(options.data).code
+    	})
+	 }
   },
   onReady(data){
-    //加载完成
-    // my.confirm({
-    //   title:"已自动锁定",
-    //   content:"未及时取走已自动锁定，请重新租借",
-    //    confirmButtonText: '返回首页',
-    //    cancelButtonText: '重新租借',
-    //    success:(result)=>{
-    //       console.log(result)
-    //    }
-    // })
-    this.init( )
+	  if(app.qrCode ){
+		  this.setData({
+			  mac:app.qrCode
+		  })
+	  }
+	  this.init( )
   },
   sub(){
     this.unlock( );
@@ -73,17 +70,6 @@ Page({
         })
       }
     })
-   
-    // setTimeout(()=>{
-    //   clearInterval(this.enDunlock);
-    //   this.setData({
-    //     showTop:true,
-    //     poup:false,
-    //     unlocks:[1,0,0,0,0,0],
-    //     unlocksIng:0,
-    //     n2:true
-    //   })
-    // },3000)
   },
   unlock(){
     this.setData({
@@ -139,7 +125,12 @@ Page({
         })
       }else{
         my.alert({
-          title: res.data.message 
+          title: res.data.message,
+			 success:()=>{
+				 my.navigateBack({
+					 delta:1
+				 })
+			 }
         });
       }
     })

@@ -32,9 +32,9 @@ Page({
           tradeNO:res.data.data.orderInfo,
           success(res){
             if(res.resultCode===9000){
-              my.redirectTo({
-                url:"../submission/submission"
-              })
+              my.navigateBack({
+					  delta:1
+				  })
             }
           }
         })

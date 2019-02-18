@@ -21,7 +21,11 @@ Page({
                  app.Nav('../loan2/loan2?type=1&orderId='+res.data.data.orderId,"订单详情")
               }
             })
-          }
+          }else{
+				 my.alert({
+					title: res.data.message 
+				 });
+			 }
       })
   }
 })

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "am-checkbox": "mini-antui/es/am-checkbox/index"
+    "am-checkbox": "mini-antui/es/am-checkbox/index",
+	 "popup": "mini-antui/es/popup/index"
   } 
 }

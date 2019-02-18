@@ -4,10 +4,10 @@ Page({
 
   },
   onLoad(res){
-    console.log( res )
+    
   },
   onReady(){
-
+	  this.init( )
   },
   init(){
      app.ajax("/powerBank/app/user/queryLoanDetail","post",null,(res)=>{

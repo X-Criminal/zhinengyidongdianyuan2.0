@@ -74,3 +74,154 @@
   color: #0B0817;
   border: none;
 }
+.poup{
+  position: fixed;
+  background-color: rgba(0, 0, 0, .8);
+  width:100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+.poup .poupBODY{
+  width: 550rpx;
+  height: 400rpx;
+  position: absolute;
+  top: calc(50% - 200rpx);
+  left: calc(50% - 275rpx);
+  background-color: white;
+  border-radius: 20rpx;
+}
+.poup .poupBODY .lis1{
+  width: 320rpx;
+  height: 148rpx;
+  box-sizing: border-box;
+  border: 20rpx solid #d8d8d8;
+  margin: 0 auto;
+  border-radius: 20rpx;
+  margin-top: 72rpx;
+}
+.poup .poupBODY .lis1 >view{
+  width: 30rpx;
+  height: 92rpx;
+  margin: 8rpx;
+  float: left;
+  background-color: #f2f2f2;
+}
+.poup .poupBODY .lis1 > .show0{
+  background-color: #15cdef;
+}
+.poup .poupBODY .lis1 > .show1{
+  background-color: #60d6a7;
+}
+.poup .poupBODY .lis1 > .show2{
+  background-color: #ebe551;
+}
+.poup .poupBODY .lis1 > .show3{
+  background-color: #f98080;
+}
+.poup .poupBODY .lis1 > .show4{
+  background-color: #efa8ea;
+}
+.poup .poupBODY .lis1 > .show5{
+  background-color: #afbeb6;
+}
+.poup .poupBODY .lis2{
+  width: 368rpx;
+  height: 16rpx;
+  background-color: #efefef;
+  margin: 0 auto;
+  margin-top: 58rpx;
+  border-radius: 100rpx;
+}
+.poup .poupBODY .lis2>view{
+  width: 0%;
+  height: 100%;
+  border-radius: 100rpx;
+  background-color: #60d6a7;
+}
+.poup .poupBODY .lis3{
+  text-align: center;
+  margin-top: 40rpx;
+}
+.onLeft{
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  text-align: center;
+}
+.am-popup-left{
+  width: 100%;
+  height: 100%;
+}
+.onLeft >image{
+  width: 318rpx;
+  height: 148rpx;
+  margin: 0 auto;
+  margin-top: 292rpx;
+  background-size: cover;
+
+}
+.onLeft >view:nth-of-type(2){
+  margin-top: 37rpx;
+  font-size: 30rpx;
+  color: #54525c;
+}
+.onLeft >view:nth-of-type(3){
+  margin-top: 32rpx;
+  font-size: 24rpx;
+  color: #85838b;
+}
+.poup3 .onLeft{
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+.poup3 .onLeft icon{
+  margin-top: 270rpx;
+}
+.poup3 .pLis0{
+  font-size: 37rpx;
+  font-weight: 600;
+  margin-top: 15rpx;
+}
+.poup3 .pLis1{
+  margin-top: 165rpx !important;
+  height: 37rpx;
+  position: relative;
+  font-size: 27rpx;
+}
+.poup3 .pLis1>view{
+  position: absolute;
+  height: 1px;
+  width: 254rpx;
+  background-color: #d8d8d8;
+  top: 50%;
+}
+.poup3 .pLis1>view:nth-of-type(1){
+  left: 0;
+}
+.poup3 .pLis1>view:nth-of-type(2){
+  right: 0;
+}
+.poup3 .pLis2,.poup3 .pLis3,.poup3 .pLis4,.poup3 .pLis4,.poup3 .pLis5{
+  height: 48rpx;
+  line-height: 48rpx;
+  font-size: 22rpx;
+  color: #8a9199;
+  font-family: "微软雅黑";
+}
+.poup3 .pLis2>text:nth-child(1),.poup3 .pLis3>text:nth-child(1),.poup3 .pLis4>text:nth-child(1),.poup3 .pLis5>text:nth-child(1){
+  float: left;
+}
+.poup3 .pLis2>text:nth-child(2),.poup3 .pLis3>text:nth-child(2),.poup3 .pLis4>text:nth-child(2),.poup3 .pLis5>text:nth-child(2){
+  float: right;
+}
+.poup3 .pLis6{
+  margin-top: 170rpx;
+}
+.poup3 .pLis6 button{
+  width: 630rpx;
+  height: 92rpx;
+  margin: 0 auto;
+  border-radius: 100rpx;
+  background-color: #FFF44F;
+}

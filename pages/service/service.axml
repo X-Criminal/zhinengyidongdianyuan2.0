@@ -4,7 +4,7 @@
     <view class="title">V电</view>
     <view class="V">v1.0</view>
   </view>
-  <list>
+  <!-- <list>
        <block a:for="{{Lis}}">
       <list-item
           thumb="{{item.img}}"
@@ -18,5 +18,12 @@
           </view>
       </list-item>
     </block>
-  </list>
+  </list> -->
+  <view>
+	  <view class="Lis" a:for="{{Lis}}">
+		  <image class="Lis_1" src="{{item.img}}" mode="log" />
+		  <view  class="Lis_2">{{item.title}}</view>
+		  <view  class="Lis_3">{{item.body}}</view>
+	  </view>
+  </view>
 </view>

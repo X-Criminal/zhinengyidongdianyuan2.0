@@ -25,3 +25,24 @@
 .am-list-line >view:nth-child(1){
   padding: 0 10rpx;
 }
+.Lis{
+	height: 80rpx;
+	padding: 0.1rem 0;
+   width: 7rem;
+   margin: 0 auto;
+}
+.Lis_1{
+	width: 80rpx;
+	height: 80rpx;
+	float: left;
+	background-size: cover;
+}
+.Lis_2{
+	line-height: 80rpx;
+	float: left;
+	margin-left: 20rpx;
+}
+.Lis_3{
+	line-height: 80rpx;
+	float: right;
+}

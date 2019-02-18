@@ -42,7 +42,6 @@ Page({
     endLat:0,//报错标记点
     endLng:0,//报错标记点
   },
-  mapCtx:{},
   onLoad(query) {
     // 页面加载
     if(query.type){
@@ -55,17 +54,15 @@ Page({
     }
   },
   onReady() {
-    let _this = this;
     this.getWindowSize( ( )=>{
       this.getLocation( (latitude,longitude)=>{
-        let a = latitude,b= longitude;
            app.baseUserInfo((user)=>{
                 this.setData({
                   userInfo:user,
                 })
                  this.queryIfLoan( );
                  this.getCouponsByCategory( );
-                 this.getShopList(a,b);
+						  this.getShopList(latitude,longitude);
               })
       })
     })
@@ -93,7 +90,7 @@ Page({
           key:"Category",
           data:data,
         })
-        if(data.length>0&&JSON.stringify(data).indexOf('"receiveState":"0"')>-1){
+        if(data&&data.length>0&&JSON.stringify(data).indexOf('"receiveState":"0"')>-1){
             _this.setData({
               newData_animation:"newData_animation"
             })
@@ -138,7 +135,8 @@ Page({
           onLong:+res.longitude,
         })
         that.mapCtx = my.createMapContext('map');
-        cb&&cb(+res.latitude,+res.longitude )
+        cb&&cb(+res.latitude,+res.longitude);
+		 
       },
       fail() {
         my.hideLoading();
@@ -226,6 +224,19 @@ Page({
           }else{
             this.scan( false )
           }
+			 switch (res.data.data.depositState){
+				 case "1":
+					this.scan( "1" )
+				 break;
+				 case "2":
+					this.scan( "2" )
+				 break;
+				 case "3":
+					this.scan( "3" )
+				 break;
+				 default:
+				   my.alert({title:"网络连接错误，请稍后再试"})
+			 }
         }
       })
     }else{
@@ -239,11 +250,9 @@ Page({
         type: 'qr',
         success: (res) => {
           //my.alert({ title: res.code });
-          if(type){
-            _this.Nav("../borrow/borrow?data="+JSON.stringify(res),"租用确认");
-          }else{
-            _this.Nav("../submission/submission?data="+JSON.stringify(res),"租用确认")
-          }
+				if(type==="2") _this.Nav("../borrow/borrow?data="+JSON.stringify(res),"租用确认");
+            if(type==="3") _this.Nav("../zmBorrow/zmBorrow?data="+JSON.stringify(res),"租用确认");
+				if(type==="1") _this.Nav("../submission/submission?data="+JSON.stringify(res),"租用确认");
         },
     })
   },
@@ -343,8 +352,10 @@ Page({
   /**查看详情 End */
 
    /**获取附近商家 Start */
-   _getShopList: true,
+    _getShopList: true,
+	 ll:0,
     getShopList(lat,long){
+	 this.ll += 1;
     let _this = this;
     if(!this._getShopList) { return false; }
      _this._getShopList= false;
@@ -352,14 +363,20 @@ Page({
         _this._getShopList= true
      },800)
      my.showLoading( )
-    _this.mapCtx.updateComponents({
-          longitude:b,
-          latitude:a,
-    })
-
-      let a = lat,b = long;
-     
-      let position = app.bd_encrypt(long, lat)
+	//   if(this.mapCtx){
+	// 	this.mapCtx.updateComponents({
+	// 		longitude:long,
+	// 		latitude:lat,
+   //    })
+	//   }
+		let position;
+		if(long===0||lat===0){
+			setTimeout(()=>{
+				_this.getShopList(this.data.initLongitude , this.data.initLatitude)
+			},500)
+		}else{
+			position = app.bd_encrypt(long, lat)
+		}
         app.ajax("/powerBank/app/user/getShopList",
                   "post",
                   {latitude:position.lat,longitude:position.lng},

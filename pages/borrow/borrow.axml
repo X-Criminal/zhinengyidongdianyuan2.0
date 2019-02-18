@@ -1,14 +1,14 @@
 <view class="borrow">
-  <image class="headerImg" src="/img/load.gif" mode="图片" />
+  <image class="headerImg" src="{{imgUrl}}" mode="图片" />
   <view class="body">
     <card
-      title="XX茶餐厅"
+      title="{{merchantsName}}"
     />
     <view class="lis1">
-      2元/时
+      {{singleAmount}}
     </view>
     <view class="lis2">
-      5分钟内免费每天封顶20元，计费满99元自动扣取押金
+      {{dayMaxAmount}}
     </view>
     <view class="lis3">
       <view class="Icon"></view>

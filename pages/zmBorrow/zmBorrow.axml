@@ -26,7 +26,7 @@
     <view class="Lis3">
       <view style="margin-top: 10px;">
         <label style="display: flex; line-height: 24px;">
-          <am-checkbox />
+          <am-checkbox onChange="checkbox"/>
           <text >我同意商户查询我的芝麻分或评估结果</text>
         </label>
       </view>
@@ -34,7 +34,36 @@
     <view class="Lis4">
       注:请及时归还物品，否则将对你的信用产生影响
     </view>
-    <view class="Lis5">
-      <button type="primary">立即租借</button>
+    <view class="Lis5" onTap="Start">
+      <button type="primary" style="{{'background-color:'+(change?'rgb(255, 244, 79)':'#ccc') }}">立即租借</button>
     </view>
+
+<!--解锁中弹窗 -->
+  <view class="poup" style="{{'display:'+(poup?'block':'none') }}">
+    <view class="poupBODY">
+      <view class="lis1">
+        <view a:for="{{unlocks}}"  class="{{item==1?'show'+index:''}}" ></view>
+      </view>
+      <view class="lis2">
+        <view style="{{'width:'+unlocksIng+'%'}}"></view>
+      </view>
+      <view class="lis3">
+        解锁中 {{unlocksIng}}%
+      </view>
+    </view>
+  </view>
+
+  <!--借用成功-->
+  <popup show="{{n2}}" class="poup3" position="left" zIndex="101">
+      <view class="onLeft">
+           <icon type="success"  size="45" color="#40D47B"/>
+           <view class="pLis0">租借电源成功</view>
+           <view class="pLis1"><view></view>租借详情<view></view> </view>
+           <view class="pLis2"><text>租借时间</text><text>{{loan_date}}</text></view>
+           <view class="pLis3"><text>租借地点</text><text>{{loanAdderss}}</text></view>
+           <view class="pLis4"><text>订单号</text><text>{{orderNumber}}</text></view>
+           <view class="pLis5"><text>收费标准</text><text>{{standard}}</text></view>
+           <view class="pLis6"><button onTap="loan">确定</button></view>
+      </view>
+  </popup>
 </view>

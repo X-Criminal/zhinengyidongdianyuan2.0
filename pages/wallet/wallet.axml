@@ -12,7 +12,7 @@
         onClick="yajin"
       >
        <view>押金</view>
-       <view >{{depositState==='1'?'已交纳':depositState==='2'?'未缴纳':depositState==='3'?'免押':'未缴纳'}}</view>
+       <view >{{depositState==='1'?'已交纳':depositState==='2'?'未缴纳':depositState==='3'?'免押':depositState==='4'?'申请退款中':'未缴纳'}}</view>
       </list-item>
   </list>
   <list-item
