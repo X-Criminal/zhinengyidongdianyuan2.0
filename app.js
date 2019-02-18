@@ -9,7 +9,6 @@ App({
   qrCode:null,
   isLogin:false,
   onLaunch(options) {
-	  console.log( options )
 	  if(options.query){
 			this.qrCode = JSON.stringify(options.query.qrCode).split("imei=")[1].replace('"','');
 			this.qrCode = this.qrCode.replace('=','');

@@ -67,3 +67,11 @@
   border-radius: 100rpx;
   background-color: #FFF44F;
 }
+.xiaoming view:nth-child(2){
+    width: 100%;
+    left: 0;
+    line-height: 0.8rem;
+}
+.xiaoming view:nth-child(2)>view{
+  border-bottom: 1px solid #ccc;
+}

@@ -10,6 +10,7 @@ Page({
 	  this.init( )
   },
   init(){
+    console.log(1)
      app.ajax("/powerBank/app/user/queryLoanDetail","post",null,(res)=>{
        if(res.data.code===1000){
          let data = res.data.data;

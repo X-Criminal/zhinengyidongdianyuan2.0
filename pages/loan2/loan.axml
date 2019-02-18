@@ -1,6 +1,6 @@
 <view class="loan body">
   <view class="Lis1">
-      00:00
+      {{m}}:{{s}}
   </view>
   <view class="Lis2">
       租用中
@@ -12,37 +12,43 @@
   </view>
   <view class="Lis4">
     <text>实际租借时长：</text>
-    <text>15分钟</text>
+    <text>{{m}}分钟</text>
   </view>
   <view class="Lis4">
     <text>应付金额：</text>
-    <text>{{merchantsAdderss}}</text>
+    <text>{{originalPrice}}</text>
   </view>
    <view class="Lis4">
     <text>实付金额：</text>
-    <text>123456786514</text>
+    <text>{{realPayPrice}}</text>
   </view>
-   <view class="Lis4">
+   <view class="Lis4" onTap="setType">
     <text>支付方式：</text>
-    <text>支付宝 ></text>
+    <text>{{setSub==='1'?'支付宝':setSub==='3'?'钱包':'-'}} ></text>
   </view>
    <view class="Lis4">
     <text>优惠劵：</text>
     <text> ></text>
   </view>
-  <view class="Lis4">
+  <!-- <view class="Lis4">
     <text>支付时间：</text>
     <text>2016年10月10日 </text>
-  </view>
+  </view> -->
   <view class="Lis4">
     <text>租借时间：</text>
-    <text>2016年10月10日</text>
+    <text>{{loanDate}}</text>
   </view>
   <view class="Lis4">
     <text>租借地点：</text>
-    <text>2016年10月10日</text>
+    <text>{{merchantsName}}</text>
   </view>
    <view class="Lis5">
     <button>确认归还</button>
   </view>
+
+
+  <popup show="{{showTop1}}" className="xiaoming" position="bottom" onClose="onPopupClose">
+    <view style="height:80rpx; background: #fff;" onTap="onSetSubm" data-type="1" >支付宝</view>
+    <view style="height:80rpx; background: #fff;" onTap="onSetSubm" data-type="3" >钱包</view>
+  </popup>
 </view>
