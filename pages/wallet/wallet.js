@@ -35,7 +35,7 @@ Page({
     this.init( )
   },
   yajin(){
-	 if(this.data.depositState==='4') return false;
+	 if(this.data.depositState==='3'||this.data.depositState==='4') return false;
     if(this.data.depositState==='2'){
       app.Nav('../wallt1/wallt1','充值押金')
     }else{

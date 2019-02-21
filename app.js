@@ -120,7 +120,7 @@ App({
    onError(msg) {
     console.log(msg)
   },
-    Nav(url,title){
+   Nav(url,title){
     my.navigateTo({
       url:url,
       success:()=>{

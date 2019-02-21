@@ -63,7 +63,7 @@ Page({
       type:"qr",
       success( res ){
           _this.setData({
-            code:res.code
+            code:res.code.split("imei=")[1]
           })
       }
     })

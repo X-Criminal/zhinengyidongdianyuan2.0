@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+	 "pages/borrow/borrow",
     "pages/discountDetaLis/discountDetaLis",
     "pages/bindingPhone/bindingPhone",
     "pages/Coupon/coupon",
@@ -11,7 +12,7 @@
     "pages/opening/opening",
     "pages/agreement/agreement",
     "pages/problem/problem",
-    "pages/login/login",
+    
     "pages/detaIls/detaIls",
     "pages/explain/explain",
     "pages/fault/fault",
@@ -21,7 +22,6 @@
     "pages/depositTxt/depositTxt",
     "pages/payS/payS",
     "pages/deposit/deposit",
-    "pages/borrow/borrow",
     "pages/submission/submission",
     "pages/loan/loan",
     "pages/loan2/loan",
@@ -76,7 +76,8 @@
     "agreement":"用户协议",
     "refundDeposit":"退回押金",
     "deleClass":{
-      "class":"pages/search/search"
+      "0":"pages/search/search",
+		"1":"pages/login/login"
     }
   }
 }

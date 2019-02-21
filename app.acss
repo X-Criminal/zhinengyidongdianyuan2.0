@@ -13,7 +13,7 @@ page{
   width: 100%;
 }
 .yellowButton{
-  width: 550rpx;
+  width: 690rpx;
   height: 92rpx;
   margin: 0 auto;
   border-radius: 100rpx;

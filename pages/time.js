@@ -18,8 +18,10 @@
     return currentdate;
   };
 
-
-let billingTime = (startTime,endTime)=>{
+let _obj;
+let billingTime = (startTime,endTime,obj)=>{
+	 _obj  = obj;
+	 if(!_obj.c) _obj.c = 0;
     let _startTime = startTime.getTime( );
     let _endTime = endTime.getTime( );
     let oneDay=86400000,//一天毫秒数
@@ -48,8 +50,7 @@ let billingTime = (startTime,endTime)=>{
         if(StartM===endM&&endD-StartD<=1){
             FA = _endTime - _startTime;
             console.log( "次日归还" )
-            type3(FA)
-            return false;
+            return type3(FA,firstAay-_startTime);
         };
         if(StartM===endM){
             Days = endD - StartD+1;
@@ -57,8 +58,7 @@ let billingTime = (startTime,endTime)=>{
             FA = firstAay_num - _startTime;//第一天用时
             LA = (_endTime - _startTime) - ((Days-2)*oneDay) - FA;//最后一天使用时间
             console.log('当月多日归还');
-            type1(FA,LA,Days);
-            return false;
+            return type1(FA,LA,Days);
         };
 
         if(StartM!==endM){
@@ -68,14 +68,14 @@ let billingTime = (startTime,endTime)=>{
             LA = (_endTime - _startTime) - ((Days-2)*oneDay) - FA;//最后一天使用时间
             if(ML-StartD!==0){
                 console.log('次月多日1')
-                type1(FA,LA,Days)
+                return type1(FA,LA,Days)
             }else if(endD!==1){
                 console.log('次月多日2')
-                type1(FA,LA,Days)
+                return type1(FA,LA,Days)
             }else{
                 console.log('次月次日');
                 FA = _endTime - _startTime;
-                type2(FA)
+                return type2(FA,firstAay-_startTime)
             }
         }
         // if()||(StartM!==endM&&(ML-StartD===0&&endD!==1))){
@@ -86,20 +86,56 @@ let billingTime = (startTime,endTime)=>{
         //隔天归还 
     }else{
       console.log("当天归还")
-      type3(_endTime - _startTime)
+      return type3(_endTime - _startTime)
     }
   }
 
   let type1 = (time1,time2,num)=>{
-      console.log( time1)
-      console.log( time2)
-      console.log( num)
+	  let a = Math.ceil(((time1-_obj.c)/1000/60/60))*_obj.a;
+	  if(a<=0) a=0;
+	  if(a>=_obj.b) a= _obj.b;
+	  let b = Math.ceil(((time2-_obj.c)/1000/60/60))*_obj.a;
+	  if(b<=0) a=0;
+	  if(b>=_obj.b) b = _obj.b;
+	  let c = num*_obj.a;
+	  let d;
+	  if(time2<obj.c){
+		  d=obj.c-time2;
+	  }else{
+		  d=0;
+	  }
+	  return{a:a + b + c,b:d} ;
   }
-  let type2 = (time1)=>{
-      console.log(time1 ) 
+  let type2 = (time1,time2)=>{
+      let a = time-time2;
+		let one = (Math.ceil((time2 - _obj.c)/1000/60/60) - _obj.c)*_obj.a;
+		if(one<=0) one = 0;
+		if(one>=_obj.b) one = _obj.b;
+		let two = (Math.ceil((a- _obj.c)/1000/60/60))*_obj.a;
+		if(two<=0 ) two=0;
+		if(two>=_obj.b) two = _obj.b;
+		let b;
+		if(a<_obj.c){
+				b = _obj.c-a
+		}else{
+			   b = 0;
+		}
+		return {a:one + two,b:b }
     }
   let type3 = ( time ) =>{
-      console.log(time  )
+		// let a = time-time2;
+		// let one = (Math.ceil((time2 - _obj.c)/1000/60/60) - _obj.c)*_obj.a;
+		// if(one<=0) one = 0;
+		// if(one>=_obj.b) one = _obj.b;
+		// let two = (Math.ceil((a- _obj.c)/1000/60/60))*_obj.a;
+		// if(two<=0 ) two=0;
+		// if(two>=_obj.b) two = _obj.b;
+		// return one + two;
+		if(time<_obj.c){
+			return {a:0,b:_obj.c-time}
+		}else{
+			return {a:Math.ceil(time-_obj.c)/1000/60/60*_obj.a,b:0}
+		}
   }
     
 export {billingTime , formattingTime }

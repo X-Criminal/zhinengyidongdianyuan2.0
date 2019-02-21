@@ -16,19 +16,19 @@
   </view>
   <view class="Lis4">
     <text>应付金额：</text>
-    <text>{{originalPrice}}</text>
+    <text>{{abcdefg}}</text>
   </view>
    <view class="Lis4">
     <text>实付金额：</text>
-    <text>{{realPayPrice}}</text>
+    <text>{{_abcdefg}}</text>
   </view>
    <view class="Lis4" onTap="setType">
     <text>支付方式：</text>
     <text>{{setSub==='1'?'支付宝':setSub==='3'?'钱包':'-'}} ></text>
   </view>
-   <view class="Lis4">
+   <view class="Lis4" onTap="setByuser">
     <text>优惠劵：</text>
-    <text> ></text>
+    <text>{{'-'+ByuserId.amount}} ></text>
   </view>
   <!-- <view class="Lis4">
     <text>支付时间：</text>
@@ -40,15 +40,25 @@
   </view>
   <view class="Lis4">
     <text>租借地点：</text>
-    <text>{{merchantsName}}</text>
+    <text>{{merchantsAdderss}}</text>
   </view>
-   <view class="Lis5">
+   <view class="Lis5" onTap="Lis5">
     <button>确认归还</button>
   </view>
 
 
   <popup show="{{showTop1}}" className="xiaoming" position="bottom" onClose="onPopupClose">
-    <view style="height:80rpx; background: #fff;" onTap="onSetSubm" data-type="1" >支付宝</view>
-    <view style="height:80rpx; background: #fff;" onTap="onSetSubm" data-type="3" >钱包</view>
+    <view style="height:120rpx; background: #fff;" onTap="onSetSubm" data-type="1" >支付宝</view>
+    <view style="height:120rpx; background: #fff;" onTap="onSetSubm" data-type="3" >钱包</view>
   </popup>
+  <!-- <popup show="{{showTop2}}" className="xiaoming" position="bottom" onClose="onPopupClose">
+    <scroll-view class="xiaoming2" scroll-y="{{true}}">
+        <view a:for="{{ ByuserIdList}}" data-index="{{index}}" data-id="{{item.couponsuseId}}" onTap="setB">{{item.couponsName}}</view>
+     </scroll-view>
+  </popup> -->
+  <view class="xiaohong" catchTap="setA" style="display:{{showTop2?'block;':'none;'}}">
+	  <scroll-view class="xiaoming2" scroll-y="{{true}}">
+          <view a:for="{{ ByuserIdList}}" data-index="{{index}}" data-id="{{item.couponsuseId}}" onTap="setB">{{item.couponsName}}</view>
+     </scroll-view>
+  </view>
 </view>

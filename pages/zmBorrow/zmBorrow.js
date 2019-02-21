@@ -21,6 +21,9 @@ Page({
 		 mac:JSON.parse(query.data).code
 	 })
  },
+ onReady(){
+	 this.getMerchantsByMac( )
+ },
  Start(){
 	 if(!this.data.change) return false;
 	 this.unlock( );
@@ -32,7 +35,7 @@ Page({
           loan_date:data.loan_date,
           loanAdderss:data.loanAdderss,
           loanDate:data.loanDate,
-          orderId:data.orderId,
+          orderId:data.id,
           orderNumber:data.orderNumber,
           position:data.position,
           standard:data.standard,
@@ -55,6 +58,20 @@ Page({
       }
     })
  },
+  getMerchantsByMac(){
+	  app.ajax("/powerBank/app/user/getMerchantsByMac?cabinetMac="+this.data.mac,'get',null,(res)=>{
+		  if(res.data.code===1000){
+			  this.setData({
+					dayMaxAmount:res.data.data.dayMaxAmount,
+					imgUrl:res.data.data.imgUrl,
+					merchantsName:res.data.data.merchantsName,
+					singleAmount:res.data.data.singleAmount,
+		  		})
+		  }else{
+			  my.alert({title:res.data.message})
+		  }
+	  })
+  },
 
 	unlock(){
 		this.setData({
@@ -90,7 +107,7 @@ Page({
 
 	loan(){
     my.redirectTo({
-      url:"../loan/loan?orderId="+this.data.orderId,
+      url:"../loan/loan?queryIfLoanId="+this.data.orderId,
       success:()=>{
         my.setNavigationBar({
           title:"租用中",

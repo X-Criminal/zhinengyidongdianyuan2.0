@@ -1,6 +1,6 @@
 .Lis1{
   background-image: url(../img/vipCenter.png);
-  background-size: cover;
+  background-size: 100% 100%;
   width: 630rpx;
   height: 300rpx;
   margin: 0 auto;

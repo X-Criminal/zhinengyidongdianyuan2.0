@@ -32,10 +32,12 @@ Page({
           let Info = data.data.data;
           let _isget= "一键领取"
           let date = Info.couponsList;
-          for(let i = 0 ; i <date.length;i++){
-              date[i].endDate = app.formattingTime( date[i].endDate )
-              if(date[i].receiveState!=='0'){  _isget="已领取"}
-          }
+			 if(date){
+				   for(let i = 0 ; i <date.length;i++){
+						date[i].endDate = app.formattingTime( date[i].endDate )
+						if(date[i].receiveState!=='0'){  _isget="已领取"}
+          		}
+			 }
           let position = app.bd_decrypt(Info.longitude,Info.latitude )
           this.setData({
               url:app.url,

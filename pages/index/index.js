@@ -62,7 +62,7 @@ Page({
                 })
                  this.queryIfLoan( );
                  this.getCouponsByCategory( );
-						  this.getShopList(latitude,longitude);
+					  this.getShopList(latitude,longitude);
               })
       })
     })
@@ -213,17 +213,18 @@ Page({
   /**点击扫码二维码 Start*/
   sweepCode(){
     if( this.data.queryIfLoan===1000 ){
-      this.Nav( "../loan2/loan" ,"租借详情")
+		this.scan( "1000" )
+     // this.Nav( "../loan2/loan?queryIfLoanId="+this.data.queryIfLoanId ,"租借详情")
       return false;
     }
     if(app.isLogin){
       app.ajax("/powerBank/app/user/getUserdeposit","post",null,(res)=>{
         if(res.data.code===1000){
-          if(res.data.data.depositState==="2"){
-            this.scan( true )
-          }else{
-            this.scan( false )
-          }
+         //  if(res.data.data.depositState==="2"){
+         //    this.scan( true )
+         //  }else{
+         //    this.scan( false )
+         //  }
 			 switch (res.data.data.depositState){
 				 case "1":
 					this.scan( "1" )
@@ -232,6 +233,9 @@ Page({
 					this.scan( "2" )
 				 break;
 				 case "3":
+					this.scan( "3" )
+				 break;
+				 case "1000":
 					this.scan( "3" )
 				 break;
 				 default:
@@ -249,10 +253,12 @@ Page({
     my.scan({
         type: 'qr',
         success: (res) => {
+			   let _code =  res.code.split("imei=")[1]
           //my.alert({ title: res.code });
-				if(type==="2") _this.Nav("../borrow/borrow?data="+JSON.stringify(res),"租用确认");
-            if(type==="3") _this.Nav("../zmBorrow/zmBorrow?data="+JSON.stringify(res),"租用确认");
-				if(type==="1") _this.Nav("../submission/submission?data="+JSON.stringify(res),"租用确认");
+            if(type==="3") _this.Nav("../zmBorrow/zmBorrow?data="+JSON.stringify({code:_code}),"租用确认");
+				if(type==="1") _this.Nav("../submission/submission?data="+JSON.stringify({code:_code}),"租用确认");
+				if(type==="2") _this.Nav("../borrow/borrow?data="+JSON.stringify({code:_code}),"租用确认");
+				if(type==='1000')   _this.Nav( "../loan2/loan?queryIfLoanId="+this.data.queryIfLoanId+'&data='+JSON.stringify({code:_code}),"租借详情");
         },
     })
   },
@@ -424,7 +430,7 @@ Page({
     })
   },
   fLoan(){
-    this.Nav("../loan2/loan?queryIfLoanId="+this.data.queryIfLoanId)
+    this.Nav("../loan/loan?queryIfLoanId="+this.data.queryIfLoanId,'租借详情')
   },
 
   mast(){

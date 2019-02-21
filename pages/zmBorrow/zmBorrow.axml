@@ -16,10 +16,10 @@
     <view class="Lis2">
       <view>
         <view>租金</view>
-        <view>2/小时</view>
+        <view>{{singleAmount}}</view>
       </view>
       <view>
-        5分钟内免费每天封顶20元
+        {{dayMaxAmount}}
       </view>
     </view>
 
