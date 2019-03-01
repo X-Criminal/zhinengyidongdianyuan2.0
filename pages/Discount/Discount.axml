@@ -12,11 +12,11 @@
     <tab-content key="1" index="1">
       <scroll-view scroll-y="{{true}}" style="height:calc(100vh - 100rpx);">
           <view class="index1">
-          <view a:for="{{arr[0]}}">
+          <view a:for="{{arr[0]}}" data-couponsuseId="{{item.couponsuseId}}" onTap="DetaIls">
             <card
-            thumb="{{url+item.picture}}"
+            thumb="{{item.picture}}"
             title="有效期至{{item.endDate}}日"
-            subTitle="{{item.amount}}元充值卷"
+            subTitle="{{item.couponsName}}"
             info="{{item.couponsuseId}}"
             />
           </view>
@@ -26,11 +26,11 @@
     <tab-content key="2" index="2">
         <scroll-view scroll-y="{{true}}" style="height:calc(100vh - 100rpx);">
           <view class="index1">
-            <view a:for="{{arr[1]}}">
+            <view a:for="{{arr[1]}}"  data-couponsuseId="{{item.couponsuseId}}" onTap="DetaIls">
               <card
-              thumb="{{url+item.picture}}"
+              thumb="{{item.picture}}"
               title="有效期至{{item.endDate}}日"
-              subTitle="{{item.amount}}元充值卷"
+              subTitle="{{item.couponsName}}"
               info="{{item.couponsuseId}}"
               />
             </view>
@@ -40,11 +40,11 @@
     <tab-content key="3" index="3">
       <scroll-view scroll-y="{{true}}" style="height:calc(100vh - 100rpx);"> 
         <view class="index1 type3">
-          <view a:for="{{arr[2]}}">
+          <view a:for="{{arr[2]}}" data-couponsuseId="{{item.couponsuseId}}" onTap="DetaIls">
             <card
-              thumb="{{url+item.picture}}"
+              thumb="{{item.picture}}"
               title="有效期至{{item.endDate}}日"
-              subTitle="{{item.amount}}元充值卷"
+              subTitle="{{item.couponsName}}"
               info="{{item.couponsuseId}}"
             />
             <view class="ico"></view>

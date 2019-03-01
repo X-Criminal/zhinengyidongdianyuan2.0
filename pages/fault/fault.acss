@@ -82,3 +82,6 @@
   font-size: 31rpx;
   border-radius: 80rpx;
 }
+.fault > view:nth-child(3) label{
+  font-size: 25rpx;
+}

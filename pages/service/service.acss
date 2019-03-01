@@ -4,3 +4,24 @@
 .service .am-list-brief{
   color: #0B0817;
 }
+.img{
+  width: 123rpx;
+  height: 123rpx;
+  background-size: cover;
+  margin: 0 auto;
+  display: block;
+  margin-top: 180rpx;
+}
+.title{
+  text-align: center;
+  font-size: 32rpx;
+  margin-bottom: 10rpx;
+}
+.V{
+   text-align: center;
+   font-size: 24rpx;
+   margin-bottom: 100rpx;
+}
+.am-list-line >view:nth-child(1){
+  padding: 0 10rpx;
+}

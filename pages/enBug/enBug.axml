@@ -1,0 +1,10 @@
+<view class="agreement type1 body">
+     <list>
+       <list-item arrow="{{true}}" onClick="type1">
+        <view class="am-list-brief">常见问题</view>
+      </list-item>
+       <list-item arrow="{{true}}" onClick="type2">
+        <view class="am-list-brief">关于我们</view>
+      </list-item>
+  </list>
+</view>

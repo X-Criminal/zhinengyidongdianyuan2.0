@@ -41,7 +41,7 @@ Page({
               balance:_data.balance
             },
             success:(res)=>{
-              console.log(res)
+             
             }
           })
         }

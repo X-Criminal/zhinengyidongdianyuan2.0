@@ -10,6 +10,9 @@ Page({
     couponsList:[],
     isget:"一键领取",
     distance:"",
+    latitude:"",
+    longitude:"",
+    merchantsAdderss:"",
   }, 
    onLoad(query) {
     // 页面加载
@@ -27,10 +30,13 @@ Page({
     app.ajax("/powerBank/app/user/getMerchantByid","post",{merchantsId:res},(data)=>{
         if(data.data.code===1000){
           let Info = data.data.data;
+          let _isget= "一键领取"
           let date = Info.couponsList;
           for(let i = 0 ; i <date.length;i++){
               date[i].endDate = app.formattingTime( date[i].endDate )
+              if(date[i].receiveState!=='0'){  _isget="已领取"}
           }
+          let position = app.bd_decrypt(Info.longitude,Info.latitude )
           this.setData({
               url:app.url,
               name:Info.merchantsName,
@@ -39,12 +45,13 @@ Page({
               borrow:Info.borrow,
               businessHours:Info.businessHours,
               couponsState:Info.couponsState,
-              latitude:Info.latitude,
-              longitude:Info.longitude,
+              latitude:position.lat,
+              longitude:position.lng,
               mac:Info.mac,
               merchantsAdderss:Info.merchantsAdderss,
               imgUrls:Info.pictureList,
               couponsList:Info.couponsList,
+              isget:_isget
           })
         }
     })
@@ -73,15 +80,23 @@ Page({
     })
   },
   onNav(){
-    let _this = this;
-    my.navigateTo({
-      url:'/pages/nav/nav?merchantsId='+this.data.merchantsId,
-      success:()=>{
-        my.setNavigationBar({
-          title:_this.data.name,
-        })
-      }
-    })
+     let _this = this;
+    // my.navigateTo({
+    //   url:'/pages/nav/nav?merchantsId='+this.data.merchantsId,
+    //   success:()=>{
+        my.openLocation({
+            longitude: this.data.longitude,
+            latitude: this.data.latitude,
+            name: this.data.name,
+            address: this.data.merchantsAdderss,
+            fail(){
+              my.navigateTo({
+                url:'/pages/nav/nav?merchantsId='+this.data.merchantsId,
+              })
+            }
+          });
+    //   }
+    // })
   //  app.Nav('/pages/nav/nav?merchantsId='+this.data.merchantsId,this.data.name)
   },
 })

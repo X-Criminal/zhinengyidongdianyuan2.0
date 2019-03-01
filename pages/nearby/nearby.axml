@@ -1,6 +1,6 @@
 <view class="nearby">
-  <view class="Lis" a:for="{{Lis}}">
-    <image src="/img/feedback_default.png"  mode="logo"/>
+  <view class="Lis" a:for="{{Lis}}" data-merchantsId="{{item.merchantsId}}" data-distance="{{item.distance}}"  onTap="Nav">
+    <image src="{{item.imgUrl}}"  mode="logo" />
     <view>
       <view>
         {{item.merchantsName}}
@@ -23,14 +23,16 @@
           <view class="Icon">可还</view>
           可还
         </view>
-        <view style="{{item.couponsState>0?'display:block':'display:none'}}">
+        <view style="{{item.couponsState>'0'?'display:block':'display:none'}}">
           <view class="Icon">有优惠卷</view>
           有优惠卷
         </view>
       </view>
     </view>
   </view>
-  <view style="{{Lis.length>0?'display:none':'display:block'}}">
-    附近暂无V电。。。。
+
+  <view class="zz" style="{{Lis.length>0?'display:none':'display:block'}}">
+    {{message}}
   </view>
+  
 </view>

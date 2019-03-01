@@ -1,0 +1,14 @@
+<view class="discountDetaLis body">
+  <view class="title">
+    <image src="{{picture}}" mode="优惠劵图片" />
+    <view class="content">
+      <text>{{couponsName}}</text>
+      <text>有效期:{{endDate}}</text>
+    </view>
+  </view>
+  <view class="ILS">{{detailed}}</view>
+  <view class="code">优惠劵 <text>{{couponsCode}}</text> </view>
+  <view class="btn">
+    <button class="button" onTap="onIndex">立即使用</button>
+  </view>
+</view>

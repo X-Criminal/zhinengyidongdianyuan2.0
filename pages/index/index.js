@@ -5,6 +5,8 @@ Page({
        avatar:"",
       nickName:"",
     },
+    cc:false,
+    newData_animation:"",
     queryIfLoan:"",
     queryIfLoanId:"",
     userName:"",
@@ -12,12 +14,10 @@ Page({
     initLongitude:0,
     onLat:0,
     onLong:0,
-    TxtSearch:"",
     scale:16,
     showTop2:false,
-    showTop3:false,
     mask:false,
-    _z:"",
+    // _z:"",
     mapStyle:"width: 100%; height:calc(100% - 57px);",
     markers: [],
     List:[
@@ -52,28 +52,22 @@ Page({
         default:;
       }
     }
-    //  app.initGetuser((res)=>{
-    //    let userInfo = res;000000000
-    //        userInfo.isLogin=true,
-    //    this.setData({
-    //      userInfo:userInfo
-    //    })
-    //    console.log(userInfo)
-    //  })
   },
   onReady() {
+    let _this = this;
     this.getWindowSize( ( )=>{
-      this.getLocation( ()=>{
+      this.getLocation( (latitude,longitude)=>{
+        let a = latitude,b= longitude;
            app.baseUserInfo((user)=>{
                 this.setData({
-                  userInfo:user
+                  userInfo:user,
                 })
-                 this.queryIfLoan( )
+                 this.queryIfLoan( );
+                 this.getCouponsByCategory( );
+                 this.getShopList(a,b);
               })
       })
     })
-   
-   
     // 页面加载完成
   },
   /**登陆界面返回*/
@@ -83,24 +77,42 @@ Page({
     })
     this.queryIfLoan( )
   },
-  /**绑定搜索框 Start*/
-  onInput(e){
-    this.setData({
-      TxtSearch:e.detail.value
-    })
-  },
   /**登陆 Start */
   login(){
-    my.navigateTo({
-       url:'../login/login',
-       success:()=>{
-            my.setNavigationBar({
-              title:"登陆",
-          })
-        }
-       })
+    app.initGetuser( )
   },
   /**登陆 End */
+  /**是否有新优惠劵可以领取 Start*/
+  getCouponsByCategory(){
+    let _this = this;
+    app.ajax("/powerBank/app/user/getCouponsByCategory","post",null,(res)=>{
+      if(res.data.code===1000){
+        let data = res.data.data;
+        my.setStorage({
+          key:"Category",
+          data:data,
+        })
+        if(data.length>0&&JSON.stringify(data).indexOf('"receiveState":"0"')>-1){
+            _this.setData({
+              newData_animation:"newData_animation"
+            })
+        }else{
+          _this.setData({
+              newData_animation:"",
+          })
+        }
+      }
+    })
+    setTimeout(()=>{
+      this.setData({
+        newData_animation:"",
+      })
+    },10000)
+  },
+  newDiscount(){
+    app.Nav("../Coupon/coupon","优惠劵领取中心");
+  },
+  /**是否有新优惠劵可以领取 End*/
   /**个人中心 Start*/
   center(){
       if(app.isLogin){
@@ -125,8 +137,7 @@ Page({
           onLong:+res.longitude,
         })
         that.mapCtx = my.createMapContext('map');
-        that.getShopList(res.latitude,res.longitude );
-        cb&&cb( )
+        cb&&cb(+res.latitude,+res.longitude )
       },
       fail() {
         my.hideLoading();
@@ -136,9 +147,6 @@ Page({
       },
     })
   },
-  // mapPosition(event){
-  //     console.log(event)
-  // },
   getWindowSize( cb ){
   let _this = this;
    my.createSelectorQuery( ).select( )
@@ -153,9 +161,9 @@ Page({
         clickable:true,
         position: {
           left:windowWidth-60,
-          top:windowHeight>=724?windowHeight-357:windowHeight-300,
-          width: 40,
-          height: 40
+          top:windowHeight>=724?windowHeight-357:windowHeight-320,
+          width: 55,
+          height:55
         },
     }
     let kefu={
@@ -165,24 +173,24 @@ Page({
         position: {
           left:windowWidth-60,
           top: windowHeight>=724?windowHeight-307:windowHeight-250,
-          width: 40,
-          height: 40
+          width: 55,
+          height: 55
         },
     }
     let sm ={
       id:3,
-      iconPath: '/img/sm.png',
+      iconPath: '/img/position.png',
       clickable:true,
       position: {
-          left:(windowWidth-344.7)/2,
-          top:windowHeight>=724?windowHeight-247:windowHeight-150,
-          width: 344.7,
-          height: 46
+          left:windowWidth/2-13,
+          top:windowHeight/2-50-20,
+          width: 26,
+          height: 40
         },
     }
     arr.push(_initPosition)
     arr.push(kefu)
-    // arr.push(sm)
+     arr.push(sm)
      _this.setData({
         controls:arr,
      })
@@ -198,32 +206,47 @@ Page({
           this.service( )
           break;
           case 3:
-          this.sweepCode( )
+         // this.sweepCode( )
           break;
     }
   },
 
   /**点击扫码二维码 Start*/
   sweepCode(){
+    if( this.data.queryIfLoan===1000 ){
+      this.Nav( "../loan2/loan" ,"租借详情")
+      return false;
+    }
     if(app.isLogin){
-      this.scan((res)=>{
-        console.log(res)
+      app.ajax("/powerBank/app/user/getUserdeposit","post",null,(res)=>{
+        if(res.data.code===1000){
+          if(res.data.data.depositState==="2"){
+            this.scan( true )
+          }else{
+            this.scan( false )
+          }
+        }
       })
     }else{
       this.login( )
     }
   },
   //调起二维码扫描
-  scan(cb){
+  scan(type){
+    let _this = this;
     my.scan({
         type: 'qr',
         success: (res) => {
           //my.alert({ title: res.code });
-    
-          this.Nav("../borrow/borrow?data="+JSON.stringify(res),"租用确认")
+          if(type){
+            _this.Nav("../borrow/borrow?data="+JSON.stringify(res),"租用确认");
+          }else{
+            _this.Nav("../submission/submission?data="+JSON.stringify(res),"租用确认")
+          }
         },
     })
   },
+
   /**点击扫码二维码 End*/
   position(){
     //定位到当前位置
@@ -237,49 +260,49 @@ Page({
     //点击客服
     this.setData({
       showTop2:true,
-      showTop3:false,
-      mapStyle:"width: 100%; height:calc(100% - 265px);",
     })
   },
-  _Regionchange:true,
+
   RegionChange(e){
     let _this = this;
     //移动地图
-     if (e.type === 'end') {
+     if(e.type === "end"){
        this.setData({
          scale:e.scale,
        })
-       if(_this._Regionchange){
-        _this._Regionchange=false;
         _this.getShopList(e.latitude,e.longitude)
-            setTimeout(()=>{
-                _this._Regionchange = true;
-            },2000)
-       }
+        // this.mapCtx.updateComponents({
+        //   longitude:e.longitude,
+        //   latitude:e.latitude,
+        // })
+        // _this.setData({
+        //   initLongitude:e.longitude,
+        //   initLatitude:e.latitude
+        // })
       }
   },
   /**客服中心 Start */
   onItemClick(e){
-    switch (e.detail.index){
-       case 0:
+    switch (e.target.dataset.type){
+       case "1":
         this.Nav(
           '../service/service',
           '客服中心'
           )
        break;
-      case 1:
+      case "2":
       this.Nav(
           '../explain/explain',
-          '客服中心'
+          '使用说明'
           )
         break;
-      case 2:
+      case "3":
          this.Nav(
           '../problem/problem',
           "常见问题"
           )
         break;
-      case 3:
+      case "4":
         this.Nav(
           '../fault/fault',
           "故障上报"
@@ -302,59 +325,39 @@ Page({
         //this.mapCtx.clearRoute()
        // 
     },
-   
-
-    //导航路线
-    show_Route(endLat,endLng){
-      this.mapCtx.showRoute({
-      startLat: this.data.initLatitude,              // 起点纬度
-      startLng: this.data.initLongitude,             // 起点经度
-      endLat: endLat,
-      endLng: endLng,              // 重点经度
-     // routeColor:'#FFB90F',            // 路线颜色
-      iconPath: "/img/merchants_location.png",  // 路线纹理  10.1.35
-      iconWidth: 10,                    // 纹理宽度  10.1.35
-      routeWidth: 10,                   // 路线宽度  
-      zIndex: 998                         // 覆盖物 Z 轴坐标  10.1.35
-      })                     // 覆盖物 Z 轴坐标  10.1.35
-    },
    /**点击标记点 End */
 
   /**点击搜索 Start */
     onFOCUS(e){
-           my.navigateTo({
-            url:'../search/search',
-            success:()=>{
-                  my.setNavigationBar({
-                    title:"搜索",
-                    backgroundColor:"#fff",
-                    borderBottomColor:"#fff",
-                })
-              }
-            })
+      let _this = this;
+          my.chooseLocation({
+            success(e){
+              //  _this.mapCtx.updateComponents({
+              //       longitude:e.longitude,
+              //       latitude:e.latitude,
+              //   })
+                _this.getShopList(e.latitude,e.longitude)
+            }
+          })
     },
   /**点击搜索 End*/
   /**点击地图 Start */
   clickMap(){
     this.mapCtx.clearRoute()
-    this.setData({
-         showTop2: false,
-         showTop3: false,
-         mapStyle:"width: 100%; height:calc(100% - 57px);",
-    })
   },
   /**点击地图 End */
-  /**选择地址 Start */
-    positionLis(e){
-      this.setData({
-        _z:e.markerId,
-      })
-      this.mapCtx.updateComponents({
-        longitude:e.longitude,
-        latitude:e.latitude,
-      })
-    },
-  /**选择地址 End */
+  // /**选择地址 Start */
+  //   positionLis(e){
+  //     this.setData({
+  //       _z:e.markerId,
+  //     })
+  //     this.mapCtx.updateComponents({
+  //       longitude:e.longitude,
+  //       latitude:e.latitude,
+  //     })
+  //     this.getShopList(e.latitude,e.longitude)
+  //   },
+  // /**选择地址 End */
   /**附近的商家 Start */
     nearby(){
       this.Nav(
@@ -363,37 +366,40 @@ Page({
       )
     },
   /**附近的商家 End */
-
-  /**查看详情 Start*/
-  onDetails(e){
-    console.log("查看详情")
-    this.Nav(
-      '../detaIls/detaIls',
-      '商家详情'
-      )
-  },
-  // getRoute( ){
-  //   //路线导航
-  //   this.show_Route(this.data.endLat,this.data.endLng );
-  // },
   /**查看详情 End */
 
    /**获取附近商家 Start */
+   _getShopList: true,
     getShopList(lat,long){
-      let _this = this;
+    let _this = this;
+    if(!this._getShopList) { return false; }
+     _this._getShopList= false;
+     setTimeout(()=>{
+        _this._getShopList= true
+     },800)
+     my.showLoading( )
+    this.mapCtx.updateComponents({
+          longitude:b,
+          latitude:a,
+    })
+
+      let a = lat,b = long;
+     
+      let position = app.bd_encrypt(long, lat)
         app.ajax("/powerBank/app/user/getShopList",
                   "post",
-                  {latitude:lat,longitude:long},
+                  {latitude:position.lat,longitude:position.lng},
                   (res)=>{
                   if(res.data.code===1000){
                         let data = res.data.data;
-                        let arr = [ ]
+                        let arr = [ ];
                         for(let i = 0,idx = data.length;i<idx;i++){
+                          let position = app.bd_decrypt(data[i].longitude, data[i].latitude )
                           arr.push({
                               iconPath: "/img/map_garage1.png",
                               id:data[i].merchantsId,
-                              latitude: data[i].latitude,
-                              longitude:data[i].longitude,
+                              latitude: position.lat,
+                              longitude:position.lng,
                               width: 50,
                               height: 50,
                               distance:data[i].distance
@@ -405,10 +411,11 @@ Page({
                           initLongitude:long,
                         })
                   }
-          },(err)=>{ 
-            my.alert({
-              title: JSON.stringify(err)
-            });
+                   my.hideLoading({
+                      page: _this,  // 防止执行时已经切换到其它页面，page指向不准确
+                  });
+          },(err)=>{
+            console.log(err)
           })
     },
    /**获取附近商家 End */
@@ -418,11 +425,21 @@ Page({
         this.setData({
           queryIfLoan:res.data.code
         })
-        if(res.data.code===1000){this.setData({queryIfLoanId:res.data.data.orderId})}
+        if(res.data.code===1000){
+          this.setData({
+            queryIfLoanId:res.data.data.orderId
+            })
+       }
     })
   },
   fLoan(){
-    console.log( this.data.queryIfLoanId)
+    this.Nav("../loan2/loan?queryIfLoanId="+this.data.queryIfLoanId)
+  },
+
+  mast(){
+    this.setData({
+      showTop2:false,
+    })
   },
   onShareAppMessage() {
     // 返回自定义分享信息
@@ -444,7 +461,14 @@ Page({
   },
   //页面显示
   onShow(  ){
-    
+    if(this.data.cc){
+        this.getCouponsByCategory()
+        this.queryIfLoan( )
+    }else{
+      this.setData({
+        cc:true,
+      })
+    }
   },
   onError(msg) {
     console.log(msg)

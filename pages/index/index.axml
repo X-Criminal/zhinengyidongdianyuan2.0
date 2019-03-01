@@ -4,15 +4,17 @@
       <image src="{{userInfo.avatar}}" style="width:30px;height:30px;border-radius:100rpx;" class="img"/>
     </view>
     <view onTap="onFOCUS">
-      <input type="text" placeholder="搜索位置查找附近街电" class="input-txt" disabled="{{true}}" onInput="onInput" value="{{TxtSearch}}" controlled="{{true}}"  onBlur="onBLUS" style="{{inputStyle}}"/>
+      <input type="text" placeholder="搜索位置查找附近街电" class="input-txt" disabled="{{true}}"  controlled="{{true}}"/>
     </view>
     <view onTap="nearby">
       <image src="../../img/list.png" style="width:26px;height:26px;" class="img2"/>
     </view>
   </view>
   <cover-image src="/img/ZZZ.png" class="z" style="{{queryIfLoan===1000?'display:block':'display:none'}}" onTap="fLoan"></cover-image>
-
-    <map id="map" longitude="{{initLongitude}}" latitude="{{initLatitude}}"
+  
+  <cover-image src="/img/newDiscount.png" class="newData {{newData_animation}}" onTap="newDiscount"></cover-image>
+  
+  <map id="map" longitude="{{initLongitude}}" latitude="{{initLatitude}}"
       controls="{{controls}}"
       markers="{{markers}}"
       onControlTap="clickControlTap"
@@ -26,13 +28,12 @@
       >
   </map>
   <cover-image src="/img/sm.png" class="cover" onTap="sweepCode" style="{{showTop2?'display:none':'display:block'}}"></cover-image>
-  <!--服务中心 Start-->
-  <popup show="{{showTop2}}" position="bottom" className="popupBottom" zIndex="999" mask="{{false}}">
-      <view class="header">
-          客服中心
-      </view>
-      <grid onGridItemClick="onItemClick" columnNum="{{2}}" list="{{List}}" />
-  </popup>
-  <!--服务中心 End -->
 
+  <!--客服弹窗 -->
+   <cover-image style="{{showTop2?'display:block':'display:none'}}" src="/img/mask.png" class="service" onTap="mast"></cover-image>
+   <cover-image data-type="0" style="{{showTop2?'display:block':'display:none'}}" src="/img/Stitle.png" class="service_1" ></cover-image>
+   <cover-image data-type="1" style="{{showTop2?'display:block':'display:none'}}" src="/img/Stitle_type1.png" class="service_2" onTap="onItemClick"></cover-image>
+   <cover-image data-type="2" style="{{showTop2?'display:block':'display:none'}}" src="/img/Stitle_type2.png" class="service_3" onTap="onItemClick"></cover-image>
+   <cover-image data-type="3" style="{{showTop2?'display:block':'display:none'}}" src="/img/Stitle_type3.png" class="service_4" onTap="onItemClick"></cover-image>
+   <cover-image data-type="4" style="{{showTop2?'display:block':'display:none'}}" src="/img/Stitle_type4.png" class="service_5" onTap="onItemClick"></cover-image>
 </view>

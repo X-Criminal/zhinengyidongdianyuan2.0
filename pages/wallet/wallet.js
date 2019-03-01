@@ -31,8 +31,16 @@ Page({
        }
      })
   },
-  yajin(){
-    app.Nav('../qianbao/qianbao',"押金");
+  onShow() {
+    this.init( )
+  },
+  yajin(){  
+    if(this.data.depositState==='2'){
+      app.Nav('../wallt1/wallt1','充值押金')
+    }else{
+      app.Nav('../refundDeposit/refundDeposit',"押金");
+    }
+    
   },
   mingxi(){
     app.Nav('../tradeDetails/tradeDetails',"交易明细");

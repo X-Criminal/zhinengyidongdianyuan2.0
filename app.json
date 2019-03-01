@@ -1,6 +1,9 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/discountDetaLis/discountDetaLis",
+    "pages/bindingPhone/bindingPhone",
+    "pages/Coupon/coupon",
     "pages/chongzhi/chongzhi",
     "pages/wallet/wallet",
     "pages/center/center",
@@ -9,10 +12,8 @@
     "pages/agreement/agreement",
     "pages/problem/problem",
     "pages/login/login",
-    "pages/search/search",
     "pages/detaIls/detaIls",
     "pages/explain/explain",
-    "pages/service/service",
     "pages/fault/fault",
     "pages/nearby/nearby",
     "pages/nav/nav",
@@ -30,7 +31,10 @@
     "pages/qianbao/qianbao",
     "pages/tradeDetails/tradeDetails",
     "pages/Order/Order",
-    "pages/Discount/Discount"
+    "pages/Discount/Discount",
+    "pages/service/service",
+    "pages/enBug/enBug",
+    "pages/refundDeposit/refundDeposit"
   ],
   "window": {
     "defaultTitle": "V电",
@@ -53,7 +57,7 @@
     "loan3":"订单支付",
     "loan2":"租用中归还订单",
     "loan":"租用中订单",
-    "submission":"租借成功",
+    "submission":"租借界面/成功/订单",
     "borrow":"租用确认开通免压租借",
     "deposit":"支付押金界面",
     "payS":"支付成功界面",
@@ -69,7 +73,11 @@
     "search":"附近商家",
     "login":"登陆",
     "problem":"常见问题",
-    "agreement":"用户协议"
+    "agreement":"用户协议",
+    "refundDeposit":"退回押金",
+    "deleClass":{
+      "class":"pages/search/search"
+    }
   }
 }
  

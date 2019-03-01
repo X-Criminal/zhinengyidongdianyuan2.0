@@ -7,14 +7,21 @@ Page({
 
     picture:"",
     code:"",
-    Checkboxs:"123",
+    Checkboxs:"",
     faultDescription:"",
-    terminalType:"1"
+    terminalType:"1",
+    upData:['充电宝充电线损坏','机柜状态异常','二维码脱落','设备外观损坏','扫码后设备无反应','充电宝无法正常插入归还','订单计费异常','其他']
   },
   /**多选框 Start */
   onCheckBox(e){
+    let arr = '';
+    let data= e.detail.value;
+    let upData = this.data.upData;
+    for(let i = 0 ;i<data.length;i++){
+      arr +=upData[ data[i]-1]+'、';
+    }
     this.setData({
-      Checkboxs:e.detail.value
+      Checkboxs:arr
     })
   },
    /**多选框 End */
@@ -35,7 +42,7 @@ Page({
             success(res){
               let data = JSON.parse(res.data);
               if(data.code = 1000){
-                this.setData({
+                _this.setData({
                   picture:data.data
                 })
               }
@@ -76,7 +83,24 @@ Page({
       terminalType:this.data.terminalType
     }
     app.ajax("/powerBank/app/user/insertRepair","post",data,(res)=>{
-      console.log(res)
+      // if(this.data.faultDescription.length<=0){
+      //   my.alert({title:"请描述故障信息" })
+      // }
+      if(res.data.code===1000){
+        my.alert({
+          title: '上报成功！',
+          success(){
+            my.navigateBack({
+              delta:1
+            })
+          }
+        });
+        
+      }else{
+        my.alert({
+          title: '网络错误请稍后再试' 
+        });
+      }
     })
   }
 })

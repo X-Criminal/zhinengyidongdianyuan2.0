@@ -1,6 +1,6 @@
 <view class="search">
   <view class="{{isShow?'headerText':'headerText hiden'}}"  >
-      <input type="text" value="{{valueText}}" onInput="getText" controlled/>
+      <input  value="{{valueText}}" onInput="getText" placeholder="搜索位置查找附近街电" controlled/>
       <view onTap="onDele">
         <icon type="cancel" size="18px" color="#DBDBDB"/>
       </view>

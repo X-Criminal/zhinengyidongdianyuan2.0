@@ -5,12 +5,28 @@ Page({
       {img:"../../img/artificial_iphone.png",title:"服务热线",body:"400-123-888"},
       {img:"../../img/artificial_wechat.png",title:"微信",body:"v82018"},
       {img:"../../img/artificial_qq.png",title:"QQ",body:"10345676"},
-    ]
+    ],
+    index:null,
+    envVersion:""
   },
    onLoad(query) {
     // 页面加载
     //console.info(`Page onLoad with query: ${JSON.stringify(query)}`);
-    this.init( )
+    if(query.index==="i"){
+      this.setData({
+        index:query.index
+      })
+    }
+  },
+  onReady(){
+     this.init( );
+     my.getRunScene({
+       success:(res)=>{
+         this.setData({
+           envVersion:res.envVersion
+         })
+       }
+     })
   },
   init(){
     app.ajax("/powerBank/app/user/getSystemStep","post",null,(res)=>{
@@ -25,5 +41,10 @@ Page({
       }
        
     })
-  }
+  },
+  // onclick(e){
+  //   my.alert({
+  //     title:this.data.Lis[e.index].body
+  //   });
+  // }
 })

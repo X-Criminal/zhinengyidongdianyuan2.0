@@ -1,12 +1,11 @@
 <view class="zhongzhi body">
   <view class="Lis1">
-    <view data-type="50" onTap="getType"  style="background-color:{{cType=='50'?'rgb(255,244,79)':'rgb(247, 247, 249)'}}">50元</view>
+    <view data-type="0.01" onTap="getType"  style="background-color:{{cType=='0.01'?'rgb(255,244,79)':'rgb(247, 247, 249)'}}">50元</view>
     <view data-type="100" onTap="getType" style="background-color:{{cType=='100'?'rgb(255,244,79)':'rgb(247, 247, 249)'}}">100元</view>
     <view data-type="150"onTap="getType"  style="background-color:{{cType=='150'?'rgb(255,244,79)':'rgb(247, 247, 249)'}}">150元</view>
     <view data-type="200" onTap="getType" style="background-color:{{cType=='200'?'rgb(255,244,79)':'rgb(247, 247, 249)'}}">200元</view>
     <view data-type="250" onTap="getType" style="background-color:{{cType=='250'?'rgb(255,244,79)':'rgb(247, 247, 249)'}}">250元</view>
     <view data-type="300" onTap="getType" style="background-color:{{cType=='300'?'rgb(255,244,79)':'rgb(247, 247, 249)'}}">300元</view>
-    <view data-type="0.01" onTap="getType" style="background-color:{{cType=='300'?'rgb(255,244,79)':'rgb(247, 247, 249)'}}">测试勿点</view>
   </view>
   <view class="Lis2">
     <list>

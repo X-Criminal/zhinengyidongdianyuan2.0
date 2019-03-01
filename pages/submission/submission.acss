@@ -62,7 +62,7 @@
   border-radius: 20rpx;
 }
 .poup .poupBODY .lis1{
-  width: 366rpx;
+  width: 320rpx;
   height: 148rpx;
   box-sizing: border-box;
   border: 20rpx solid #d8d8d8;
@@ -94,9 +94,6 @@
 }
 .poup .poupBODY .lis1 > .show5{
   background-color: #afbeb6;
-}
-.poup .poupBODY .lis1 > .show6{
-  background-color: #4c535d;
 }
 .poup .poupBODY .lis2{
   width: 368rpx;
@@ -180,6 +177,7 @@
   line-height: 48rpx;
   font-size: 22rpx;
   color: #8a9199;
+  font-family: "微软雅黑";
 }
 .poup3 .pLis2>text:nth-child(1),.poup3 .pLis3>text:nth-child(1),.poup3 .pLis4>text:nth-child(1),.poup3 .pLis5>text:nth-child(1){
   float: left;

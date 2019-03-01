@@ -3,7 +3,7 @@
       <swiper indicator-dots="{{true}}" autoplay="{{true}}" interval="{{4000}}" duration="{{800}}" class="swiperImg">
         <block a:for="{{imgUrls}}">
           <swiper-item>
-            <image src="{{url+item.url}}" class="slide-image" />
+            <image src="{{item.url}}" class="slide-image" />
           </swiper-item>
         </block>
     </swiper>
@@ -70,7 +70,7 @@
               <card
                 thumb="{{item.picture}}"
                 subTitle="{{item.couponsName}}"
-                title="{{item.endDate}}"
+                title="有效期至：{{item.endDate}}"
               />
                <view class="isGet" style="{{item.receiveState==='0'?'display:none':'display:block'}}">
                 已领取
@@ -83,7 +83,7 @@
   <popup show="{{showCoupon}}" position="top" mask="{{false}}" className="Coupon">
       <card
       thumb="{{couponsList[0].picture}}"
-      title="{{couponsList[0].endDate}}"
+      title="有效期至：{{couponsList[0].endDate}}"
       subTitle="{{couponsList[0].couponsName}}"
     />
   </popup>

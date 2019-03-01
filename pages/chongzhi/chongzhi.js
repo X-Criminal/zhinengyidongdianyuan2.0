@@ -22,6 +22,7 @@ Page({
     })
   },
   cz(){
+    let _this = this;
     if(this.data.cType.length<=0) return false;
     let data = {
         amounts:this.data.cType,
@@ -34,7 +35,14 @@ Page({
           my.tradePay({
             tradeNO:res.data.data.orderInfo, //完整的支付参数拼接成的字符串，从服务端获取
             success: (res) => {
-                console.log(res)
+              console.log(res)
+                if(res.resultCode==="9000"){
+                    _this.init(()=>{
+                      my.navigateBack({
+                        delta:1
+                      })
+                    })
+                }
             },
             fail: (res) => {
               my.alert({
@@ -56,7 +64,6 @@ Page({
             CouponsByuserId:res.data.data,
         })
       }
-      console.log(res)
     })
   },
   setCB( e ){
@@ -66,5 +73,44 @@ Page({
       key :e.currentTarget.dataset.key,
       gb  :app
     })
+  },
+    init( cb ){
+      app.ajax(
+      "/powerBank/app/user/getUser",
+      "post",
+      null,
+      (res)=>{
+        if(res.data.code===1000){
+         let _data = res.data.data
+          this.setData({
+            userImg:_data.headUrl,
+            userName:_data.userName,
+            vipState:_data.vipState,
+            vipTime:_data.vipTime,
+            depositState:_data.depositState,
+            deposit:_data.deposit,
+            balance:_data.balance
+          })
+          my.setStorage({
+            key:"userInfo",
+            data:{
+              userImg:_data.headUrl,
+              userName:_data.userName,
+              vipState:_data.vipState,
+              vipTime:_data.vipTime,
+              depositState:_data.depositState,
+              deposit:_data.deposit,
+              balance:_data.balance
+            },
+            success:(res)=>{
+              console.log(res)
+            }
+          })
+          cb&&cb( )
+        }
+      },
+      (err)=>{
+      }
+      )
   },
 })

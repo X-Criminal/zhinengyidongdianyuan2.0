@@ -35,4 +35,27 @@ Page({
   Recharge(){
     app.Nav('../chongzhi/chongzhi',"我的钱包")
   },
+   onShow() {
+    // 页面显示
+    this._init( )
+  },
+    _init( ){
+     my.getStorage({
+       key:"userInfo",
+       success:(res)=>{
+         this.setData({
+          userImg:res.data.userImg,
+          userName:res.data.userName,
+          vipState:res.data.vipState,
+          vipTime:res.data.vipTime,
+          depositState:res.data.depositState,
+          deposit:res.data.deposit,
+          balance:res.data.balance
+         })
+       },
+       fail:(error)=>{
+          console.log(error)
+       }
+     })
+  },
 })

@@ -8,12 +8,12 @@ page{
   background: #f7f7f7;
 }
 .body{
-  font-family: PingFangSC-Regular;
+  font-family: '微软雅黑';
   color: #0B0817;
   width: 100%;
 }
 .yellowButton{
-  width: 630rpx;
+  width: 550rpx;
   height: 92rpx;
   margin: 0 auto;
   border-radius: 100rpx;

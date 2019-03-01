@@ -70,7 +70,7 @@ Page({
         app.Nav('../vipCenter/vipCenter',"会员中心")
       break;
       case 1:
-
+        app.Nav("../bindingPhone/bindingPhone","绑定手机号")
       break;
       case 2:
         app.Nav('../wallet/wallet','我的钱包')
@@ -82,7 +82,7 @@ Page({
         app.Nav('../Discount/Discount',"查看优惠劵")
       break;
       case 5:
-        
+        app.Nav('../enBug/enBug',"更多")
       break;
     }
   }

@@ -1,0 +1,14 @@
+<view class="body wallet">
+  <view class="Lis1">
+    <view>
+      <view><text>￥</text><text>99</text></view>
+      <view>押金</view>
+    </view>
+  </view>
+  <view style="text-align: center;font-size:25rpx;opacity:0.5;">
+    提现后不可租借移动电源
+  </view>
+  <view style="margin-top:550rpx;">
+    <button class="yellowButton" onTap="refundDeposit">退回押金</button>
+  </view>
+</view>

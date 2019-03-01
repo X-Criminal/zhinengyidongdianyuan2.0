@@ -83,3 +83,6 @@
    font-size: 22rpx;
    opacity: 0.5;
  }
+ .zz{
+   display:none;
+ }

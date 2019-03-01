@@ -1,0 +1,7 @@
+.agreement{
+  width: 100%;
+  color: black;
+}
+ .agreement .am-list-item .am-list-brief{
+  color: black;
+}

@@ -1,0 +1,74 @@
+.discountDetaLis{
+  padding-top: 30rpx;
+}
+.title{
+  width: 690rpx;
+  margin: 0 auto;
+  background-color: white;
+  height: 160rpx;
+  position: relative;
+}
+.title image{
+  width: 120rpx;
+  height: 120rpx;
+  background-size: cover;
+  float: left;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+}
+.title >view{
+  float: left;
+  top: 20rpx;
+  left: 160rpx;
+  right: 0;
+  position: absolute;
+}
+.title >view text{
+  display: block;
+  font-weight: 500;
+}
+.title >view text:nth-child(1){
+  font-size: 38rpx;
+}
+.title >view text:nth-child(2){
+  margin-top: 20rpx;
+  font-size: 25rpx;
+  opacity: 0.5;
+}
+.discountDetaLis .ILS{
+  width: 690rpx;
+  margin: 0 auto;
+  background-color: white;
+  padding-left: 20rpx;
+  font-size: 25rpx;
+  color: #8a8890;
+  line-height: 55rpx;
+  box-sizing: border-box;
+}
+.discountDetaLis .code{
+  width: 690rpx;
+  background-color: white;
+  box-sizing: border-box;
+  margin: 0 auto;
+  line-height:100rpx;
+  padding:0 20rpx;
+  font-size: 37rpx;
+}
+.discountDetaLis .code text{
+  float: right;
+  color: #0b0817;
+}
+.btn{
+  width: 690rpx;
+  background-color: white;
+  text-align: center;
+  margin: 0 auto;
+  padding: 30rpx 0; 
+}
+.btn .button{
+  display: inline-block;
+  width: 610rpx;
+  color: white;
+  background-color: #2c2c2c;
+  border-radius: 20rpx;
+}

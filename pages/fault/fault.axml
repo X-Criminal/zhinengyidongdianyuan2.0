@@ -12,11 +12,11 @@
     <checkbox-group onChange="onCheckBox">
      <label >
       <am-checkbox value="{{1}}"/>
-      <text>二维码脱落</text>
+      <text>充电宝充电线损坏</text>
     </label>
     <label >
       <am-checkbox value="{{2}}"/>
-      <text>二维码脱落</text>
+      <text>机柜状态异常</text>
     </label>
     <label >
       <am-checkbox value="{{3}}"/>
@@ -24,19 +24,19 @@
     </label>
     <label >
       <am-checkbox value="{{4}}"/>
-      <text>二维码脱落</text>
+      <text>设备外观损坏</text>
     </label>
     <label >
       <am-checkbox value="{{5}}"/>
-      <text>二维码脱落</text>
+      <text>扫码后设备无反应</text>
     </label>
     <label >
       <am-checkbox value="{{6}}"/>
-      <text>二维码脱落</text>
+      <text>充电宝无法正常插入归还</text>
     </label>
     <label >
       <am-checkbox value="{{7}}"/>
-      <text>二维码脱落</text>
+      <text>订单计费异常</text>
     </label>
       <label >
       <am-checkbox value="{{8}}"/>

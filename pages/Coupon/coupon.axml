@@ -1,0 +1,25 @@
+<view class="body coupon">
+  <view class="Lis" a:for="{{Lis}}" data-id="{{item.couponsId}}" data-state="{{item.receiveState}}">
+    <image src="{{item.picture}}" mode="优惠劵" />
+    <view class="title">
+      <view >{{item.couponsName}}</view>
+      <view>有效期至{{item.endDate}}</view>
+    </view>
+    <view class="get" data-ID="{{item.couponsId}}" style="{{item.receiveState<=0?'display:block':'display:none'}}" catchTap="insertCouponsUser">
+      <view>
+          立即
+      </view>
+      <view>
+        领取
+      </view>
+    </view>
+     <view class="Inget" style="{{item.receiveState>0?'display:block':'display:none'}}">
+      <view >
+        已经
+      </view>
+      <view>
+        领取
+      </view>
+    </view>
+  </view>
+</view>

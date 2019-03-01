@@ -12,11 +12,11 @@
   </view>
   <view class="Lis4">
     <text>实际租借时长：</text>
-    <text>2016年10月10日  10:40:47</text>
+    <text>15分钟</text>
   </view>
   <view class="Lis4">
     <text>应付金额：</text>
-    <text>深圳市宝安区西乡铁岗村水库路...</text>
+    <text>{{merchantsAdderss}}</text>
   </view>
    <view class="Lis4">
     <text>实付金额：</text>
@@ -24,7 +24,11 @@
   </view>
    <view class="Lis4">
     <text>支付方式：</text>
-    <text>1小时内免费，逾期2元/天</text>
+    <text>支付宝 ></text>
+  </view>
+   <view class="Lis4">
+    <text>优惠劵：</text>
+    <text> ></text>
   </view>
   <view class="Lis4">
     <text>支付时间：</text>

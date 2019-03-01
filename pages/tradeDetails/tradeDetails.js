@@ -24,7 +24,6 @@ Page({
           Lis:Lis
         })
       }
-      console.log(res)
     })
   },
 })

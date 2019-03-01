@@ -1,0 +1,20 @@
+<view class="body bindingPhone">
+  <view>
+      <view>
+      <text>手机号</text>
+      <input type="number" onInput="phoneConfirm"/>
+    </view>
+    <view>
+      <text>
+        验证码
+      </text>
+      <input type="text" onInput="codeConfirm"/>
+      <view onTap="getCode" class="getCode" style="{{isCode?'opacity:1;float:right;':'opacity: 0.5;float:right;'}}">
+      {{codeText}}
+      </view>
+    </view>
+  </view>
+  <view class="button" onTap="defaultTap">
+    <button  class="yellowButton">确 定</button>
+  </view>
+</view>

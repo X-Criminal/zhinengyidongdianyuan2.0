@@ -1,0 +1,54 @@
+.bindingPhone{
+  margin-top: 20rpx;
+}
+.bindingPhone >view{
+  background-color: white;
+  font-family: '微软雅黑';
+}
+.bindingPhone>view >view:nth-child(1){
+  height: 90rpx;
+  line-height: 90rpx;
+  width: 690rpx;
+  margin: 0 auto;
+  border-bottom: 1px solid #e5e5ee;
+}
+.bindingPhone>view  >view:nth-child(1) text{
+  float: left;
+}
+.bindingPhone>view  >view:nth-child(1) input{
+  float: left;
+  height: 90rpx;
+  margin: 0;
+  padding: 0;
+  padding-left: 10rpx;
+  font-size: 30rpx;
+}
+.bindingPhone >view >view:nth-child(2){
+  height: 90rpx;
+  line-height: 90rpx;
+  width: 690rpx;
+  margin: 0 auto;
+}
+.bindingPhone >view >view:nth-child(2) text{
+  float: left;
+}
+.bindingPhone>view  >view:nth-child(2) input{
+  float: left;
+  height: 90rpx;
+  margin: 0;
+  padding: 0;
+  padding-left: 10rpx;
+  font-size: 30rpx;
+}
+.bindingPhone>view  >view:nth-child(2) >view{
+  float: left;
+}
+.button{
+  margin-top: 448rpx;
+}
+.yellowButton{
+  font-size: 31rpx;
+}
+.button {
+  background-color: rgba(0,0,0,0);
+}

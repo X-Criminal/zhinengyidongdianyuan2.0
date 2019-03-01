@@ -9,12 +9,19 @@
   color: white;
   font-size: 25rpx;
   display: inline-block;
-  font-family: 'PingFangSC-Semibold';
+  font-family: '微软雅黑';
   margin: 20rpx 0;
+  color:white;
 }
 .content{
   color: #1F2D3D;
   font-size: 24rpx;
-  font-family: 'PingFangSC-Semibold';
+  font-family: '微软雅黑';
   line-height: 45rpx;
+}
+.h2{
+  text-indent: 24rpx;
+}
+.h3{
+  text-indent: 48rpx;
 }
