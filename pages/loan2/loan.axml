@@ -1,6 +1,6 @@
 <view class="loan body">
   <view class="Lis1">
-      {{m}}:{{s}}
+     {{h}}:{{mm}}:{{s}}
   </view>
   <view class="Lis2">
       租用中
@@ -40,7 +40,7 @@
   </view>
   <view class="Lis4">
     <text>租借地点：</text>
-    <text>{{merchantsAdderss}}</text>
+    <text style="overflow: hidden;width: 200px;height: 24px;text-overflow:ellipsis;white-space: nowrap;">{{merchantsAdderss}}</text>
   </view>
    <view class="Lis5" onTap="Lis5">
     <button>确认归还</button>
@@ -56,7 +56,7 @@
         <view a:for="{{ ByuserIdList}}" data-index="{{index}}" data-id="{{item.couponsuseId}}" onTap="setB">{{item.couponsName}}</view>
      </scroll-view>
   </popup> -->
-  <view class="xiaohong" catchTap="setA" style="display:{{showTop2?'block;':'none;'}}">
+  <view class="xiaohong" onTap="setA" style="display:{{showTop2?'block;':'none;'}}">
 	  <scroll-view class="xiaoming2" scroll-y="{{true}}">
           <view a:for="{{ ByuserIdList}}" data-index="{{index}}" data-id="{{item.couponsuseId}}" onTap="setB">{{item.couponsName}}</view>
      </scroll-view>

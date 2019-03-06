@@ -23,7 +23,9 @@
           index="{{index}}"
           last="{{index === (Lis.length - 1)}}"
         >
-          <view class="am-list-brief" style="color:#0B0817;font-family: PingFangSC-Regular;">{{item.name}}</view>
+          <view class="am-list-brief" style="color:#0B0817;font-family: PingFangSC-Regular;display:inline-block;">{{item.name}}</view>
+			 <!-- <view if style="{{'display:'+item.name==='绑定手机号'&&(item.phone&&item.phone.length>0)?'block':'none'}}">{{item.phone}}</view> -->
+			 <view a:if="{{item.name==='绑定手机号'&&phone.length>0}}" style="float:right;color:#ccc;">{{phone}}</view>
       </list-item>
     </block>
    </list>

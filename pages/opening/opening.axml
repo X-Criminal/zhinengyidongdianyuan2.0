@@ -2,7 +2,7 @@
   <view class="Lis" data-type="1" onTap="vipType" style="background-color:{{index==='1'?'rgb(255,236,79)':'rgb(247,247,247)'}}">
     <view>
       <view>30天</view>
-      <view>权益说明</view>
+      <view class='text'>不限次租借，每天可免费租借3小时，超过3小时，开始计费，计费规则参照普通用户计费规则；</view>
     </view>
     <view>
       <view>￥9.9</view>
@@ -12,7 +12,7 @@
   <view class="Lis" data-type="2" onTap="vipType" style="background-color:{{index==='2'?'rgb(255,236,79)':'rgb(247,247,247)'}}">
     <view>
       <view>90天</view>
-      <view>权益说明</view>
+      <view class='text'>不限次租借，每天可免费租借3小时，超过3小时，开始计费，计费规则参照普通用户计费规则；</view>
     </view>
     <view>
       <view>￥19.9</view>
@@ -22,7 +22,7 @@
   <view class="Lis" data-type="3" onTap="vipType" style="background-color:{{index==='3'?'rgb(255,236,79)':'rgb(247,247,247)'}}">
     <view>
       <view>365天</view>
-      <view>权益说明</view>
+      <view class='text'>不限次租借，每天可免费租借3小时，超过3小时，开始计费，计费规则参照普通用户计费规则；</view>
     </view>
     <view>
       <view>￥59.9</view>
@@ -30,8 +30,17 @@
     </view> 
   </view>
   <view class="Lis2">
-    <view>须知</view>
-    <view>须知1</view>
+    <view>会员套餐的购买须知</view>
+	 <view class="text2">1.每张月卡有效期为30天，季卡有效期为90天，年卡有效期为365天，购买后立即生效，成功购买会员卡后，产生的费用不予退还；</view>
+	 <view class='text2'>2.超出套餐内规定的时长，正常计费；</view>
+	 <view class="textChild">•月卡套餐：不限次租借，每天可免费租借3小时，超过3小时，开始计费，计费规则参照普通用户计费规则；</view>
+	 <view class="textChild">•季卡套餐：不限次租借，每天可免费租借3小时，超过3小时，开始计费，计费规则参照普通用户计费规则；</view>
+	 <view class="textChild">•年卡套餐：不限次租借，每天可免费租借3小时，超过3小时，开始计费，计费规则参照普通用户计费规则；</view>
+	 <view class='text2'>3.退押金后无法继续租借，已购买的会员卡有效期不变；重新缴纳押金后，会员卡权益即恢复;</view>
+	 <view class='text2'>4.购买的月卡可在我的钱包-我的卡包中査看；</view>
+	 <view class='text2'>5.仅限中国大陆地区使用。</view>
+
+
   </view>
   <view class="Lis3" onTap="userRecharge">
     <button class="yellowButton">支付</button>    

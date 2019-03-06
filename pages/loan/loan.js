@@ -1,7 +1,9 @@
 let app = getApp( )
 Page({
   data:{
+	  		h:"00",
 	  		m:"00",
+			mm:"00",
 			s:"00",
 			chargeStandard:"",
 			dayVipTime:"",
@@ -10,7 +12,7 @@ Page({
 			orderNumber:"",
   },
   onLoad(res){
-	  console.log(res)
+	  	my.showLoading( )
       this.setData({
         queryIfLoanId:res.queryIfLoanId
       })
@@ -50,17 +52,29 @@ Page({
   }, 
   time:"",
   setTime(){
+	let _this = this;
     let date = this.currentDate-this.startTime;
     this.time = setInterval(()=>{
       date+=1000;
-      let m = Math.floor(date/1000/60);
+		let h = Math.floor(date/1000/60/60);
+      let mm = Math.floor((date/1000/60/60-h)*60);
+		let m = Math.floor(date/1000/60);
       let s = Math.floor( (date/1000/60 - m)*60);
       s = s<10?"0"+s:s;
+		mm = mm<10?"0"+mm:mm;
       this.setData({
+		  mm:mm,
         m:m,
-        s:s
+        s:s,
+		  h:h
       })
     },1000)
+	 setTimeout(()=>{
+ 		my.hideLoading({
+         page:_this,
+     	});
+	 },1500)
+	
   },
   onUnload(){
 	  clearInterval( this.time )

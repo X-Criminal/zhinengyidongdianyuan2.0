@@ -36,6 +36,7 @@ transition: all .8s;
   line-height: 29px;
   transition: all .4s;
   border-radius: 15px;
+  font-size: 24rpx;
 }
 #operation{
   position: absolute;
@@ -318,41 +319,37 @@ transition: all .8s;
 }
 .service_1{
   position: absolute;
-  height:  82rpx;
-  right:   30rpx;
-  bottom:  436rpx;
-  width:   92%;
+  height:  40px;
+  right:   calc(50% - 160px);
+  bottom:  420rpx;
+  width:   320px;
   z-index: 100000;
 }
+.service_2 ,.service_3,.service_4,.service_5{
+	width: 160px;
+	height: 100px;
+}
 .service_2{
-  width: calc(92% / 2);
-  height: 198rpx;
   position: absolute;
-  left: 4%;
+  left: calc(50% - 160px);
   bottom: 239rpx;
   z-index: 10000;
 }
 .service_3{
-  width:  calc(92% / 2);
-  height: 198rpx;
   position: absolute;
-  right: 4%;
+  right: calc(50% - 160px);
   bottom: 239rpx;
   z-index: 10000;
 }
 .service_4{
-  width: calc(92% / 2);
-  height: 198rpx;
   position: absolute;
-  left: 4%;
-  bottom: 50rpx;
+  left: calc(50% - 160px);
+  bottom: 66rpx;
   z-index: 10000;
 }
 .service_5{
-  width:  calc(92% / 2);
-  height: 198rpx;
   position: absolute;
-  right: 4%;
-  bottom: 50rpx;
+  right: calc(50% - 160px);
+  bottom: 66rpx;
   z-index: 10000;
 }

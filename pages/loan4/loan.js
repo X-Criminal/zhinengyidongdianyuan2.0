@@ -8,7 +8,7 @@ Page({
 				  merchantsName:"",
 				  orderNumber:"",
 				  originalPrice:"",
-				  payDate:'payDate',
+				  payDate:' ',
 				  payType:"",
 				  powerMac:"",
 				  realPayPrice:"",
@@ -16,20 +16,21 @@ Page({
 				  state:"",
   },
   onLoad(res){
+	  console.log(res)
 	  this.setData({
-		  orderId:res.data.orderId
+		  orderId:res.orderId
 	  })
   },
   onReady(){
-
+	  this.init( )
   },
   init(){
-	  app.ajax("/powerBank/app/user/getOrders",'post',null,(res)=>{
+	  app.ajax("/powerBank/app/user/getOrders",'post',{orderId:this.data.orderId},(res)=>{
 		  if(res.data.code===1000){
 			  let data = res.data.data;
 			  this.setData({
 				  alsoDate:app.___formattingTime(data.alsoDate),
-				  leaseTime:app.___formattingTime(data.leaseTime),
+				  leaseTime:data.leaseTime,
 				  loanDate:app.___formattingTime(data.loanDate),
 				  merchantsName:data.merchantsName,
 				  orderNumber:data.orderNumber,

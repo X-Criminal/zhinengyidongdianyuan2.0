@@ -11,7 +11,6 @@ App({
   onLaunch(options) {
 	  if(options.query){
 			this.qrCode = JSON.stringify(options.query.qrCode).split("imei=")[1].replace('"','');
-			this.qrCode = this.qrCode.replace('=','');
 	  }
     // 第一次打开
     // options.query == {number:1}

@@ -15,7 +15,7 @@
   </view>
   <view class="Lis4">
     <text>应付金额：</text>
-    <text>{{merchantsName}}</text>
+    <text>{{originalPrice}}</text>
   </view>
    <view class="Lis4">
     <text>实付金额：</text>

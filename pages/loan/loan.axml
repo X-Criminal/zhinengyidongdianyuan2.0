@@ -1,6 +1,6 @@
 <view class="loan body">
   <view class="Lis1">
-      {{m}}:{{s}}
+      {{h}}:{{mm}}:{{s}}
   </view>
   <view class="Lis2">
       租用中
@@ -16,7 +16,7 @@
   </view>
   <view class="Lis4">
     <text>租借地点</text>
-    <text>{{merchantsAdderss}}</text>
+    <text style="overflow: hidden;width: 200px;height: 24px;text-overflow:ellipsis;white-space: nowrap;">{{merchantsAdderss}}</text>
   </view>
    <view class="Lis4">
     <text>订单号</text>

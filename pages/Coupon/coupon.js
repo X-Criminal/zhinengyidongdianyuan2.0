@@ -10,19 +10,10 @@ Page({
    insertCouponsUser(data){
      app.ajax("/powerBank/app/user/insertCouponsUser","post",{couponsId:data.currentTarget.dataset.ID},(res)=>{
        if(res.data.code===1000){
-        //  let data = this.data.Lis;
-        //  for(let i =0;i<data.length;i++){
-        //    if(data[i].couponsId===data.currentTarget.dataset.ID){
-        //      data[i].receiveState="1";
-        //      this.setData({
-        //        Lis:data
-        //      })
-        //    }
-        //  }
+		   this._init( )
          my.alert({
            title:"领取成功！"
          })
-        this.init( )
        }else{
          my.alert({
            title:res.data.message

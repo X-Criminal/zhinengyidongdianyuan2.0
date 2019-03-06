@@ -17,7 +17,6 @@ Page({
     scale:16,
     showTop2:false,
     mask:false,
-    // _z:"",
     mapStyle:"width: 100%; height:calc(100% - 57px);",
     markers: [],
     List:[
@@ -42,28 +41,27 @@ Page({
     endLat:0,//报错标记点
     endLng:0,//报错标记点
   },
-  onLoad(query) {
-    // 页面加载
-    if(query.type){
-      switch(query.type){
-        case "1":
-          this.login_(query.data)
-        break;
-        default:;
-      }
-    }
+  onLoad(query){
+
   },
-  onReady() {
+  onReady(){
     this.getWindowSize( ( )=>{
       this.getLocation( (latitude,longitude)=>{
-           app.baseUserInfo((user)=>{
+			setTimeout(()=>{
+				  app.baseUserInfo((user)=>{
                 this.setData({
                   userInfo:user,
                 })
                  this.queryIfLoan( );
                  this.getCouponsByCategory( );
 					  this.getShopList(latitude,longitude);
+					  if(app.qrCode ){
+						  setTimeout(()=>{
+							  this.sweepCode( )
+						  },500)
+					  }
               })
+			},300)
       })
     })
     // 页面加载完成
@@ -220,11 +218,7 @@ Page({
     if(app.isLogin){
       app.ajax("/powerBank/app/user/getUserdeposit","post",null,(res)=>{
         if(res.data.code===1000){
-         //  if(res.data.data.depositState==="2"){
-         //    this.scan( true )
-         //  }else{
-         //    this.scan( false )
-         //  }
+			  console.log(res.data.data)
 			 switch (res.data.data.depositState){
 				 case "1":
 					this.scan( "1" )
@@ -234,6 +228,9 @@ Page({
 				 break;
 				 case "3":
 					this.scan( "3" )
+				 break;
+				 case "4":
+					 my.alert({title:"申请退还押金中，暂时不可租借！"})
 				 break;
 				 case "1000":
 					this.scan( "3" )
@@ -250,17 +247,28 @@ Page({
   //调起二维码扫描
   scan(type){
     let _this = this;
-    my.scan({
-        type: 'qr',
-        success: (res) => {
-			   let _code =  res.code.split("imei=")[1]
-          //my.alert({ title: res.code });
-            if(type==="3") _this.Nav("../zmBorrow/zmBorrow?data="+JSON.stringify({code:_code}),"租用确认");
-				if(type==="1") _this.Nav("../submission/submission?data="+JSON.stringify({code:_code}),"租用确认");
-				if(type==="2") _this.Nav("../borrow/borrow?data="+JSON.stringify({code:_code}),"租用确认");
-				if(type==='1000')   _this.Nav( "../loan2/loan?queryIfLoanId="+this.data.queryIfLoanId+'&data='+JSON.stringify({code:_code}),"租借详情");
-        },
-    })
+	 if(!app.qrCode){
+		    my.scan({
+				type: 'qr',
+				success: (res) => {
+						let _code =  res.code.split("imei=")[1]
+					//my.alert({ title: res.code });
+						if(type==="3") _this.Nav("../zmBorrow/zmBorrow?data="+JSON.stringify({code:_code}),"租用确认");
+						if(type==="1") _this.Nav("../submission/submission?data="+JSON.stringify({code:_code}),"租用确认");
+						if(type==="2") _this.Nav("../borrow/borrow?data="+JSON.stringify({code:_code}),"租用确认");
+						if(type==='1000')   _this.Nav( "../loan2/loan?queryIfLoanId="+this.data.queryIfLoanId+'&data='+JSON.stringify({code:_code}),"租借详情");
+				},
+				fail:(res)=>{
+					console.log(res)
+				}
+    		})
+	 }else{
+		 				if(type==="3") _this.Nav("../zmBorrow/zmBorrow?data="+JSON.stringify({code:app.qrCode}),"租用确认");
+						if(type==="1") _this.Nav("../submission/submission?data="+JSON.stringify({code:app.qrCode}),"租用确认");
+						if(type==="2") _this.Nav("../borrow/borrow?data="+JSON.stringify({code:app.qrCode}),"租用确认");
+						if(type==='1000')   _this.Nav( "../loan2/loan?queryIfLoanId="+this.data.queryIfLoanId+'&data='+JSON.stringify({code:app.qrCode}),"租借详情");
+
+	 }
   },
 
   /**点击扫码二维码 End*/

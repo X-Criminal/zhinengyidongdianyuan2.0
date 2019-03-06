@@ -22,7 +22,8 @@ Page({
 	 })
  },
  onReady(){
-	 this.getMerchantsByMac( )
+	// this.getMerchantsByMac( )
+	 this.getUserOrder( )
  },
  Start(){
 	 if(!this.data.change) return false;
@@ -69,6 +70,22 @@ Page({
 		  		})
 		  }else{
 			  my.alert({title:res.data.message})
+			  console.log(res.data.message.indexOf('有订单未处理'))
+			  if(res.data.message.indexOf('有订单未处理')>-1){
+				  	app.Nav('../Order/Order','订单')
+			  }
+		  }
+	  })
+  },
+  getUserOrder(){
+	  app.ajax('/powerBank/app/user/getUserOrder','get',null,(res)=>{
+		  if(res.data.code===3002){
+			  	 my.alert({title:'您有未处理订单，请先处理！'})
+				 app.Nav("../Order/Order",'订单')
+			  	//有订单
+		  }else if(res.data.code===3001){
+			  	//没有订单
+				  this.getMerchantsByMac(  )
 		  }
 	  })
   },
@@ -106,14 +123,17 @@ Page({
 	},
 
 	loan(){
-    my.redirectTo({
-      url:"../loan/loan?queryIfLoanId="+this.data.orderId,
-      success:()=>{
-        my.setNavigationBar({
-          title:"租用中",
-        })
-      }
-    })
+		my.navigateBack({
+			delta:2
+		})
+   //  my.redirectTo({
+   //    url:"../loan/loan?queryIfLoanId="+this.data.orderId,
+   //    success:()=>{
+   //      my.setNavigationBar({
+   //        title:"租用中",
+   //      })
+   //    }
+   //  })
    // app.Nav("../loan/loan?orderId="+this.data.orderId,"租用中")
   },
 	checkbox(value){

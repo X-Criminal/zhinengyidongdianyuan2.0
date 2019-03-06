@@ -46,7 +46,7 @@
   margin-top: 45rpx;
 }
 .Lis3{
-  margin-top: 580rpx;
+  margin-top: 325rpx;
 }
 .Lis1  .xufei{
   position: absolute;
@@ -64,4 +64,14 @@
 }
 .vipCenter .hidden{
   display: none;
+}
+.userImg{
+	border-radius: 100%;
+}
+.txt{
+	width: 630rpx;
+	margin: 0 auto;
+	color: rgb(145, 144, 118);
+	font-size: 22rpx;
+	margin-top: 8rpx;
 }

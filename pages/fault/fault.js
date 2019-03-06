@@ -81,11 +81,26 @@ Page({
       faultType:this.data.Checkboxs,
       picture:this.data.picture,
       terminalType:this.data.terminalType
-    }
+    };
+	 if(data.cabinetMac.length<=0){
+		 my.alert({
+			 title:"请先扫描机柜二维码！"
+		 })
+		 return;
+	 }
+	 if(data.faultDescription.length<=0){
+		 my.alert({
+			 title:"请描述故障原因！"
+		 })
+		  return;
+	 }
+	 if(data.faultType.length<=0){
+		 my.alert({
+			 title:"请选择故障原因！"
+		 })
+		  return;
+	 }
     app.ajax("/powerBank/app/user/insertRepair","post",data,(res)=>{
-      // if(this.data.faultDescription.length<=0){
-      //   my.alert({title:"请描述故障信息" })
-      // }
       if(res.data.code===1000){
         my.alert({
           title: '上报成功！',
@@ -95,10 +110,9 @@ Page({
             })
           }
         });
-        
       }else{
         my.alert({
-          title: '网络错误请稍后再试' 
+          title: '请稍后再试！' 
         });
       }
     })

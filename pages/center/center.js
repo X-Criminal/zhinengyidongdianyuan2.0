@@ -9,6 +9,7 @@ Page({
     balance:0,
     depositState:0,
     vipTime:"",
+	 phone:"",
     Lis:[
       {name:"会员中心",   img:"../../img/center_members.png"},
       {name:"绑定手机号", img:"../../img/center_.png"},
@@ -39,7 +40,8 @@ Page({
             vipTime:_data.vipTime,
             depositState:_data.depositState,
             deposit:_data.deposit,
-            balance:_data.balance
+            balance:_data.balance,
+				phone:_data.phone,
           })
           my.setStorage({
             key:"userInfo",

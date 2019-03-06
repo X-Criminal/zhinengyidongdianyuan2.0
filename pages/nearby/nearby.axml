@@ -15,11 +15,11 @@
         {{item.merchantsAdderss}}
       </view>
       <view class="info">
-        <view style="{{item.borrow>0?'display:block':'display:none'}}">
+        <view style="{{item.also>0?'display:block':'display:none'}}">
           <view class="Icon">可借</view>
           可借
         </view>
-        <view style="{{item.also>0?'display:block':'display:none'}}">
+        <view style="{{item.also!=6?'display:block':'display:none'}}">
           <view class="Icon">可还</view>
           可还
         </view>

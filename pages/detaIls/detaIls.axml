@@ -31,13 +31,13 @@
           </view>
       </view>
       <view>
-        <view style="{{borrow>0?'display:block':'display:none'}}">
+        <view style="{{also>0?'display:block':'display:none'}}">
           可借
           <view class="icon">
             可借
           </view>
         </view>
-        <view style="{{also>0?'display:block':'display:none'}}">
+        <view style="{{also!=6?'display:block':'display:none'}}">
           可还
           <view class="icon">
             可还

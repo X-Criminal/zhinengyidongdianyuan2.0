@@ -37,3 +37,13 @@
   font-size:25rpx;
   color: #85838b;
 }
+
+
+.title image{
+	 width: 190px;
+    height: 150px;
+    background-size: cover;
+}
+.title{
+	text-align: center;
+}

@@ -1,7 +1,7 @@
 <view class="body vipCenter">
   <view class="Lis1">
     <view>
-      <image src="" mode="用户" />
+      <image src="{{userImg}}" class="userImg" mode="用户" />
       <view>
         <text>{{userName}}{{vipState ==='4'?'(普通会员)':'(VIP会员)'}}</text>
         <text class="{{vipState ==='4'?'hidden':'zz'}}">到期时间{{vipTime}}</text>
@@ -9,7 +9,12 @@
     </view>
     <view class="{{vipState === '4'?'xufei hidden':'xufei'}}" onTap="opening">立即续费</view>
   </view>
-  <view class="Lis2">权益说明</view>
+   <view class="Lis2">权益说明:</view>
+   <view class='txt'>•普通会员：每日租借时间超过5分钟，开始计费，计费规则参照普通用户计费规则，日封顶计费时长为10小时；</view>
+   <view class='txt'>•月卡套餐：不限次租借，每天可免费租借3小时，超过3小时，开始计费，计费规则参照普通用户计费规则；</view>
+	<view class='txt'>•季卡套餐：不限次租借，每天可免费租借3小时，超过3小时，开始计费，计费规则参照普通用户计费规则；</view>
+	<view class='txt'>•年卡套餐：不限次租借，每天可免费租借3小时，超过3小时，开始计费，计费规则参照普通用户计费规则；</view>
+	
   <view class="{{vipState === '4'?'Lis3':'Lis3 hidden'}}">
     <button class="yellowButton" onTap="opening">开通VIP会员</button>
   </view>

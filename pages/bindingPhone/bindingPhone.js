@@ -64,14 +64,28 @@ Page({
   },
   defaultTap(){
       app.ajax("/powerBank/app/user/updateUserPhone","post",{code:this.data.code,phone:this.data.phone},(res)=>{
-          my.alert({
-            title:res.data.message
-          })
-          if( res.data.cod===1000){
+          if( res.data.code===1000){
             my.navigateBack({
               delta:1
             })
-          }
+				my.alert({
+					title:'绑定成功！'
+				})
+          }else{
+				 switch(res.data.code){
+					case 3005:
+					 my.alert({title:'验证码过期！'})
+					break;
+					case 3002:
+					  my.alert({title:'手机号已绑定！'})
+					break;
+					  case 2003:
+					  my.alert({title:'手机号或验证码未填写！'})
+					break;
+					default:
+				  		 my.alert({title:"请稍后再试！"})
+				 }
+			 }
       })
   }
 })

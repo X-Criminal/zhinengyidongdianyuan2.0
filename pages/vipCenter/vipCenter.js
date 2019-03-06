@@ -27,7 +27,7 @@ Page({
             vipTime:_data.vipTime,
             depositState:_data.depositState,
             deposit:_data.deposit,
-            balance:_data.balance
+            balance:_data.balance,
           })
           my.setStorage({
             key:"userInfo",

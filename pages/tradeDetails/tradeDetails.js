@@ -2,8 +2,16 @@ let app = getApp( )
 Page({
   data:{
     Lis:[ ],
+	 isinit:false,
   },
   currPage:1,
+  onLoad(){
+	this.setData({
+		Lis:[],
+		isinit:false,
+	});
+	this.currPage = 1;
+  },
   onReady(){
     this.init( )
   },
@@ -21,9 +29,13 @@ Page({
             Lis.push( data[i] )
         }
         this.setData({
-          Lis:Lis
+          Lis:Lis,
+			 isinit:true,
         })
       }
     })
   },
+  onUnload(){
+	
+  }
 })

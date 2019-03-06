@@ -10,4 +10,13 @@
       <view style="{{item.type==='2'?'display:block':item.type==='4'?'display:none':'-'}}">优惠劵-{{item.amount}}</view>
     </view>
   </view>
+  <view a:if="{{!isinit}}" class="title">
+	  <image src="/img/feedback_default.png" mode="提示" />
+	  <view>加载中......</view>
+  </view>
+
+  <view  a:if="{{isinit&&Lis.length<=0}}" class="title">
+	  <image src="/img/feedback_default.png" mode="提示" />
+	  <view>暂无数据......</view>
+  </view>
 </view>

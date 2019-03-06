@@ -19,7 +19,9 @@ Page({
       dayMaxAmount:"",
       imgUrl:"",
       merchantsName:"",
-      singleAmount:""
+      singleAmount:"",
+
+		isorderId:"",
   },
   enDunlock:null,
   DunlockIng:null,
@@ -36,7 +38,7 @@ Page({
 			  mac:app.qrCode
 		  })
 	  }
-	  this.init( )
+	  this.getUserOrder( )
   },
   sub(){
     this.unlock( );
@@ -103,14 +105,17 @@ Page({
     },30)
   },
   loan(){
-    my.redirectTo({
-      url:"../loan/loan?orderId="+this.data.orderId,
-      success:()=>{
-        my.setNavigationBar({
-          title:"租用中",
-        })
-      }
-    })
+	  	my.navigateBack({
+			delta:5
+		})
+   //  my.redirectTo({
+   //    url:"../loan/loan?orderId="+this.data.orderId,
+   //    success:()=>{
+   //      my.setNavigationBar({
+   //        title:"租用中",
+   //      })
+   //    }
+   //  })
    // app.Nav("../loan/loan?orderId="+this.data.orderId,"租用中")
   },
   init(){
@@ -133,6 +138,21 @@ Page({
 			 }
         });
       }
-    })
-  }
+    });
+	 app.ajax("/powerBank/app/user/getUserOrder",'get',null,(res)=>{
+		 console.log(res)
+	 })
+  },
+   getUserOrder(){
+	  app.ajax('/powerBank/app/user/getUserOrder','get',null,(res)=>{
+		  if(res.data.code===3002){
+			  	 my.alert({title:'您有未处理订单，请先处理！'})
+				 app.Nav("../Order/Order",'订单')
+			  	//有订单
+		  }else if(res.data.code===3001){
+			  	//没有订单
+				  this.init(  )
+		  }
+	  })
+  },
 })

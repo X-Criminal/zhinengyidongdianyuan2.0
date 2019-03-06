@@ -2,14 +2,19 @@ let app = getApp( );
 import {billingTime} from "../time.js"
 Page({
   data:{
-             orderId:"",
+       orderId:"",
        queryIfLoanId:"",
        currentDate:"",
        originalPrice:0,
+		 h:'00',
        m:"00",
        s:"00",
 
 		ByuserIdList:[],
+		ByuserId:{
+			amount:"",
+
+		},
 showTop1:false,
 showTop2:false,
 setSub:"1",
@@ -21,6 +26,7 @@ setSub:"1",
          orderNumber:"",
 		returnCabinetId:"",
 	abcdefg:0,
+	_abcdefg:0,
 	toView: 'red',
   },
   onLoad(query){
@@ -28,15 +34,17 @@ setSub:"1",
         queryIfLoanId:query.queryIfLoanId,
 		  returnCabinetId:JSON.parse(query.data).code
       })
+		my.showLoading( );
   },
   currentDate:0,
   startTime:0, 
   onReady(){
+	  let _this= this;
       this.init(()=>{
         this.getCurrentDate(()=>{
           this.setTime( )
 			 this.getUser(()=>{
-				 setTimeout(()=>{
+				setTimeout(()=>{
 					 let a ;
 					 	 if(this.data.vipState==4){
 										a =  billingTime( new Date(  app.___formattingTime(this.startTime)),new Date(app.___formattingTime(this.currentDate) ) ,{a:this.data.singleAmount,b:this.data.dayMaxAmount});
@@ -45,13 +53,15 @@ setSub:"1",
 								}
 							this.setData({
 								 abcdefg:Math.ceil(a.a),
-								_abcdefg:Math.ceil(a.a-this.data.ByuserId.amount<0?0:a.a-this.data.ByuserId.amount)
-							})
+								 //_abcdefg:Math.ceil(a.a-this.data.ByuserId.amount<0?0:a.a-this.data.ByuserId.amount)
+					})
+					setTimeout(()=>{
+						this.getCouponsDeviceList( )
+					},500)
 				 },800)
 			 })
         })
       });
-		this.getCouponsDeviceList( )
     },
 	 getUser(cb){
 		 app.ajax("/powerBank/app/user/getUser",'post',null,(res)=>{
@@ -68,12 +78,17 @@ setSub:"1",
     let date = this.currentDate-this.startTime;
     this.time = setInterval(()=>{
       date+=1000;
+		let h = Math.floor(date/1000/60/60);
+      let mm = Math.floor((date/1000/60/60-h)*60);
       let m = Math.floor(date/1000/60);
       let s = Math.floor( (date/1000/60 - m)*60);
       s = s<10?"0"+s:s;
+		mm = mm<10?"0"+mm:mm;
       this.setData({
-        m:m,
-        s:s
+			h:h,
+			mm:mm,
+			m:m,
+         s:s
       })
     },1000)
   },
@@ -133,30 +148,46 @@ setSub:"1",
 	  }
 	  	app.ajax("/powerBank/app/user/getCouponsByuserIdList",'post',data,( res )=>{
 			  if(res.data.code===1000&&res.data.data){
+				  let Monet = this.data.abcdefg - Number(res.data.data[0].amount);
 				  this.setData({
 							ByuserIdList:res.data.data,
 							ByuserId:res.data.data[0],
+							_abcdefg:Monet>0?Monet:0,
 			  		})
+			  }else{
+				  this.setData({
+					  ByuserId:{amount:"暂无可用优惠劵"},
+					  ByuserIdList:[]
+				  })
 			  }
 		})
+		my.hideLoading({
+			page: this,  //防止执行时已经切换到其它页面，page指向不准确
+		});
   },
   setByuser(){
-	  this.setData({
-		  showTop2:true,
-	  })
+	  if(this.data.ByuserIdList.length>0){
+		   this.setData({
+		  		showTop2:true,
+	  		})
+	  }
   },
-  setB(){
+  setA(){
 	  	this.setData({
 		  showTop2:false,
 	  })
   },
   setB(e){
+	  let Byuser = this.data.ByuserIdList[e.currentTarget.dataset.index],
+	  		Byuser2 =this.data.abcdefg - Number( Byuser.amount );
 	  this.setData({
-		  ByuserId:this.data.ByuserIdList[e.currentTarget.dataset.index],
+		  _abcdefg:Byuser2>0?Byuser2:0,
+		  ByuserId:Byuser,
 		  showTop2:false,
 	  })
   },
   Lis5(){
+	  let _this = this;
 	  this.getCurrentDate( )
 	  my.showLoading( )
 	  let a ; 
@@ -166,33 +197,42 @@ setSub:"1",
 		    a =  billingTime( new Date(  app.___formattingTime(this.startTime)),new Date(app.___formattingTime(this.currentDate) ) ,{a:this.data.singleAmount,b:this.data.dayMaxAmount,c:this.data.dayVipTime});
 	  }
 	  let data ={
-		  billingTime:Math.ceil((this.data.vipState==4?this.currentDate-this.startTime+"":this.currentDate-this.startTime-this.data.dayVipTime)/1000/60)+"",
-		  couponscuseId:this.data.ByuserId.couponsuseId,
+		  billingTime:Math.ceil((_this.data.vipState==4?_this.currentDate-_this.startTime+"":_this.currentDate-_this.startTime-_this.data.dayVipTime)/1000/60)+"",
 		  dayuseTime:a.b+"",
-		  leaseTime:Math.ceil((this.currentDate-this.startTime)/1000/60)+"",
-		  orderId:+this.data.queryIfLoanId,
+		  leaseTime:Math.ceil((_this.currentDate-_this.startTime)/1000/60)+"",
+		  orderId:+_this.data.queryIfLoanId,
 		  originalPrice:Math.ceil(a.a),
-		  payType:this.data.setSub,
-		  realPayPrice:a.a-this.data.ByuserId.amount<0?0:a.a-this.data.ByuserId.amount,
-		  cabinetMac:this.data.returnCabinetId,
+		  payType:_this.data.setSub,
+		  realPayPrice:_this.data._abcdefg,
+		  cabinetMac:_this.data.returnCabinetId,
+	  };
+	  if(_this.data.ByuserId){
+		 data.couponscuseId=_this.data.ByuserId.couponsuseId;
 	  }
 	  app.ajax("/powerBank/app/user/returnPowerBank",'post',data,(res)=>{
 		  	  my.hideLoading({
-               page: this,  //防止执行时已经切换到其它页面，page指向不准确
+               page: _this,  //防止执行时已经切换到其它页面，page指向不准确
 				});
 				if(res.data.code===1000){
-						my.tradePay({
+					if(res.data.data){
+							my.tradePay({
 							tradeNO:res.data.data.orderInfo,
 							success:(res)=>{
 								if(res.resultCode==='9000'){
 									my.redirectTo({
-										url:'../loab4/loan?orderId'+this.data.orderId
+										url:'../loan4/loan?orderId='+_this.data.queryIfLoanId
 									})
 								}
 							}
 						})
+						return false;
+					}
+					my.redirectTo({
+						url:'../loan4/loan?orderId='+_this.data.queryIfLoanId
+					})
+				}else{
+					my.alert({title:res.data.message})
 				}
-			 
 	  })
   },
   onUnload(){//关闭小程序触发

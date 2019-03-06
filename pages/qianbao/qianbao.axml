@@ -8,7 +8,7 @@
   <view class="Lis3" onTap="Recharge">
        <button class="yellowButton">充值</button>
   </view>
-  <view class="Lis4">
+  <!-- <view class="Lis4">
     <button >提现</button>
-  </view>
+  </view> -->
 </view>
