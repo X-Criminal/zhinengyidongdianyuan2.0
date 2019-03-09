@@ -1,0 +1,64 @@
+let app = getApp( )
+Page({
+  data:{
+      isChange:false,
+		mac:"",
+  },
+  onLoad(query){
+	  this.setData({
+		  mac:query.data
+	  })
+  },
+  inTxt(){
+    my.alert({
+      title:"押金如何提现",
+      content:"充值押金，可随时提现。充电宝归还后，您可以点击小程序右下角，进入【个人中心-我的钱包】申请押金提现。"
+    })
+  },
+  shuoming(){
+      my.alert({
+      title:"充值说明",
+      content:"1、押金如何提现？充值押金，可随时提现。充电宝归还后，您可以点击小程序右下角，进入【个人中心-我的钱包】申请押金提现。2、提现需要多久到账？由于退款流程为：V电—支付宝—银行—个人账户因此正常情况下您的提现需要0-5个工作日才能到账。3、提现后钱退到哪里？提现成功后钱会原路返回到您的充值账户。4、提现超过5个工作日未到账？请联系V电官方微信客服进行处理或拨打我们的客服电话0755-27800074。温馨提示：用户钱包包含余额和押金两部分，押金不可用于消费，用户必须缴纳押金后才能租借充电宝。只有账户余额大于等于0时，才能申请退还押金。点击支付即同意《充值协议》"
+    })
+  },
+  Recharge(){
+    if(!this.data.isChange){
+      my.alert({
+        title:"请先同意充值说明"
+      })
+      return false
+    }
+    let data ={
+      payType:"1",
+      type:"5"
+    }
+    app.ajax("/powerBank/app/user/userRecharge","post",data,(res)=>{
+      if(res.data.code===1000){
+        my.tradePay({
+          tradeNO:res.data.data.orderInfo,
+          success(res){
+            if(res.resultCode==="9000"){
+					my.redirectTo({
+						url:"../submission/submission?data="+this.data.mac,
+						success:()=>{
+							my.setNavigationBar({
+								title:"租用"
+							})
+						}
+					})
+            }
+          }
+        })
+      }else{
+        my.alert({
+          title:res.data.message
+        })
+      }
+    })
+  },
+  change(e){
+    this.setData({
+      isChange:e.detail.value
+    })
+  }
+})

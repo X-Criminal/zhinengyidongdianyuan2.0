@@ -20,7 +20,7 @@
           thumb="{{item.img}}"
           onClick="onItemClick"
           arrow="{{true}}"
-          index="{{index}}"
+          index="{{index}}" 
           last="{{index === (Lis.length - 1)}}"
         >
           <view class="am-list-brief" style="color:#0B0817;font-family: PingFangSC-Regular;display:inline-block;">{{item.name}}</view>

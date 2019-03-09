@@ -59,10 +59,10 @@
            <icon type="success"  size="45" color="#40D47B"/>
            <view class="pLis0">租借电源成功</view>
            <view class="pLis1"><view></view>租借详情<view></view> </view>
-           <view class="pLis2"><text style="overflow: hidden;width: 200px;height: 24px;text-overflow:ellipsis;white-space: nowrap;">租借时间</text><text>{{loan_date}}</text></view>
-           <view class="pLis3"><text style="overflow: hidden;width: 200px;height: 24px;text-overflow:ellipsis;white-space: nowrap;">租借地点</text><text>{{loanAdderss}}</text></view>
-           <view class="pLis4"><text style="overflow: hidden;width: 200px;height: 24px;text-overflow:ellipsis;white-space: nowrap;">订单号</text><text>{{orderNumber}}</text></view>
-           <view class="pLis5"><text style="overflow: hidden;width: 200px;height: 24px;text-overflow:ellipsis;white-space: nowrap;">收费标准</text><text>{{standard}}</text></view>
+           <view class="pLis2"><text >租借时间</text><text style="overflow: hidden;width: 200px;height: 24px;text-overflow:ellipsis;white-space: nowrap;text-align: right;">{{loan_date}}</text></view>
+           <view class="pLis3"><text >租借地点</text><text style="overflow: hidden;width: 200px;height: 24px;text-overflow:ellipsis;white-space: nowrap;text-align: right;">{{loanAdderss}}</text></view>
+           <view class="pLis4"><text >订单号</text>  <text style="overflow: hidden;width: 200px;height: 24px;text-overflow:ellipsis;white-space: nowrap;text-align: right;">{{orderNumber}}</text></view>
+           <view class="pLis5"><text >收费标准</text><text style="overflow: hidden;width: 200px;height: 24px;text-overflow:ellipsis;white-space: nowrap;text-align: right;">{{standard}}</text></view>
            <view class="pLis6"><button onTap="loan">确定</button></view>
       </view>
   </popup>

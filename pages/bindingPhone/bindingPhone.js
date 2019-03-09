@@ -63,7 +63,7 @@ Page({
     },1000)
   },
   defaultTap(){
-      app.ajax("/powerBank/app/user/updateUserPhone","post",{code:this.data.code,phone:this.data.phone},(res)=>{
+      app.ajax("/powerBank/app/user/updateUserPhone","post",{code:this.data.code,phone:this.data.phone,openType:"1"},(res)=>{
           if( res.data.code===1000){
             my.navigateBack({
               delta:1

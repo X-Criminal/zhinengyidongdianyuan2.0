@@ -7,13 +7,13 @@ Page({
     url:app.url
   },
   onLoad(){
-    this.init( 0 )
+    this.init( this.data.activeTab )
   },
   handleTabClick( e ){
     this.setData({
       activeTab:e.index
     })
-    this.init(e.index)
+    this.init(e.index);
   },
   activeTab2(e){
      this.setData({
@@ -41,6 +41,6 @@ Page({
     })
   },
   DetaIls(e){
-    app.Nav("../discountDetaLis/discountDetaLis?couponsuseId="+e.currentTarget.dataset.couponsuseId,'优惠劵详情')
+    app.Nav("../discountDetaLis/discountDetaLis?couponsuseId="+e.currentTarget.dataset.couponsuseId+"&type="+this.data.activeTab,'优惠劵详情')
   }
 })

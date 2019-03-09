@@ -9,7 +9,10 @@ Page({
     key:0,
   },
   onLoad(){
-    this.getCouponsDeviceList( )
+    
+  },
+  onReady(){
+	  this.getCouponsDeviceList( )
   },
   getType(e){
     this.setData({
@@ -26,7 +29,7 @@ Page({
     if(this.data.cType.length<=0) return false;
     let data = {
         amounts:this.data.cType,
-        couponscuseId:this.data.couponscuseId,
+        couponscuseId:this.data.gb[0].couponsuseId,
         payType:"1",
         type:"2"
     }
@@ -35,7 +38,6 @@ Page({
           my.tradePay({
             tradeNO:res.data.data.orderInfo, //完整的支付参数拼接成的字符串，从服务端获取
             success: (res) => {
-              console.log(res)
                 if(res.resultCode==="9000"){
                     _this.init(()=>{
                       my.navigateBack({
@@ -60,9 +62,14 @@ Page({
   getCouponsDeviceList(){
     app.ajax("/powerBank/app/user/getCouponsByuserIdList","post",{currPage:"1",size:"99",type:"1"},(res)=>{
       if(res.data.code===1000){
-        this.setData({
-            CouponsByuserId:res.data.data,
-        })
+			let _gb = []
+			if(res.data.data.length>0){
+				_gb.push(res.data.data[0]);
+			}
+			this.setData({
+					CouponsByuserId:res.data.data,
+					gb:_gb,
+			})
       }
     })
   },

@@ -49,7 +49,6 @@ let billingTime = (startTime,endTime,obj)=>{
     if(firstAay_num < endTime){
         if(StartM===endM&&endD-StartD<=1){
             FA = _endTime - _startTime;
-            console.log( "次日归还" )
             return type3(FA,firstAay-_startTime);
         };
         if(StartM===endM){
@@ -57,7 +56,6 @@ let billingTime = (startTime,endTime,obj)=>{
            // Days =Math.ceil((_endTime -_startTime)/oneDay)+1;//使用天数
             FA = firstAay_num - _startTime;//第一天用时
             LA = (_endTime - _startTime) - ((Days-2)*oneDay) - FA;//最后一天使用时间
-            console.log('当月多日归还');
             return type1(FA,LA,Days);
         };
 
@@ -67,13 +65,10 @@ let billingTime = (startTime,endTime,obj)=>{
             FA = firstAay_num - _startTime;//第一天用时
             LA = (_endTime - _startTime) - ((Days-2)*oneDay) - FA;//最后一天使用时间
             if(ML-StartD!==0){
-                console.log('次月多日1')
                 return type1(FA,LA,Days)
             }else if(endD!==1){
-                console.log('次月多日2')
                 return type1(FA,LA,Days)
             }else{
-                console.log('次月次日');
                 FA = _endTime - _startTime;
                 return type2(FA,firstAay-_startTime)
             }
@@ -85,7 +80,6 @@ let billingTime = (startTime,endTime,obj)=>{
         // }
         //隔天归还 
     }else{
-      console.log("当天归还")
       return type3(_endTime - _startTime)
     }
   }

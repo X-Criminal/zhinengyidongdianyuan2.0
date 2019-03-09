@@ -54,6 +54,7 @@ Page({
                 })
                  this.queryIfLoan( );
                  this.getCouponsByCategory( );
+					  console.log(latitude,longitude)
 					  this.getShopList(latitude,longitude);
 					  if(app.qrCode ){
 						  setTimeout(()=>{
@@ -217,8 +218,8 @@ Page({
     }
     if(app.isLogin){
       app.ajax("/powerBank/app/user/getUserdeposit","post",null,(res)=>{
+			console.log(res)
         if(res.data.code===1000){
-			  console.log(res.data.data)
 			 switch (res.data.data.depositState){
 				 case "1":
 					this.scan( "1" )
@@ -263,11 +264,12 @@ Page({
 				}
     		})
 	 }else{
-		 				if(type==="3") _this.Nav("../zmBorrow/zmBorrow?data="+JSON.stringify({code:app.qrCode}),"租用确认");
-						if(type==="1") _this.Nav("../submission/submission?data="+JSON.stringify({code:app.qrCode}),"租用确认");
-						if(type==="2") _this.Nav("../borrow/borrow?data="+JSON.stringify({code:app.qrCode}),"租用确认");
-						if(type==='1000')   _this.Nav( "../loan2/loan?queryIfLoanId="+this.data.queryIfLoanId+'&data='+JSON.stringify({code:app.qrCode}),"租借详情");
-
+		 		let code= app.qrCode;
+				 app.qrCode = null;
+		 		if(type==="3") _this.Nav("../zmBorrow/zmBorrow?data="+JSON.stringify({code:code}),"租用确认");
+				if(type==="1") _this.Nav("../submission/submission?data="+JSON.stringify({code:code}),"租用确认");
+				if(type==="2") _this.Nav("../borrow/borrow?data="+JSON.stringify({code:code}),"租用确认");
+				if(type==='1000')   _this.Nav( "../loan2/loan?queryIfLoanId="+this.data.queryIfLoanId+'&data='+JSON.stringify({code:code}),"租借详情");
 	 }
   },
 
@@ -420,7 +422,7 @@ Page({
                       page: _this,  //防止执行时已经切换到其它页面，page指向不准确
                   });
           },(err)=>{
-            console.log(err)
+
           })
     },
    /**获取附近商家 End */
@@ -466,6 +468,7 @@ Page({
   },
   //页面显示
   onShow(  ){
+	  let _this = this;
     if(this.data.cc){
         this.getCouponsByCategory()
         this.queryIfLoan( )
@@ -474,6 +477,12 @@ Page({
         cc:true,
       })
     }
+
+	 setTimeout(()=>{
+		my.hideLoading({
+         page: _this,  //防止执行时已经切换到其它页面，page指向不准确
+		});
+	 },500)
   },
   onError(msg) {
     console.log(msg)

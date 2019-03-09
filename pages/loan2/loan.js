@@ -84,11 +84,38 @@ setSub:"1",
       let s = Math.floor( (date/1000/60 - m)*60);
       s = s<10?"0"+s:s;
 		mm = mm<10?"0"+mm:mm;
+		// if(m<5){
+		// 	this.setData({
+		// 		abcdefg:0,
+		// 		_abcdefg:0,
+		// 	})
+		// }
+
+		 	let a ,b1,b2;
+			if(this.data.vipState==4){
+				a =  billingTime( new Date(  app.___formattingTime(this.startTime)),new Date(app.___formattingTime(this.currentDate) ) ,{a:this.data.singleAmount,b:this.data.dayMaxAmount});
+			}else{
+				a =  billingTime( new Date(  app.___formattingTime(this.startTime)),new Date(app.___formattingTime(this.currentDate) ) ,{a:this.data.singleAmount,b:this.data.dayMaxAmount,c:this.data.dayVipTime});
+			}
+			if(m<5){
+				b1 = 0;
+				b2 = 0;
+			}else{
+				b1 = Math.ceil(a.a);
+				if(this.data.ByuserId.amount.indexOf("优惠劵")<=-1){
+					b2 = b1 - this.data.ByuserId.amount;
+				}else{
+					b2 = b1;
+				}
+			}
       this.setData({
 			h:h,
 			mm:mm,
 			m:m,
-         s:s
+         s:s,
+
+			abcdefg:b1,
+			_abcdefg:b2,
       })
     },1000)
   },
@@ -144,7 +171,7 @@ setSub:"1",
 	  let data = {
 		  currPage:1,
 		  size:99,
-		  type:1,
+		  type:2,
 	  }
 	  	app.ajax("/powerBank/app/user/getCouponsByuserIdList",'post',data,( res )=>{
 			  if(res.data.code===1000&&res.data.data){
@@ -233,6 +260,10 @@ setSub:"1",
 				}else{
 					my.alert({title:res.data.message})
 				}
+	  },()=>{
+		  my.hideLoading({
+               page: _this,  //防止执行时已经切换到其它页面，page指向不准确
+			});
 	  })
   },
   onUnload(){//关闭小程序触发

@@ -6,7 +6,6 @@ Page({
     isAgreement:false,
   },
   onLoad(query){
-	  console.log(query)
 	  this.setData({
 		  mac:JSON.parse(query.data).code
 	  })
@@ -42,7 +41,6 @@ Page({
           orderStr:res.data.data.authOrder,
           success:(res)=>{
             if(res.resultCode==="9000"){
-          
               app.Nav('../zmBorrow/zmBorrow?data='+JSON.stringify({code:this.data.mac}),"租用确认")
             }
           },
@@ -58,7 +56,7 @@ Page({
     })
   },
   Pay(){
-    app.Nav("../wallt1/wallt1","支付押金")
+    app.Nav("../wallt2/wallt2?data="+JSON.stringify({code:this.data.mac}),"支付押金")
   },
   isAgreement( e ){
     this.setData({

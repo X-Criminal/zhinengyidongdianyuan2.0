@@ -25,7 +25,8 @@ Page({
   },
   enDunlock:null,
   DunlockIng:null,
-  onLoad(options){                                                    
+  onLoad(options){
+	 console.log(options)                                          
 	 if(!app.qrCode){
 		this.setData({
       	mac:JSON.parse(options.data).code
@@ -139,9 +140,6 @@ Page({
         });
       }
     });
-	 app.ajax("/powerBank/app/user/getUserOrder",'get',null,(res)=>{
-		 console.log(res)
-	 })
   },
    getUserOrder(){
 	  app.ajax('/powerBank/app/user/getUserOrder','get',null,(res)=>{

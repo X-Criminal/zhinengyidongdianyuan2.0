@@ -1,0 +1,21 @@
+<view class="wallt1 body">
+  <view class="Lis1">
+    <view>
+      <view> <text>￥</text><text>99.00</text></view>
+      <view>押金</view>
+    </view>
+  </view>
+  <view class="Lis2" onTap="inTxt">如何退押金 </view>
+  <view class="Lis3">
+    <label style="display: flex; line-height: 24px;">
+      <am-checkbox onChange="change"/>
+      <text style="text-indent: 8px; color: #888">点击充值即同意</text>
+       <view onTap="shuoming">
+        《充值说明》
+       </view>
+    </label>
+  </view>
+  <view class="Lis4" onTap="Recharge">
+    <button class="yellowButton">支付</button>
+  </view>
+</view>

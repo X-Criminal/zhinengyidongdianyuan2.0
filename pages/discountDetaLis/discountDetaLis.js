@@ -10,10 +10,12 @@ Page({
     picture:"",
     type:"",
     useState:"",
+	 typeID:"0",
   },
   onLoad(quert){
     this.setData({
-      couponsuseId:quert.couponsuseId
+      couponsuseId:quert.couponsuseId,
+		typeID:quert.type
     })
   },
   onReady(){
@@ -37,6 +39,10 @@ Page({
     })
   },
   onIndex(){
+	  if(this.data.typeID==0){
+		  app.Nav("../chongzhi/chongzhi",'充值');
+		  return false;
+	  }
     my.navigateBack({
       delta:3
     })

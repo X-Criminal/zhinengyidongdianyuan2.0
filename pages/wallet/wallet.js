@@ -41,7 +41,6 @@ Page({
     }else{
       app.Nav('../refundDeposit/refundDeposit',"押金");
     }
-    
   },
   mingxi(){
     app.Nav('../tradeDetails/tradeDetails',"交易明细");

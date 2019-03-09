@@ -10,9 +10,9 @@
            <view class="time Icon">时间</view>
         {{item.businessHours}}
       </view>
-      <view>
+      <view style="overflow: hidden;text-overflow:ellipsis;white-space: nowrap;"> 
           <view class="position Icon">地址</view>
-        {{item.merchantsAdderss}}
+          {{item.merchantsAdderss}}
       </view>
       <view class="info">
         <view style="{{item.also>0?'display:block':'display:none'}}">
