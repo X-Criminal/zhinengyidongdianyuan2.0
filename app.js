@@ -99,26 +99,23 @@ App({
   },
   /**获取用户信息 End */
 
-  /**手机号登陆 Start */
-  phoneLoad( res,cb){
-    let _this = this;
-     let data =res.data;
-     if(data.code===1000){
-        _this.token = data.data.token;
-        _this.balance = data.data.balance;
-        _this.isLogin = true;
-        _this.isPhone = true;
-        _this.userInfo={
-          userName:data.data.userName||data.data.phone,
-          avatar:data.data.headUrl
-        }
-      cb&&cb( _this.userInfo )
-      }
-  },
+  // /**手机号登陆 Start */
+  // phoneLoad( res,cb){
+  //   let _this = this;
+  //    let data =res.data;
+  //    if(data.code===1000){
+  //       _this.token = data.data.token;
+  //       _this.balance = data.data.balance;
+  //       _this.isLogin = true;
+  //       _this.isPhone = true;
+  //       _this.userInfo={
+  //         userName:data.data.userName||data.data.phone,
+  //         avatar:data.data.headUrl
+  //       }
+  //     cb&&cb( _this.userInfo )
+  //     }
+  // },
   /**手机号登陆 End */
-   onError(msg) {
-    console.log(msg)
-  },
    Nav(url,title){
     my.navigateTo({
       url:url,
@@ -208,7 +205,8 @@ App({
   },
 
   /**百度地图坐标转换高德地图坐标 lng*/
-   bd_decrypt(bd_lng, bd_lat) {
+   bd_decrypt(bd_lng=0, bd_lat=0) {
+    if(!gg_lng||!gg_lat){ return {lat:39.918057,lng: 116.396878}}
     var X_PI = Math.PI * 3000.0 / 180.0;
     var x = bd_lng - 0.0065;
     var y = bd_lat - 0.006;
@@ -219,7 +217,8 @@ App({
     return {lng: gg_lng, lat: gg_lat}
   },
   /**高德坐标转换为百度坐标 */
-   bd_encrypt(gg_lng, gg_lat) {
+    bd_encrypt(gg_lng=0, gg_lat=0) {
+    if(!gg_lng||!gg_lat){ return {lat:39.918057,lng: 116.396878}}
     var X_PI = Math.PI * 3000.0 / 180.0;
     var x = gg_lng, y = gg_lat;
     var z = Math.sqrt(x * x + y * y) + 0.00002 * Math.sin(y * X_PI);

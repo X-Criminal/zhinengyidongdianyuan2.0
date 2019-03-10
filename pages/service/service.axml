@@ -2,7 +2,7 @@
   <view style="{{index==='i'?'display:block':'display:none'}}">
     <image src="/img/logo.png" mode="logo" class="img"/>
     <view class="title">V电</view>
-    <view class="V">v0.0.39</view>
+    <view class="V">v0.0.40</view>
   </view>
   <!-- <list>
        <block a:for="{{Lis}}">

@@ -10,8 +10,8 @@ Page({
     queryIfLoan:"",
     queryIfLoanId:"",
     userName:"",
-    initLatitude:0,
-    initLongitude:0,
+    initLatitude:39.918057,
+    initLongitude:116.396878,
     onLat:0,
     onLong:0,
     scale:16,
@@ -40,6 +40,7 @@ Page({
     controls:[],
     endLat:0,//报错标记点
     endLng:0,//报错标记点
+    isPosition:false,
   },
   onLoad(query){
 
@@ -54,7 +55,6 @@ Page({
                 })
                  this.queryIfLoan( );
                  this.getCouponsByCategory( );
-					  console.log(latitude,longitude)
 					  this.getShopList(latitude,longitude);
 					  if(app.qrCode ){
 						  setTimeout(()=>{
@@ -132,15 +132,22 @@ Page({
           initLongitude:+res.longitude,
           onLat:+res.latitude,
           onLong:+res.longitude,
+          isPosition:true,
         })
         that.mapCtx = my.createMapContext('map');
         cb&&cb(+res.latitude,+res.longitude);
-		 
       },
       fail() {
         my.hideLoading();
+        that.mapCtx = my.createMapContext('map');
+        cb&&cb(39.918057, 116.396878);
         my.alert({ title: '定位失败',
                     content:"请打开设备地理位置",
+                    isPosition:false,
+                    initLatitude:39.918057,
+                    initLongitude:116.396878,
+                    onLat:39.918057,
+                    onLong:116.396878,
          });
       },
     })
@@ -211,14 +218,13 @@ Page({
 
   /**点击扫码二维码 Start*/
   sweepCode(){
-    if( this.data.queryIfLoan===1000 ){
+    if( this.data.queryIfLoan===1000){
 		this.scan( "1000" )
      // this.Nav( "../loan2/loan?queryIfLoanId="+this.data.queryIfLoanId ,"租借详情")
       return false;
     }
     if(app.isLogin){
       app.ajax("/powerBank/app/user/getUserdeposit","post",null,(res)=>{
-			console.log(res)
         if(res.data.code===1000){
 			 switch (res.data.data.depositState){
 				 case "1":
@@ -370,7 +376,7 @@ Page({
    /**获取附近商家 Start */
     _getShopList: true,
 	 ll:0,
-    getShopList(lat,long){
+    getShopList(lat=0,long=0){
 	 this.ll += 1;
     let _this = this;
     if(!this._getShopList) { return false; }
@@ -385,13 +391,13 @@ Page({
 	// 		latitude:lat,
    //    })
 	//   }
-		let position;
-		if(long===0||lat===0){
+		let position={lat:39.918057, lng:116.396878};
+		if(long===0||lat===0&&this.data.isPosition){
 			setTimeout(()=>{
 				_this.getShopList(this.data.initLongitude , this.data.initLatitude)
 			},500)
 		}else{
-			position = app.bd_encrypt(long, lat)
+			position = app.bd_encrypt(long, lat);
 		}
         app.ajax("/powerBank/app/user/getShopList",
                   "post",
